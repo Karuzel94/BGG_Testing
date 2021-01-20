@@ -17,7 +17,7 @@ public class HomePage extends AbstractPage{
     @FindBy(xpath = "//div[@class='c-nav-primary-user']/gg-menu-nav-nouser/ul/li[1]/a")
     WebElement logInBtn;
 
-    @FindBy(xpath = "//a[@routerlink='/join']")
+    @FindBy(xpath = "//div[@class='c-nav-primary-user']/gg-menu-nav-nouser/ul/li[2]/a")
     WebElement registerBtn;
 
     @FindBy(xpath = "//input[@name='searchTerm']")

@@ -23,4 +23,20 @@ public class JoinPage extends AbstractPage {
     @FindBy(xpath = "//div[@class='signup']/form/button")
     WebElement createAnAccountBtn;
 
+    public void setNewUserName(String string) {
+        newUserName.sendKeys(string);
+    }
+
+    public void setNewUserMail(String string) {
+        newUserMail.sendKeys(string + "@gmail.com");
+    }
+
+    public void setNewUserPassword(String string) {
+        newUserPassword.sendKeys(string);
+    }
+
+    public void ConfirmAccountCreating() {
+        checkingVisibilityAndClicking(createAnAccountBtn);
+    }
+
 }

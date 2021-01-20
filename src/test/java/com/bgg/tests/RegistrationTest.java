@@ -19,6 +19,13 @@ public class RegistrationTest extends AbstractTest{
         String userMail = randomString(6);
         String passwd = randomString(8);
 
+        home.clickJoinIn();
+        join.setNewUserName(userName);
+        join.setNewUserMail(userMail);
+        join.setNewUserPassword(passwd);
+        join.ConfirmAccountCreating();
+
+
     }
 
 }
