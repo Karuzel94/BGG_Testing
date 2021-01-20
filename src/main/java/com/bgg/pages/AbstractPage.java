@@ -16,14 +16,14 @@ public class AbstractPage {
         this.wait = new WebDriverWait(this.driver, waitTime);
     }
 
-    /*public void checkingVisibility(WebElement element) {
+    public void checkingVisibility(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void click(WebElement element){
+    public void checkingVisibilityAndClicking(WebElement element){
         checkingVisibility(element);
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-    }*/
+    }
 
 
 }
