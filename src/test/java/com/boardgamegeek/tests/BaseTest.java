@@ -1,24 +1,28 @@
-package com.bgg.tests;
+package com.boardgamegeek.tests;
 
-import com.bgg.pages.HomePage;
-import com.bgg.pages.JoinPage;
-import com.bgg.pages.LoggedHomePage;
+import com.boardgamegeek.pages.HomePage;
+import com.boardgamegeek.pages.JoinPage;
+import com.boardgamegeek.pages.LoggedHomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-
 import java.util.concurrent.TimeUnit;
 
-public class AbstractTest {
+public class BaseTest {
 
     public String url = "https://boardgamegeek.com/";
     WebDriver driver;
-    public HomePage home;
-    public LoggedHomePage logged;
-    public JoinPage join;
+    HomePage home;
+    LoggedHomePage logged;
+    JoinPage join;
+
+    public String randomString(int length, boolean isLetters, boolean isNumbers) {
+        return RandomStringUtils.random(length, isLetters, isNumbers);
+    }
 
     @BeforeTest
     public static void  setupClass() {
@@ -31,6 +35,9 @@ public class AbstractTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(url);
+        home = new HomePage(driver);
+        logged = new LoggedHomePage(driver);
+        join = new JoinPage(driver);
     }
 
     @AfterClass
