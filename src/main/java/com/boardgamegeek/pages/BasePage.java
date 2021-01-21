@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-    private int waitTimeSeconds = 15;
+    private int waitTimeSeconds = 5;
     protected WebDriver driver;
     protected static WebDriverWait wait;
 

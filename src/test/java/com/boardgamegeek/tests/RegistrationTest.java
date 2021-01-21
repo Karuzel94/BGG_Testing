@@ -14,7 +14,7 @@ public class RegistrationTest extends BaseTest {
 
 
         home.clickJoinIn();
-        Thread.sleep(3000);
+        Thread.sleep(6000);
 
         join.registerAccount(userName, userMail + "@gmail.com", password);
 
