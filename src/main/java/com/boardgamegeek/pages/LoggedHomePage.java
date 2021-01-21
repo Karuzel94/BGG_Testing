@@ -15,7 +15,7 @@ public class LoggedHomePage extends BasePage {
     WebElement logoSymbol;
 
 
-    @FindBy(xpath = "//*[@class='c-nav-primary-user']/gg-menu-nav-user/ul/li[2]/gg-my-geek/div/button/span[2]")
+    @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 
     public String loggedUser() {

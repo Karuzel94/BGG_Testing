@@ -9,7 +9,7 @@ public class BasePage {
 
     private int waitTimeSeconds = 5;
     protected WebDriver driver;
-    protected WebDriverWait wait;
+    protected static WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

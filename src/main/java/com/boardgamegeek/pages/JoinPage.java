@@ -23,22 +23,33 @@ public class JoinPage extends BasePage {
     @FindBy(xpath = "//div[@class='signup']/form/button")
     WebElement createAnAccountButton;
 
+    @FindBy(xpath = "//button[@class='btn btn-lg btn-link text-muted']")
+    WebElement skipAdditionalInformation;
+
+    @FindBy(xpath = "//li[@class='c-nav-session dropdown-primary']/a")
+    WebElement registerButton;
 
 
-    public void setNewUserName(String username) {
+    public void clickJoinIn() {
+        click(registerButton);
+    }
+
+    public void registerAccount(String username , String mail , String password) {
+        visibilityCheck(usernameInput);
         usernameInput.sendKeys(username);
-    }
-
-    public void setMailInput(String mail) {
+        visibilityCheck(mailInput);
         mailInput.sendKeys(mail);
-    }
-
-    public void setNewUserPassword(String password) {
+        visibilityCheck(passwordInput);
         passwordInput.sendKeys(password);
+
     }
 
     public void createAnAccount() {
         click(createAnAccountButton);
+    }
+
+    public void skipAdditionalInfo() {
+        click(skipAdditionalInformation);
     }
 
 }

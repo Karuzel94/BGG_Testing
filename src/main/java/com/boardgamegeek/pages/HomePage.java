@@ -12,11 +12,9 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='c-nav-primary-user']/gg-menu-nav-nouser/ul/li[1]/a")
+    @FindBy(xpath = "//li[@class='c-nav-session c-nav-primary-separated dropdown-primary']/a")
     WebElement logInButton;
 
-    @FindBy(xpath = "//div[@class='c-nav-primary-user']/gg-menu-nav-nouser/ul/li[2]/a")
-    WebElement registerButton;
 
     @FindBy(xpath = "//input[@id='inputUsername']")
     WebElement userNameInput;
@@ -24,13 +22,10 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//input[@id='inputPassword']")
     WebElement passwordInput;
 
-    @FindBy(xpath = "//div[@class='modal-footer']/button[1]")
+    @FindBy(xpath = "//button[@class='btn btn-primary']")
     WebElement signInButton;
 
 
-    public void clickJoinIn() {
-        click(registerButton);
-    }
 
     public void clickSignIn() {
         click(logInButton);
@@ -38,17 +33,15 @@ public class HomePage extends BasePage {
 
 
     public void signIn(String username, String password) {
-        if (userNameInput.isDisplayed()) {
-            userNameInput.sendKeys(username);
-        }
-        if (passwordInput.isDisplayed()) {
-            passwordInput.sendKeys(password);
-        }
+        visibilityCheck(userNameInput);
+        userNameInput.sendKeys(username);
+        visibilityCheck(passwordInput);
+        passwordInput.sendKeys(password);
+
     }
 
     public void confirmSignIn() {
         click(signInButton);
     }
-
 
 }
