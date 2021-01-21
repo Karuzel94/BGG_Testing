@@ -25,7 +25,13 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     WebElement signInButton;
 
+    @FindBy(xpath = "//li[@class='c-nav-session dropdown-primary']/a")
+    WebElement registerButton;
 
+
+    public void clickJoinIn() {
+        click(registerButton);
+    }
 
     public void clickSignIn() {
         click(logInButton);

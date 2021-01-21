@@ -19,6 +19,8 @@ public class BaseTest {
     HomePage home;
     LoggedHomePage logged;
     JoinPage join;
+    String logInData = "bggtest1221";
+
 
     public String randomString(int length, boolean isLetters, boolean isNumbers) {
         return RandomStringUtils.random(length, isLetters, isNumbers);

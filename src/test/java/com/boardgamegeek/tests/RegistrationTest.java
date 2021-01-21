@@ -8,24 +8,27 @@ public class RegistrationTest extends BaseTest {
     @Test
     public void RegistrationTest() throws InterruptedException {
 
-        String userName = randomString(8, true, true);
+        String userName = randomString(8, true, false);
         String userMail = randomString(6, true, true);
         String password = randomString(8, true, true);
 
-        join.clickJoinIn();
-        join.registerAccount(userName, userMail + "@gmail.com", password);
-        join.createAnAccount();
 
-        //Thread.sleep ^_^
+        home.clickJoinIn();
         Thread.sleep(3000);
-        join.skipAdditionalInfo();
 
-        System.out.println("New Logged user is: " + logged.loggedUser());
+        join.registerAccount(userName, userMail + "@gmail.com", password);
 
-        System.out.println("NEW ACCOUNT DATA BELOW!!!");
+
+
+
+       // join.skipAdditionalInfo();
+
+       // System.out.println("New Logged user is: " + logged.loggedUser());
+
+       /* System.out.println("NEW ACCOUNT DATA BELOW!!!");
         System.out.println("Username: " + userName);
         System.out.println("Mail: " + userMail + "@gmail.com");
-        System.out.println("Password: " + password);
+        System.out.println("Password: " + password);*/
 
 
 

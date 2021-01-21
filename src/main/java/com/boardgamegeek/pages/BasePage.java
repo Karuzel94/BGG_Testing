@@ -1,5 +1,6 @@
 package com.boardgamegeek.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-    private int waitTimeSeconds = 5;
+    private int waitTimeSeconds = 15;
     protected WebDriver driver;
     protected static WebDriverWait wait;
 

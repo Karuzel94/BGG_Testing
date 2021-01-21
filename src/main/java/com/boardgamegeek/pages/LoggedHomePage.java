@@ -11,10 +11,6 @@ public class LoggedHomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[@class='menu-logo-symbol']")
-    WebElement logoSymbol;
-
-
     @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 

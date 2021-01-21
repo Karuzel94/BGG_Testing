@@ -11,7 +11,7 @@ public class JoinPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath = "//input[@id='join-username']")
+    @FindBy(xpath = "//input[@formcontrolname='username']")
     WebElement usernameInput;
 
     @FindBy(xpath = "//input[@id='join-email']")
@@ -26,27 +26,20 @@ public class JoinPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-lg btn-link text-muted']")
     WebElement skipAdditionalInformation;
 
-    @FindBy(xpath = "//li[@class='c-nav-session dropdown-primary']/a")
-    WebElement registerButton;
-
-
-    public void clickJoinIn() {
-        click(registerButton);
-    }
 
     public void registerAccount(String username , String mail , String password) {
+
         visibilityCheck(usernameInput);
         usernameInput.sendKeys(username);
         visibilityCheck(mailInput);
         mailInput.sendKeys(mail);
         visibilityCheck(passwordInput);
         passwordInput.sendKeys(password);
+        click(skipAdditionalInformation);
 
-    }
-
-    public void createAnAccount() {
         click(createAnAccountButton);
     }
+
 
     public void skipAdditionalInfo() {
         click(skipAdditionalInformation);
