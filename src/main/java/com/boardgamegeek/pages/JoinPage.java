@@ -3,12 +3,14 @@ package com.boardgamegeek.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class JoinPage extends BasePage {
 
 
     public JoinPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//input[@formcontrolname='username']")
@@ -27,7 +29,7 @@ public class JoinPage extends BasePage {
     WebElement skipAdditionalInformation;
 
 
-    public void registerAccount(String username , String mail , String password) {
+    public void registerAccount(String username , String mail , String password) throws InterruptedException {
 
         visibilityCheck(usernameInput);
         usernameInput.sendKeys(username);
@@ -36,9 +38,10 @@ public class JoinPage extends BasePage {
         visibilityCheck(passwordInput);
         passwordInput.sendKeys(password);
 
-        click(skipAdditionalInformation);
-
+        Thread.sleep(2000);
         click(createAnAccountButton);
+
+        click(skipAdditionalInformation);
     }
 
 
