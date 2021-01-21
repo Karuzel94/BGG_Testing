@@ -35,6 +35,7 @@ public class JoinPage extends BasePage {
         mailInput.sendKeys(mail);
         visibilityCheck(passwordInput);
         passwordInput.sendKeys(password);
+
         click(skipAdditionalInformation);
 
         click(createAnAccountButton);

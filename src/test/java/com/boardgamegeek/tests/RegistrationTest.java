@@ -21,14 +21,14 @@ public class RegistrationTest extends BaseTest {
 
 
 
-       // join.skipAdditionalInfo();
 
-       // System.out.println("New Logged user is: " + logged.loggedUser());
 
-       /* System.out.println("NEW ACCOUNT DATA BELOW!!!");
+       System.out.println("Registered user is: " + logged.loggedUser());
+
+        System.out.println("NEW ACCOUNT DATA BELOW!!!");
         System.out.println("Username: " + userName);
         System.out.println("Mail: " + userMail + "@gmail.com");
-        System.out.println("Password: " + password);*/
+        System.out.println("Password: " + password);
 
 
 
