@@ -2,7 +2,7 @@ package com.boardgamegeek.tests;
 
 import org.testng.annotations.Test;
 
-public class OpenPageTest extends BaseTest {
+public class OpenPageTest extends AbstractTest {
 
     @Test
     public void OpenPageTest() {

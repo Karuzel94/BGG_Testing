@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoggedHomePage extends BasePage {
+public class LoggedHomePage extends AbstractPage {
     public LoggedHomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -14,9 +14,11 @@ public class LoggedHomePage extends BasePage {
     @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 
-    public String loggedUser() {
-        return userMenu.getText();
-    }
-
-
+    public String getLoggedUserLogin() {
+            visibilityCheck(userMenu);
+            return userMenu.getText();
+        }
 }
+
+
+

@@ -3,28 +3,23 @@ package com.boardgamegeek.tests;
 import com.boardgamegeek.pages.HomePage;
 import com.boardgamegeek.pages.JoinPage;
 import com.boardgamegeek.pages.LoggedHomePage;
+import com.boardgamegeek.utilities.TestHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
-import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class AbstractTest {
 
     public String url = "https://boardgamegeek.com/";
-    WebDriver driver;
-    HomePage home;
-    LoggedHomePage logged;
-    JoinPage join;
-    String logInData = "bggtest1221";
-
-
-    public String randomString(int length, boolean isLetters, boolean isNumbers) {
-        return RandomStringUtils.random(length, isLetters, isNumbers);
-    }
+    protected WebDriver driver;
+    public HomePage homePage;
+    public LoggedHomePage loggedHomePage;
+    public JoinPage joinPage;
+    public TestHelper testHelper;
 
     @BeforeTest
     public static void  setupClass() {
@@ -33,13 +28,18 @@ public class BaseTest {
 
     @BeforeClass
     public void setupTest() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("incognito");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().deleteAllCookies();
+        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.get(url);
-        home = new HomePage(driver);
-        logged = new LoggedHomePage(driver);
-        join = new JoinPage(driver);
+        homePage = new HomePage(driver);
+        loggedHomePage = new LoggedHomePage(driver);
+        joinPage = new JoinPage(driver);
+        testHelper = new TestHelper();
     }
 
     @AfterClass

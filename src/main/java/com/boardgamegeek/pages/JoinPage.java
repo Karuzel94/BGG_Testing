@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class JoinPage extends BasePage {
+public class JoinPage extends AbstractPage {
 
 
     public JoinPage(WebDriver driver) {
@@ -29,24 +29,14 @@ public class JoinPage extends BasePage {
     WebElement skipAdditionalInformation;
 
 
-    public void registerAccount(String username , String mail , String password) throws InterruptedException {
+    public void registerAccount(String username , String mail , String password) {
 
-        visibilityCheck(usernameInput);
-        usernameInput.sendKeys(username);
-        visibilityCheck(mailInput);
-        mailInput.sendKeys(mail);
-        visibilityCheck(passwordInput);
-        passwordInput.sendKeys(password);
-
-        Thread.sleep(2000);
+        insertValue(usernameInput,username);
+        insertValue(mailInput,mail);
+        insertValue(passwordInput,password);
         click(createAnAccountButton);
-
         click(skipAdditionalInformation);
-    }
 
-
-    public void skipAdditionalInfo() {
-        click(skipAdditionalInformation);
     }
 
 }

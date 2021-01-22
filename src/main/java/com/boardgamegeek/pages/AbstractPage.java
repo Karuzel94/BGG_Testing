@@ -1,20 +1,23 @@
 package com.boardgamegeek.pages;
 
-import org.openqa.selenium.By;
+import com.boardgamegeek.utilities.TestHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public class AbstractPage {
 
-    private int waitTimeSeconds = 5;
+    private int waitTimeSeconds = 10;
     protected WebDriver driver;
     protected static WebDriverWait wait;
+    protected static WebDriverWait waitBetweenInput;
+    public TestHelper testHelper = new TestHelper();
 
-    public BasePage(WebDriver driver) {
+    public AbstractPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, waitTimeSeconds);
+        wait = new WebDriverWait(this.driver, waitTimeSeconds);
+        waitBetweenInput = new WebDriverWait (this.driver ,  testHelper.randomInputWaitTime);
     }
 
     public void visibilityCheck(WebElement element) {
@@ -29,5 +32,11 @@ public class BasePage {
         visibilityCheck(element);
         checkElementClickable(element);
         element.click();
+    }
+
+    public void insertValue(WebElement element, String value) {
+        waitBetweenInput.until(ExpectedConditions.visibilityOf(element));
+        element.sendKeys(value);
+
     }
 }

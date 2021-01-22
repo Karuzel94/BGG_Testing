@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends BasePage {
+public class HomePage extends AbstractPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -29,25 +29,21 @@ public class HomePage extends BasePage {
     WebElement registerButton;
 
 
-    public void clickJoinIn() {
+    public void clickJoinInButton() {
         click(registerButton);
     }
 
-    public void clickSignIn() {
+    public void clickSignInButton() {
         click(logInButton);
     }
 
 
     public void signIn(String username, String password) {
-        visibilityCheck(userNameInput);
-        userNameInput.sendKeys(username);
-        visibilityCheck(passwordInput);
-        passwordInput.sendKeys(password);
-
-    }
-
-    public void confirmSignIn() {
+        insertValue(userNameInput,username);
+        insertValue(passwordInput,password);
         click(signInButton);
     }
+
+
 
 }

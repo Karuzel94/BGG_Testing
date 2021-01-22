@@ -4,27 +4,23 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RegistrationTest extends BaseTest {
+public class RegistrationTest extends AbstractTest {
 
 
     @Test
-    public void RegistrationTest() throws InterruptedException {
+    public void RegistrationTest() {
 
-        String userName = randomString(8, true, false);
-        String userMail = randomString(6, true, true) + "@gmail.com";
-        String password = randomString(8, true, true);
+        homePage.clickJoinInButton();
+        joinPage.registerAccount(testHelper.userName, testHelper.userMail, testHelper.password);
 
-        home.clickJoinIn();
-        join.registerAccount(userName, userMail, password);
-
-        System.out.println("Registered user is: " + logged.loggedUser());
+        System.out.println("Registered user is: " + loggedHomePage.getLoggedUserLogin());
 
         System.out.println("NEW ACCOUNT DATA BELOW!!!");
-        System.out.println("Username: " + userName);
-        System.out.println("Mail: " + userMail);
-        System.out.println("Password: " + password);
+        System.out.println("Username: " + testHelper.userName);
+        System.out.println("Mail: " + testHelper.userMail);
+        System.out.println("Password: " + testHelper.password);
 
-        assertThat(userName).isEqualTo(logged.loggedUser());
+        assertThat(testHelper.userName).isEqualTo(loggedHomePage.getLoggedUserLogin());
 
     }
 
