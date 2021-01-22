@@ -11,13 +11,12 @@ public class AbstractPage {
     private int waitTimeSeconds = 10;
     protected WebDriver driver;
     protected static WebDriverWait wait;
-    protected static WebDriverWait waitBetweenInput;
     public TestHelper testHelper = new TestHelper();
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(this.driver, waitTimeSeconds);
-        waitBetweenInput = new WebDriverWait (this.driver ,  testHelper.randomInputWaitTime);
+
     }
 
     public void visibilityCheck(WebElement element) {
@@ -35,7 +34,7 @@ public class AbstractPage {
     }
 
     public void insertValue(WebElement element, String value) {
-        waitBetweenInput.until(ExpectedConditions.visibilityOf(element));
+        visibilityCheck(element);
         element.sendKeys(value);
 
     }

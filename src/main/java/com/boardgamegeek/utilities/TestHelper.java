@@ -12,19 +12,21 @@ public class TestHelper {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-
-    public int randomInputWaitTime = getRandomNumber(1,3);
     public String userName = randomString(8, true, false);
     public String userMail = randomString(6, true, true) + "@gmail.com";
     public String password = randomString(8, true, true);
     public String logInData = "bggtest1221";
+    public String anotherLogInData = "bggtesting122";
 
 
-    
-
-    
-
-
-
-
+    /* learning of dataprovider
+    @DataProvider(name = "loginTestData")
+    public Object[][] dpMethod(Method m) {
+        if (m.getName().equalsIgnoreCase("testMethodA")) {
+            return new Object[][]{
+                    {"bggtest1221", "bggtest1221"};
+                    {"bggtesting122","bggtesting122"}
+            }
+        }
+    }*/
 }

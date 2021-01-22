@@ -29,7 +29,8 @@ public class JoinPage extends AbstractPage {
     WebElement skipAdditionalInformation;
 
 
-    public void registerAccount(String username , String mail , String password) {
+    public void registerAccount(String username , String mail , String password) throws InterruptedException {
+
 
         insertValue(usernameInput,username);
         insertValue(mailInput,mail);

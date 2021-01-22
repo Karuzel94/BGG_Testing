@@ -8,7 +8,7 @@ public class RegistrationTest extends AbstractTest {
 
 
     @Test
-    public void RegistrationTest() {
+    public void RegistrationTest() throws InterruptedException {
 
         homePage.clickJoinInButton();
         joinPage.registerAccount(testHelper.userName, testHelper.userMail, testHelper.password);
