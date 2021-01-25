@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class JoinPage extends AbstractPage {
 
-
     public JoinPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -29,15 +28,12 @@ public class JoinPage extends AbstractPage {
     WebElement skipAdditionalInformation;
 
 
-    public void registerAccount(String username , String mail , String password) throws InterruptedException {
-
-
-        insertValue(usernameInput,username);
-        insertValue(mailInput,mail);
-        insertValue(passwordInput,password);
+    public void registerAccount(String username, String mail, String password){
+        insertValue(usernameInput, username);
+        insertValue(mailInput, mail);
+        insertValue(passwordInput, password);
         click(createAnAccountButton);
         click(skipAdditionalInformation);
-
     }
 
 }

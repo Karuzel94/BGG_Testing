@@ -1,5 +1,6 @@
 package com.boardgamegeek.pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +29,9 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//li[@class='c-nav-session dropdown-primary']/a")
     WebElement registerButton;
 
+    @FindBy(xpath = "/html/body/ngb-modal-window/div/div/gg-login-modal/form/fieldset/div[1]/div[2]/span")
+    WebElement invalidDataCommunicate;
+
 
     public void clickJoinInButton() {
         click(registerButton);
@@ -39,11 +43,18 @@ public class HomePage extends AbstractPage {
 
 
     public void signIn(String username, String password) {
-        insertValue(userNameInput,username);
-        insertValue(passwordInput,password);
+        insertValue(userNameInput, username);
+        insertValue(passwordInput, password);
+        visibilityCheck(invalidDataCommunicate);
         click(signInButton);
+        if(invalidDataCommunicate.isDisplayed() && invalidDataCommunicate.getText().equals("Invalid username or password")){
+            System.out.println("Entered Log in data is invalid");
+            }
     }
+    
 
-
+    public void logInComparisonAssertion(String username_one, String username_two) {
+        Assert.assertEquals("The username is different to defined.", username_one, username_two);
+    }
 
 }

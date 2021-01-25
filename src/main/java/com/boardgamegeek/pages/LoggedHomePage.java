@@ -18,14 +18,14 @@ public class LoggedHomePage extends AbstractPage {
     WebElement logOutButton;
 
     public String getLoggedUserLogin() {
-            visibilityCheck(userMenu);
-            return userMenu.getText();
-        }
+        visibilityCheck(userMenu);
+        return userMenu.getText();
+    }
 
-        public  void  logout(){
+    public void logout() {
         click(userMenu);
         click(logOutButton);
-        }
+    }
 }
 
 

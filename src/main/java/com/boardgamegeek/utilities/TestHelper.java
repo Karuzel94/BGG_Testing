@@ -9,41 +9,40 @@ public class TestHelper {
         return RandomStringUtils.random(length, isLetters, isNumbers);
     }
 
-    public int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
-    }
-
     public String userName = randomString(8, true, false);
     public String userMail = randomString(6, true, true) + "@gmail.com";
     public String password = randomString(8, true, true);
-    public String logInData = "bggtest1221";
-    public String anotherLogInData = "bggtesting122";
+    public String logInUsername = "hxHWIJDg";
+    public String logInPassword = "GkBw8IAF";
 
-
-    // learning of dataprovider
-    /*@DataProvider(name = "loginTestData")
-    public Object[][] getLogInData(Method m) {
-        if (m.getName().equalsIgnoreCase("testMethodA")) {
-            return new Object[3][2]{
-                    {"bggtest1221", "bggtest1221"};
-                    {"bggtesting122","bggtesting122"}
-            }
-        }
-    }*/
     @DataProvider
-    public Object[][] getLogInData(){
-
+    public Object[][] getLogInData() {
         Object[][] getData = new Object[3][2];
         //1st set of Data
-        getData[0][0] = "bggtest1221";
-        getData[0][1] = "bggtest1221";
+        getData[0][0] = "hxHWIJDgaa";
+        getData[0][1] = "GkBw8IAF";
         //2nd set of Data
-        getData[1][0] = "bggtesting122";
-        getData[1][1] = "bggtesting122";
-        //3rd set of Data
-        getData[2][0] = "bggtest1221";
-        getData[2][1] = "bggtest1221";
+        getData[1][0] = "HDKhWNUb";
+        getData[1][1] = "UhFCYySL";
+        //3th set of Data
+        getData[2][0] = "vQVEAuFS";
+        getData[2][1] = "qMA3kwLk";
         return getData;
+    }
+
+    @DataProvider
+    public Object[][] positiveTestData() {
+        Object[][] getData1 = new Object[3][2];
+        //1st set of Data
+        getData1[0][0] = "hxHWIJDg";
+        getData1[0][1] = "GkBw8IAF";
+        //2nd set of Data
+        getData1[1][0] = "HDKhWNUb";
+        getData1[1][1] = "UhFCYySL";
+        //3th set of Data
+        getData1[2][0] = "vQVEAuFS";
+        getData1[2][1] = "qMA3kwLk";
+        return getData1;
     }
 
 }

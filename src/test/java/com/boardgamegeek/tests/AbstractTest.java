@@ -22,7 +22,7 @@ public class AbstractTest {
     public TestHelper testHelper;
 
     @BeforeTest
-    public static void  setupClass() {
+    public static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
 
@@ -30,11 +30,9 @@ public class AbstractTest {
     public void setupTest() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("incognito");
-
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        //driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.get(url);
         homePage = new HomePage(driver);
         loggedHomePage = new LoggedHomePage(driver);
@@ -44,7 +42,7 @@ public class AbstractTest {
 
     @AfterClass
     public void tearDown() {
-        if(driver != null) {
+        if (driver != null) {
             driver.quit();
         }
     }
