@@ -1,6 +1,7 @@
 package com.boardgamegeek.utilities;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.testng.annotations.DataProvider;
 
 public class TestHelper {
 
@@ -19,14 +20,30 @@ public class TestHelper {
     public String anotherLogInData = "bggtesting122";
 
 
-    /* learning of dataprovider
-    @DataProvider(name = "loginTestData")
-    public Object[][] dpMethod(Method m) {
+    // learning of dataprovider
+    /*@DataProvider(name = "loginTestData")
+    public Object[][] getLogInData(Method m) {
         if (m.getName().equalsIgnoreCase("testMethodA")) {
-            return new Object[][]{
+            return new Object[3][2]{
                     {"bggtest1221", "bggtest1221"};
                     {"bggtesting122","bggtesting122"}
             }
         }
     }*/
+    @DataProvider
+    public Object[][] getLogInData(){
+
+        Object[][] getData = new Object[3][2];
+        //1st set of Data
+        getData[0][0] = "bggtest1221";
+        getData[0][1] = "bggtest1221";
+        //2nd set of Data
+        getData[1][0] = "bggtesting122";
+        getData[1][1] = "bggtesting122";
+        //3rd set of Data
+        getData[2][0] = "bggtest1221";
+        getData[2][1] = "bggtest1221";
+        return getData;
+    }
+
 }

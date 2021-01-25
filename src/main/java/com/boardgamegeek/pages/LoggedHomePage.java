@@ -14,9 +14,17 @@ public class LoggedHomePage extends AbstractPage {
     @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 
+    @FindBy(xpath = "//fa-icon[@class='ng-fa-icon fs-sm align-middle']")
+    WebElement logOutButton;
+
     public String getLoggedUserLogin() {
             visibilityCheck(userMenu);
             return userMenu.getText();
+        }
+
+        public  void  logout(){
+        click(userMenu);
+        click(logOutButton);
         }
 }
 

@@ -13,10 +13,10 @@ public class AbstractPage {
     protected static WebDriverWait wait;
     public TestHelper testHelper = new TestHelper();
 
+
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(this.driver, waitTimeSeconds);
-
     }
 
     public void visibilityCheck(WebElement element) {
