@@ -47,11 +47,15 @@ public class HomePage extends AbstractPage {
         insertValue(passwordInput, password);
         visibilityCheck(invalidDataCommunicate);
         click(signInButton);
-        if(invalidDataCommunicate.isDisplayed() && invalidDataCommunicate.getText().equals("Invalid username or password")){
-            System.out.println("Entered Log in data is invalid");
-            }
     }
-    
+
+    public boolean errorCheck() {
+        visibilityCheck(invalidDataCommunicate);
+        if(invalidDataCommunicate.isDisplayed() && invalidDataCommunicate.getText().equals("Invalid username or password")){
+            return true;
+        } else return false;
+    }
+
 
     public void logInComparisonAssertion(String username_one, String username_two) {
         Assert.assertEquals("The username is different to defined.", username_one, username_two);

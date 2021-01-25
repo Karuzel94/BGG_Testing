@@ -32,7 +32,7 @@ public class TestHelper {
 
     @DataProvider
     public Object[][] positiveTestData() {
-        Object[][] getData1 = new Object[3][2];
+        /*Object[][] getData1 = new Object[3][2];
         //1st set of Data
         getData1[0][0] = "hxHWIJDg";
         getData1[0][1] = "GkBw8IAF";
@@ -42,7 +42,13 @@ public class TestHelper {
         //3th set of Data
         getData1[2][0] = "vQVEAuFS";
         getData1[2][1] = "qMA3kwLk";
-        return getData1;
+        return getData1;*/
+        return new Object[][]
+        {
+            { "hxHWIJDg", "GkBw8IAF" },
+            { "HDKhWNUb", "UhFCYySL" },
+            { "vQVEAuFS", "qMA3kwLk" }
+        };
     }
 
 }
