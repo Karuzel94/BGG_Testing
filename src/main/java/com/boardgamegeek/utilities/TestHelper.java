@@ -22,27 +22,17 @@ public class TestHelper {
         getData[0][0] = "hxHWIJDgaa";
         getData[0][1] = "GkBw8IAF";
         //2nd set of Data
-        getData[1][0] = "HDKhWNUb";
+        getData[1][0] = "8HDKhWNU";
         getData[1][1] = "UhFCYySL";
         //3th set of Data
-        getData[2][0] = "vQVEAuFS";
+        getData[2][0] = "vQVEAuFSasd";
         getData[2][1] = "qMA3kwLk";
         return getData;
     }
 
     @DataProvider
     public Object[][] positiveTestData() {
-        /*Object[][] getData1 = new Object[3][2];
-        //1st set of Data
-        getData1[0][0] = "hxHWIJDg";
-        getData1[0][1] = "GkBw8IAF";
-        //2nd set of Data
-        getData1[1][0] = "HDKhWNUb";
-        getData1[1][1] = "UhFCYySL";
-        //3th set of Data
-        getData1[2][0] = "vQVEAuFS";
-        getData1[2][1] = "qMA3kwLk";
-        return getData1;*/
+
         return new Object[][]
         {
             { "hxHWIJDg", "GkBw8IAF" },

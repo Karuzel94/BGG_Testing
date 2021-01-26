@@ -11,7 +11,7 @@ public class LogInNegativeTestOne extends AbstractTest {
         System.out.println(username + ", " + password);
         homePage.clickSignInButton();
         homePage.signIn(username, password);
-        if (homePage.errorCheck()) {
+        if (homePage.errorCheck() == true) {
             System.out.println("Entered Log in data is invalid");
         } else {
             homePage.logInComparisonAssertion(username, loggedHomePage.getLoggedUserLogin());

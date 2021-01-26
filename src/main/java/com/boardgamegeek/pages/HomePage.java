@@ -51,9 +51,11 @@ public class HomePage extends AbstractPage {
 
     public boolean errorCheck() {
         visibilityCheck(invalidDataCommunicate);
-        if(invalidDataCommunicate.isDisplayed() && invalidDataCommunicate.getText().equals("Invalid username or password")){
+        if(invalidDataCommunicate.getText().equals("Invalid username or password")){
             return true;
-        } else return false;
+        }else {
+            return false;
+        }
     }
 
 
