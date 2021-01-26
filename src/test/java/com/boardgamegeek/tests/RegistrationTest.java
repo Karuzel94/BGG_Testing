@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class RegistrationTest extends AbstractTest {
 
     @Test
-    public void RegistrationTest() {
+    public void registrationTest() {
         homePage.clickJoinInButton();
         joinPage.registerAccount(testHelper.userName, testHelper.userMail, testHelper.password);
         System.out.println("Registered user is: " + loggedHomePage.getLoggedUserLogin());

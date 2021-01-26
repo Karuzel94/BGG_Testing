@@ -15,30 +15,15 @@ public class TestHelper {
     public String logInUsername = "hxHWIJDg";
     public String logInPassword = "GkBw8IAF";
 
+
     @DataProvider
     public Object[][] getLogInData() {
-        Object[][] getData = new Object[3][2];
-        //1st set of Data
-        getData[0][0] = "hxHWIJDgaa";
-        getData[0][1] = "GkBw8IAF";
-        //2nd set of Data
-        getData[1][0] = "8HDKhWNU";
-        getData[1][1] = "UhFCYySL";
-        //3th set of Data
-        getData[2][0] = "vQVEAuFSasd";
-        getData[2][1] = "qMA3kwLk";
-        return getData;
-    }
-
-    @DataProvider
-    public Object[][] positiveTestData() {
-
-        return new Object[][]
-        {
-            { "hxHWIJDg", "GkBw8IAF" },
-            { "HDKhWNUb", "UhFCYySL" },
-            { "vQVEAuFS", "qMA3kwLk" }
+        return new Object[][]{
+                { "hxHWIJDgaa", "GkBw8IAF" },
+                { "8HDKhWNU", "UhFCYySL" },
+                { "vQVEAuFSasd", "qMA3kwLk" }
         };
     }
+
 
 }

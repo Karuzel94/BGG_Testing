@@ -22,9 +22,10 @@ public class LoggedHomePage extends AbstractPage {
         return userMenu.getText();
     }
 
-    public void logout() {
+    public LoggedHomePage logout() {
         click(userMenu);
         click(logOutButton);
+        return this;
     }
 }
 

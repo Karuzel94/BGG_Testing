@@ -29,35 +29,45 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//li[@class='c-nav-session dropdown-primary']/a")
     WebElement registerButton;
 
-    @FindBy(xpath = "/html/body/ngb-modal-window/div/div/gg-login-modal/form/fieldset/div[1]/div[2]/span")
+    @FindBy(xpath = "//span[@class='help-block']")
     WebElement invalidDataCommunicate;
 
+    @FindBy(xpath = "//input[@class='form-control ng-dirty ng-touched ng-valid']")
+    WebElement inputAfterError;
 
-    public void clickJoinInButton() {
+    @FindBy(xpath = "//button[@class='btn btn-outline-secondary']")
+    WebElement cancelSignIn;
+
+
+    public HomePage clickJoinInButton() {
         click(registerButton);
+        return this;
     }
 
-    public void clickSignInButton() {
+    public HomePage clickSignInButton() {
         click(logInButton);
+        return this;
     }
 
 
-    public void signIn(String username, String password) {
+    public HomePage signIn(String username, String password) {
         insertValue(userNameInput, username);
         insertValue(passwordInput, password);
         visibilityCheck(invalidDataCommunicate);
         click(signInButton);
+        return this;
     }
 
-    public boolean errorCheck() {
-        visibilityCheck(invalidDataCommunicate);
-        if(invalidDataCommunicate.getText().equals("Invalid username or password")){
-            return true;
-        }else {
-            return false;
-        }
+    public HomePage abortLogIn(){
+        click(cancelSignIn);
+        return this;
     }
 
+    public String getErrorText(){
+        visibilityCheck(inputAfterError);
+        return invalidDataCommunicate.getText();
+
+    }
 
     public void logInComparisonAssertion(String username_one, String username_two) {
         Assert.assertEquals("The username is different to defined.", username_one, username_two);
