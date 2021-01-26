@@ -12,7 +12,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
-public class AbstractTest {
+import java.util.logging.Logger;
+
+public abstract class BaseTest {
 
     public String url = "https://boardgamegeek.com/";
     protected WebDriver driver;
@@ -33,6 +35,7 @@ public class AbstractTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
+        Logger log = Logger.getLogger("devpinoyLogger");
         driver.get(url);
         homePage = new HomePage(driver);
         loggedHomePage = new LoggedHomePage(driver);

@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AbstractPage {
+public abstract class BasePage {
 
     protected WebDriver driver;
     protected static WebDriverWait wait;
 
-    public AbstractPage(WebDriver driver) {
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         int waitTimeSeconds = 10;
         wait = new WebDriverWait(this.driver, waitTimeSeconds);

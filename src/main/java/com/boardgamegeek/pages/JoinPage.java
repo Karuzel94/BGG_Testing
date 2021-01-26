@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class JoinPage extends AbstractPage {
+public class JoinPage extends BasePage {
 
     public JoinPage(WebDriver driver) {
         super(driver);
