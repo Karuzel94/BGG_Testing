@@ -3,6 +3,7 @@ package com.boardgamegeek.tests;
 import com.boardgamegeek.pages.HomePage;
 import com.boardgamegeek.pages.JoinPage;
 import com.boardgamegeek.pages.LoggedHomePage;
+import com.boardgamegeek.utilities.LoginProperties;
 import com.boardgamegeek.utilities.TestHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -12,8 +13,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
-import java.util.logging.Logger;
-
 public abstract class BaseTest {
 
     public String url = "https://boardgamegeek.com/";
@@ -22,6 +21,7 @@ public abstract class BaseTest {
     public LoggedHomePage loggedHomePage;
     public JoinPage joinPage;
     public TestHelper testHelper;
+    public LoginProperties loginProperties;
 
     @BeforeTest
     public static void setupClass() {
@@ -35,12 +35,12 @@ public abstract class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        Logger log = Logger.getLogger("devpinoyLogger");
         driver.get(url);
         homePage = new HomePage(driver);
         loggedHomePage = new LoggedHomePage(driver);
         joinPage = new JoinPage(driver);
         testHelper = new TestHelper();
+        loginProperties = new LoginProperties();
     }
 
     @AfterClass

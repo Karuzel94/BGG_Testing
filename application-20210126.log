@@ -1,0 +1,16 @@
+2021-01-26 13:05:29.288 [main] INFO  com.boardgamegeek.utilities.Log - info.
+2021-01-26 13:05:29.293 [main] ERROR com.boardgamegeek.utilities.Log - error.
+2021-01-26 13:05:29.293 [main] DEBUG com.boardgamegeek.utilities.Log - Debugging.
+2021-01-26 13:05:29.293 [main] WARN  com.boardgamegeek.utilities.Log - Warning.
+2021-01-26 13:05:29.295 [main] INFO  com.boardgamegeek.utilities.Log - info.
+2021-01-26 13:05:29.295 [main] ERROR com.boardgamegeek.utilities.Log - error.
+2021-01-26 13:05:29.295 [main] DEBUG com.boardgamegeek.utilities.Log - Debugging.
+2021-01-26 13:05:29.295 [main] WARN  com.boardgamegeek.utilities.Log - Warning.
+2021-01-26 14:48:46.937 [main] INFO  com.boardgamegeek.utilities.Log - info.
+2021-01-26 14:48:46.940 [main] ERROR com.boardgamegeek.utilities.Log - error.
+2021-01-26 14:48:46.941 [main] DEBUG com.boardgamegeek.utilities.Log - Debugging.
+2021-01-26 14:48:46.941 [main] WARN  com.boardgamegeek.utilities.Log - Warning.
+2021-01-26 14:50:31.083 [main] INFO  com.boardgamegeek.utilities.Log - info.
+2021-01-26 14:50:31.087 [main] ERROR com.boardgamegeek.utilities.Log - error.
+2021-01-26 14:50:31.087 [main] DEBUG com.boardgamegeek.utilities.Log - Debugging.
+2021-01-26 14:50:31.087 [main] WARN  com.boardgamegeek.utilities.Log - Warning.

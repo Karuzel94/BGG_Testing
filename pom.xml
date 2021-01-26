@@ -15,6 +15,7 @@
         <junit.version>4.12</junit.version>
         <assertj.version>3.18.1</assertj.version>
         <log4j.version>2.13.0</log4j.version>
+        <config.properties>C:/Users/Piotrek/IdeaProjects/BGG_Testing/src/main/resources/config.properties</config.properties>
     </properties>
     <dependencies>
         <dependency>

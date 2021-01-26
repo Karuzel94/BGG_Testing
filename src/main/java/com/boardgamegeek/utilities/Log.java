@@ -21,7 +21,9 @@ public abstract class Log {
 
     public static synchronized void logInfo(String string){
         logger.info("info.");
+        logger.error("error.");
+        logger.debug("Debugging.");
+        logger.warn("Warning.");
     }
-
 
 }

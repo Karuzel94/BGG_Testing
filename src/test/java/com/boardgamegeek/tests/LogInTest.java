@@ -1,18 +1,19 @@
 package com.boardgamegeek.tests;
 
+import com.boardgamegeek.utilities.Log;
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
-import org.apache.log4j.Logger;
+import java.io.IOException;
 
 public class LogInTest extends BaseTest {
 
-
     @Test
-    public void logInTest() {
-        System.out.println(testHelper.logInUsername + ", " + testHelper.logInPassword);
+    public void logInTest() throws IOException {
+        Log.logInfo("abc");
         homePage.clickSignInButton()
-                    .signIn(testHelper.logInUsername, testHelper.logInPassword)
-                    .logInComparisonAssertion(testHelper.logInUsername, loggedHomePage.getLoggedUserLogin());
+                    .signIn(loginProperties.loadUsername(), loginProperties.loadPassword())
+                    .logInComparisonAssertion(loginProperties.loadUsername(), loggedHomePage.getLoggedUserLogin());
         Logger logger = Logger.getLogger(LogInTest.class);
         logger.getLogger("Logged user: " + loggedHomePage.getLoggedUserLogin());
         loggedHomePage.logout();
