@@ -15,7 +15,6 @@
         <junit.version>4.12</junit.version>
         <assertj.version>3.18.1</assertj.version>
         <log4j.version>2.13.0</log4j.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -63,17 +62,6 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>C:\Users\Piotrek\IdeaProjects\BGG_Testing\src\main\resources\TestNG.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
 </project>

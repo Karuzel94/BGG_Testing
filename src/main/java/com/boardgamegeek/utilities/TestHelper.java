@@ -9,12 +9,22 @@ public class TestHelper {
         return RandomStringUtils.random(length, isLetters, isNumbers);
     }
 
-    public String userName = randomString(8, true, false);
-    public String userMail = randomString(6, true, true) + "@gmail.com";
-    public String password = randomString(8, true, true);
-    public String logInUsername = "hxHWIJDg";
-    public String logInPassword = "GkBw8IAF";
-
+    private final String userName = randomString(8, true, false);
+    private final String userMail = randomString(6, true, true) + "@gmail.com";
+    private final String password = randomString(8, true, true);
+    private final String firstname = randomString(8, true, false);
+    private final String lastname = randomString(8, true, false);
+    private final String address = randomString(8, true, false);
+    private final String city = randomString(8, true, false);
+    private final String newState = randomString(8, true, false);
+    private final String zipCode = randomString(5, false, true);
+    private final String website = randomString(8, true, true);
+    private final String phoneNumber = randomString(9, false, true);
+    private final String xboxTag = randomString(8, true, true);
+    private final String battlenetAccount = randomString(8, true, true);
+    private final String steamAccount = randomString(8, true, true);
+    private final String wiiFriendCode = randomString(8, true, true);
+    private final String psnId = randomString(8, true, true);
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -25,5 +35,67 @@ public class TestHelper {
         };
     }
 
+    public String getUserName() {
+        return userName;
+    }
 
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getNewState() {
+        return newState;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getXboxTag() {
+        return xboxTag;
+    }
+
+    public String getBattlenetAccount() {
+        return battlenetAccount;
+    }
+
+    public String getSteamAccount() {
+        return steamAccount;
+    }
+
+    public String getWiiFriendCode() {
+        return wiiFriendCode;
+    }
+
+    public String getPsnId() {
+        return psnId;
+    }
 }

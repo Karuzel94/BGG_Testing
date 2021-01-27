@@ -27,4 +27,13 @@ public class LogInTest extends BaseTest {
         Log.logInfo("Username: " + username + ", Password:  " + password);
         loggedHomePage.logout();
     }
+
+    @Test
+    public void logInTest3() {
+        homePage.clickSignInButton()
+                .signIn(loginProperties.getUsername(), loginProperties.getPassword());
+        assertThat(loggedHomePage.getLoggedUserLogin()).isEqualTo(loginProperties.getUsername());
+        Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
+        loggedHomePage.logout();
+    }
 }
