@@ -1,32 +1,31 @@
 package com.boardgamegeek.utilities;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 public class LoginProperties {
 
-    public String loadUsername() throws IOException {
+    private String username;
+    private String password;
 
-        //File file = new File("C:/Users/Piotrek/IdeaProjects/BGG_Testing/src/main/resources/config.properties");
-        FileInputStream propFile = new FileInputStream( "config.properties");
-        Properties p = new Properties(System.getProperties());
-        p.load(propFile);
-        System.setProperties(p);
-        String username = p.getProperty("username");
+    public LoginProperties() {
+
+        Properties properties = new Properties();
+        try {
+            properties.load(Objects.requireNonNull(this.getClass().getClassLoader().getResourceAsStream("config.properties")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        username = properties.get("username").toString();
+        password = properties.get("password").toString();
+    }
+
+    public String getUsername() {
         return username;
     }
 
-    public String loadPassword() throws IOException {
-        //File file = new File("C:/Users/Piotrek/IdeaProjects/BGG_Testing/src/main/resources/config.properties");
-        FileInputStream propFile = new FileInputStream( "config.properties");
-        Properties p = new Properties(System.getProperties());
-        p.load(propFile);
-        System.setProperties(p);
-        String password = p.getProperty("password");
+    public String getPassword() {
         return password;
     }
-
-
-
 }

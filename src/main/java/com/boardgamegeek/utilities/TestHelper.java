@@ -20,8 +20,8 @@ public class TestHelper {
     public Object[][] getLogInData() {
         return new Object[][]{
                 { "hxHWIJDgaa", "GkBw8IAF" },
-               // { "8HDKhWNU", "UhFCYySL" },
-               // { "vQVEAuFSasd", "qMA3kwLk" }
+                { "8HDKhWNU", "UhFCYySL" },
+                { "vQVEAuFSasd", "qMA3kwLk" }
         };
     }
 

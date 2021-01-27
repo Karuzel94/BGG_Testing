@@ -1,22 +1,30 @@
 package com.boardgamegeek.tests;
 
 import com.boardgamegeek.utilities.Log;
-import org.apache.log4j.Logger;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class LogInTest extends BaseTest {
 
     @Test
-    public void logInTest() throws IOException {
-        Log.logInfo("abc");
-        homePage.clickSignInButton()
-                    .signIn(loginProperties.loadUsername(), loginProperties.loadPassword())
-                    .logInComparisonAssertion(loginProperties.loadUsername(), loggedHomePage.getLoggedUserLogin());
-        Logger logger = Logger.getLogger(LogInTest.class);
-        logger.getLogger("Logged user: " + loggedHomePage.getLoggedUserLogin());
+    public void logInTest() {
+        assertThat(homePage.clickSignInButton()
+                .signIn(loginProperties.getUsername(), loginProperties.getPassword())
+                .getUsername(loggedHomePage)).isEqualTo(loginProperties.getUsername());
+        Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
         loggedHomePage.logout();
     }
 
+    @Test
+    @Parameters({"username","password"})
+    public void logInTest2(@Optional("ABC") String username, String password) {
+        homePage.clickSignInButton()
+                .signIn(username, password);
+        assertThat(loggedHomePage.getLoggedUserLogin()).isEqualTo(username);
+        Log.logInfo("Username: " + username + ", Password:  " + password);
+        loggedHomePage.logout();
+    }
 }

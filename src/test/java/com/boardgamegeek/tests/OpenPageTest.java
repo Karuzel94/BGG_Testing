@@ -8,6 +8,4 @@ public class OpenPageTest extends BaseTest {
     public void openPageTest() {
         System.out.println("Displayed page: " + driver.getTitle());
     }
-
-
 }

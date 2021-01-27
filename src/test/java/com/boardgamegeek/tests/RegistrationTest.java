@@ -1,5 +1,6 @@
 package com.boardgamegeek.tests;
 
+import com.boardgamegeek.utilities.Log;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -10,11 +11,11 @@ public class RegistrationTest extends BaseTest {
     public void registrationTest() {
         homePage.clickJoinInButton();
         joinPage.registerAccount(testHelper.userName, testHelper.userMail, testHelper.password);
-        System.out.println("Registered user is: " + loggedHomePage.getLoggedUserLogin());
-        System.out.println("NEW ACCOUNT DATA BELOW!!!");
-        System.out.println("Username: " + testHelper.userName);
-        System.out.println("Mail: " + testHelper.userMail);
-        System.out.println("Password: " + testHelper.password);
+        Log.logInfo("Registered user is: " + loggedHomePage.getLoggedUserLogin());
+        Log.logInfo("NEW ACCOUNT DATA BELOW!!!");
+        Log.logInfo("Username: " + testHelper.userName);
+        Log.logInfo("Mail: " + testHelper.userMail);
+        Log.logInfo("Password: " + testHelper.password);
         assertThat(testHelper.userName).isEqualTo(loggedHomePage.getLoggedUserLogin());
     }
 

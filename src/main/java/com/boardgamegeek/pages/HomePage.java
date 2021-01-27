@@ -1,6 +1,5 @@
 package com.boardgamegeek.pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +14,6 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//li[@class='c-nav-session c-nav-primary-separated dropdown-primary']/a")
     WebElement logInButton;
-
 
     @FindBy(xpath = "//input[@id='inputUsername']")
     WebElement userNameInput;
@@ -49,7 +47,6 @@ public class HomePage extends BasePage {
         return this;
     }
 
-
     public HomePage signIn(String username, String password) {
         insertValue(userNameInput, username);
         insertValue(passwordInput, password);
@@ -58,19 +55,18 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage abortLogIn(){
+    public HomePage abortLogIn() {
         click(cancelSignIn);
         return this;
     }
 
-    public String getErrorText(){
+    public String getErrorText() {
         visibilityCheck(inputAfterError);
         return invalidDataCommunicate.getText();
-
     }
 
-    public void logInComparisonAssertion(String username_one, String username_two) {
-        Assert.assertEquals("The username is different to defined.", username_one, username_two);
+    public String getUsername(LoggedHomePage loggedHomePage) {
+        return loggedHomePage.getLoggedUserLogin();
     }
 
 }
