@@ -19,7 +19,7 @@ public class LogInTest extends BaseTest {
     }
 
     @Test
-    @Parameters({"username","password"})
+    @Parameters({"username", "password"})
     public void logInTest2(@Optional("ABC") String username, String password) {
         homePage.clickSignInButton()
                 .signIn(username, password);

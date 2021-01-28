@@ -39,7 +39,7 @@ public class LoggedHomePage extends BasePage {
     WebElement zipCodeInput;
 
     @FindBy(xpath = "//select[@name='country']")
-    WebElement  countrySelect;
+    WebElement countrySelect;
 
     @FindBy(xpath = "//option[@value='Poland']")
     WebElement selectPolandAsCountry;
@@ -82,36 +82,37 @@ public class LoggedHomePage extends BasePage {
         return userMenu.getText();
     }
 
-    public void goToDetailsChange(){
+    public LoggedHomePage goToDetailsChange() {
         click(userMenu);
         click(accountPropertiesButton);
         click(contactDetailsLink);
+        return this;
     }
 
     public LoggedHomePage insertDataToForm(String firstame, String lastname, String address, String city,
                                            String newState, String zipCode, String website, String phoneNumber,
                                            String xboxTag, String battlenetAccount, String steamAccount,
-                                           String wiiFriendCode, String psnId, String password){
-
-        insertValue(firstNameInput ,firstame);
-        insertValue(lastNameInput,lastname );
-        insertValue(addressInput ,address);
+                                           String wiiFriendCode, String psnId, String password) {
+        insertValue(firstNameInput, firstame);
+        insertValue(lastNameInput, lastname);
+        insertValue(addressInput, address);
         insertValue(cityInput, city);
-        insertValue(newStateInput ,newState);
+        insertValue(newStateInput, newState);
         insertValue(zipCodeInput, zipCode);
         click(countrySelect);
         click(selectPolandAsCountry);
-        insertValue(websiteAddressInput,website );
-        insertValue(phoneNumberInput ,phoneNumber);
+        insertValue(websiteAddressInput, website);
+        insertValue(phoneNumberInput, phoneNumber);
         insertValue(xboxTagInput, xboxTag);
-        insertValue(battlenetAccountInput ,battlenetAccount);
+        insertValue(battlenetAccountInput, battlenetAccount);
         insertValue(steamAccountInput, steamAccount);
-        insertValue(wiiInput ,wiiFriendCode);
+        insertValue(wiiInput, wiiFriendCode);
         insertValue(psnIdInput, psnId);
-        insertValue(passwordInput ,password);
+        insertValue(passwordInput, password);
         click(sumbitButton);
         return this;
     }
+
     public LoggedHomePage returnHomePage() {
         click(logoButton);
         return this;
@@ -123,8 +124,48 @@ public class LoggedHomePage extends BasePage {
         return this;
     }
 
+    public String getFirstname() { return firstNameInput.getAttribute("value"); }
+
+    public String getLastname() { return lastNameInput.getAttribute("value"); }
+
+    public String getAddress() { return addressInput.getAttribute("value"); }
+
     public String getCity() {
         return cityInput.getAttribute("value");
+    }
+
+    public String getNewState() {
+        return newStateInput.getAttribute("value");
+    }
+
+    public String getZipcode() {
+        return zipCodeInput.getAttribute("value");
+    }
+
+    public String getWebsiteAddress() { return websiteAddressInput.getAttribute("value"); }
+
+    public String getPhoneNumber() {
+        return phoneNumberInput.getAttribute("value");
+    }
+
+    public String getXboxTag() {
+        return xboxTagInput.getAttribute("value");
+    }
+
+    public String getBattlenetAccount() {
+        return battlenetAccountInput.getAttribute("value");
+    }
+
+    public String getSteamAccount() {
+        return steamAccountInput.getAttribute("value");
+    }
+
+    public String getWiiFriendCode() {
+        return wiiInput.getAttribute("value");
+    }
+
+    public String getPsnId() {
+        return psnIdInput.getAttribute("value");
     }
 }
 

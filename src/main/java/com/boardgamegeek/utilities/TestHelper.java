@@ -29,9 +29,9 @@ public class TestHelper {
     @DataProvider
     public Object[][] getLogInData() {
         return new Object[][]{
-                { "hxHWIJDgaa", "GkBw8IAF" },
-                { "8HDKhWNU", "UhFCYySL" },
-                { "vQVEAuFSasd", "qMA3kwLk" }
+                {"hxHWIJDgaa", "GkBw8IAF"},
+                {"8HDKhWNU", "UhFCYySL"},
+                {"vQVEAuFSasd", "qMA3kwLk"}
         };
     }
 
@@ -71,7 +71,7 @@ public class TestHelper {
         return zipCode;
     }
 
-    public String getWebsite() {
+    public String getWebsiteAddress() {
         return website;
     }
 

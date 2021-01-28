@@ -27,8 +27,7 @@ public class JoinPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-lg btn-link text-muted']")
     WebElement skipAdditionalInformation;
 
-
-    public void registerAccount(String username, String mail, String password){
+    public void registerAccount(String username, String mail, String password) {
         insertValue(usernameInput, username);
         insertValue(mailInput, mail);
         insertValue(passwordInput, password);
