@@ -9,6 +9,10 @@ public class TestHelper {
         return RandomStringUtils.random(length, isLetters, isNumbers);
     }
 
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
     private final String userName = randomString(8, true, false);
     private final String userMail = randomString(6, true, true) + "@gmail.com";
     private final String password = randomString(8, true, true);
@@ -25,6 +29,7 @@ public class TestHelper {
     private final String steamAccount = randomString(8, true, true);
     private final String wiiFriendCode = randomString(8, true, true);
     private final String psnId = randomString(8, true, true);
+    private final int gameIndex = getRandomNumber(1,100);
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -97,5 +102,9 @@ public class TestHelper {
 
     public String getPsnId() {
         return psnId;
+    }
+
+    public int getGameIndex() {
+        return gameIndex;
     }
 }

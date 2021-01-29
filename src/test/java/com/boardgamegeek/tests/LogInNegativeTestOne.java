@@ -16,7 +16,7 @@ public class LogInNegativeTestOne extends BaseTest {
     public void logInNegativeTestOne(String username, String password) {
         Log.logInfo(username + ", " + password);
         homePage.clickSignInButton()
-                .signIn(username, password);
+            .signIn(username, password);
         Assert.assertEquals(homePage.getErrorText(), "Invalid username or password");
         assertThat(homePage.getErrorText()).isEqualTo("Invalid username or password");
         homePage.abortLogIn();

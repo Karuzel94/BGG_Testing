@@ -1,13 +1,14 @@
-package com.boardgamegeek.pages;
+package com.boardgamegeek.pages.joinPage.fragments;
 
+import com.boardgamegeek.pages.joinPage.JoinPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class JoinPage extends BasePage {
+public class RegistrationFormFragment extends JoinPage {
 
-    public JoinPage(WebDriver driver) {
+    public RegistrationFormFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -27,12 +28,12 @@ public class JoinPage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-lg btn-link text-muted']")
     WebElement skipAdditionalInformation;
 
-    public void registerAccount(String username, String mail, String password) {
+    public RegistrationFormFragment registerAccount(String username, String mail, String password) {
         insertValue(usernameInput, username);
         insertValue(mailInput, mail);
         insertValue(passwordInput, password);
         click(createAnAccountButton);
         click(skipAdditionalInformation);
+        return this;
     }
-
 }

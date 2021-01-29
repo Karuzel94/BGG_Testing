@@ -1,24 +1,17 @@
-package com.boardgamegeek.pages;
+package com.boardgamegeek.pages.contactDetailsPage.fragments;
 
+import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoggedHomePage extends BasePage {
-    public LoggedHomePage(WebDriver driver) {
+public class ContactInformationFragment extends ContactDetailsPage{
+
+    public ContactInformationFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
-    @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
-    WebElement userMenu;
-
-    @FindBy(xpath = "//div[@class='container-fluid dropdown-menu show']/div/div[2]/a[1]")
-    WebElement accountPropertiesButton;
-
-    @FindBy(xpath = "//table[@class='forum_table']/tbody/tr[4]/td/div[2]/a")
-    WebElement contactDetailsLink;
 
     @FindBy(xpath = "//input[@name='firstname']")
     WebElement firstNameInput;
@@ -71,28 +64,10 @@ public class LoggedHomePage extends BasePage {
     @FindBy(xpath = "//input[@name='B1']")
     WebElement sumbitButton;
 
-    @FindBy(xpath = "//fa-icon[@class='ng-fa-icon fs-sm align-middle']")
-    WebElement logOutButton;
-
-    @FindBy(xpath = "//a[@class='text-white ng-scope']")
-    WebElement logoButton;
-
-    public String getLoggedUserLogin() {
-        visibilityCheck(userMenu);
-        return userMenu.getText();
-    }
-
-    public LoggedHomePage goToDetailsChange() {
-        click(userMenu);
-        click(accountPropertiesButton);
-        click(contactDetailsLink);
-        return this;
-    }
-
-    public LoggedHomePage insertDataToForm(String firstame, String lastname, String address, String city,
-                                           String newState, String zipCode, String website, String phoneNumber,
-                                           String xboxTag, String battlenetAccount, String steamAccount,
-                                           String wiiFriendCode, String psnId, String password) {
+    public ContactDetailsPage insertDataToContactDetailsFormAndConfirm(String firstame, String lastname, String address, String city,
+                                                                       String newState, String zipCode, String website, String phoneNumber,
+                                                                       String xboxTag, String battlenetAccount, String steamAccount,
+                                                                       String wiiFriendCode, String psnId, String password) {
         insertValue(firstNameInput, firstame);
         insertValue(lastNameInput, lastname);
         insertValue(addressInput, address);
@@ -113,22 +88,17 @@ public class LoggedHomePage extends BasePage {
         return this;
     }
 
-    public LoggedHomePage returnHomePage() {
-        click(logoButton);
-        return this;
+    public String getFirstName() {
+        return firstNameInput.getAttribute("value");
     }
 
-    public LoggedHomePage logout() {
-        click(userMenu);
-        click(logOutButton);
-        return this;
+    public String getLastName() {
+        return lastNameInput.getAttribute("value");
     }
 
-    public String getFirstname() { return firstNameInput.getAttribute("value"); }
-
-    public String getLastname() { return lastNameInput.getAttribute("value"); }
-
-    public String getAddress() { return addressInput.getAttribute("value"); }
+    public String getAddress() {
+        return addressInput.getAttribute("value");
+    }
 
     public String getCity() {
         return cityInput.getAttribute("value");
@@ -138,11 +108,13 @@ public class LoggedHomePage extends BasePage {
         return newStateInput.getAttribute("value");
     }
 
-    public String getZipcode() {
+    public String getZipCode() {
         return zipCodeInput.getAttribute("value");
     }
 
-    public String getWebsiteAddress() { return websiteAddressInput.getAttribute("value"); }
+    public String getWebsiteAddress() {
+        return websiteAddressInput.getAttribute("value");
+    }
 
     public String getPhoneNumber() {
         return phoneNumberInput.getAttribute("value");
@@ -167,7 +139,6 @@ public class LoggedHomePage extends BasePage {
     public String getPsnId() {
         return psnIdInput.getAttribute("value");
     }
+
+
 }
-
-
-

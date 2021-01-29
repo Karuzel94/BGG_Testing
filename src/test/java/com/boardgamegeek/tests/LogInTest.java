@@ -11,11 +11,11 @@ public class LogInTest extends BaseTest {
 
     @Test
     public void logInTest() {
-        assertThat(homePage.clickSignInButton()
-                .signIn(loginProperties.getUsername(), loginProperties.getPassword())
-                .getUsername(loggedHomePage)).isEqualTo(loginProperties.getUsername());
+        userMenuFragment.clickSignInButton();
+        userMenuFragment.signIn(loginProperties.getUsername(), loginProperties.getPassword());
+        assertThat(loggedUserMenuFragment.getLoggedUserLogin()).isEqualTo(loginProperties.getUsername());
         Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
-        loggedHomePage.logout();
+        loggedUserMenuFragment.logout();
     }
 
     @Test
@@ -23,17 +23,17 @@ public class LogInTest extends BaseTest {
     public void logInTest2(@Optional("ABC") String username, String password) {
         homePage.clickSignInButton()
                 .signIn(username, password);
-        assertThat(loggedHomePage.getLoggedUserLogin()).isEqualTo(username);
+        assertThat(loggedUserMenuFragment.getLoggedUserLogin()).isEqualTo(username);
         Log.logInfo("Username: " + username + ", Password:  " + password);
-        loggedHomePage.logout();
+        loggedUserMenuFragment.logout();
     }
 
     @Test
     public void logInTest3() {
         homePage.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
-        assertThat(loggedHomePage.getLoggedUserLogin()).isEqualTo(loginProperties.getUsername());
+        assertThat(loggedUserMenuFragment.getLoggedUserLogin()).isEqualTo(loginProperties.getUsername());
         Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
-        loggedHomePage.logout();
+        loggedUserMenuFragment.logout();
     }
 }

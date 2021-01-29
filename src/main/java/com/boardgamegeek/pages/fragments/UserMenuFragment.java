@@ -1,13 +1,15 @@
-package com.boardgamegeek.pages;
+package com.boardgamegeek.pages.fragments;
 
+import com.boardgamegeek.pages.BasePage;
+import com.boardgamegeek.pages.homePage.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends BasePage {
+public class UserMenuFragment extends BasePage {
 
-    public HomePage(WebDriver driver) {
+    public UserMenuFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -36,18 +38,17 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-outline-secondary']")
     WebElement cancelSignIn;
 
-
-    public HomePage clickJoinInButton() {
+    public UserMenuFragment clickJoinInButton() {
         click(registerButton);
         return this;
     }
 
-    public HomePage clickSignInButton() {
+    public UserMenuFragment clickSignInButton() {
         click(logInButton);
         return this;
     }
 
-    public HomePage signIn(String username, String password) {
+    public UserMenuFragment signIn(String username, String password) {
         insertValue(userNameInput, username);
         insertValue(passwordInput, password);
         visibilityCheck(invalidDataCommunicate);
@@ -55,7 +56,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage abortLogIn() {
+    public UserMenuFragment abortLogIn() {
         click(cancelSignIn);
         return this;
     }
@@ -65,8 +66,6 @@ public class HomePage extends BasePage {
         return invalidDataCommunicate.getText();
     }
 
-    public String getUsername(LoggedHomePage loggedHomePage) {
-        return loggedHomePage.getLoggedUserLogin();
-    }
+
 
 }

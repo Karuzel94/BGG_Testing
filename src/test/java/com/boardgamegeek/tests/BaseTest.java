@@ -1,8 +1,16 @@
 package com.boardgamegeek.tests;
 
-import com.boardgamegeek.pages.HomePage;
-import com.boardgamegeek.pages.JoinPage;
-import com.boardgamegeek.pages.LoggedHomePage;
+import com.boardgamegeek.pages.accountPage.AccountPage;
+import com.boardgamegeek.pages.fragments.UserMenuFragment;
+import com.boardgamegeek.pages.homePage.HomePage;
+import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
+import com.boardgamegeek.pages.collectionPage.CollectionPage;
+import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
+import com.boardgamegeek.pages.fragments.LoggedUserMenuFragment;
+import com.boardgamegeek.pages.fragments.MenuFragment;
+import com.boardgamegeek.pages.gamePage.GamePage;
+import com.boardgamegeek.pages.joinPage.JoinPage;
+import com.boardgamegeek.pages.loggedHomePage.LoggedHomePage;
 import com.boardgamegeek.utilities.LoginProperties;
 import com.boardgamegeek.utilities.TestHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,6 +30,14 @@ public abstract class BaseTest {
     public JoinPage joinPage;
     public TestHelper testHelper;
     public LoginProperties loginProperties;
+    public AccountPage accountPage;
+    public ContactDetailsPage contactDetailsPage;
+    public AllBoardgamesPage allBoardgamesPage;
+    public CollectionPage collectionPage;
+    public GamePage gamePage;
+    public MenuFragment menuFragment;
+    public LoggedUserMenuFragment loggedUserMenuFragment;
+    public UserMenuFragment userMenuFragment;
 
     @BeforeTest
     public static void setupClass() {
@@ -41,6 +57,13 @@ public abstract class BaseTest {
         joinPage = new JoinPage(driver);
         testHelper = new TestHelper();
         loginProperties = new LoginProperties();
+        accountPage = new AccountPage(driver);
+        contactDetailsPage = new ContactDetailsPage(driver);
+        allBoardgamesPage = new AllBoardgamesPage(driver);
+        collectionPage = new CollectionPage(driver);
+        gamePage = new GamePage(driver);
+
+
     }
 
     @AfterClass
