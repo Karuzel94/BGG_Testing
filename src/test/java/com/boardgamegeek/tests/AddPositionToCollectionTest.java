@@ -19,8 +19,11 @@ public class AddPositionToCollectionTest extends BaseTest {
         Log.logInfo(gamePage.getGameTitle());
         String gameName = gamePage.getGameTitle();
         gamePage.addGameToCollection().returnHomePage().goToCollection();
+        collectionPage.goToGameFromList(gameName);
         Log.logInfo(gameName);
-        Log.logInfo("it's ok to this moment");
+        assertThat(gamePage.getGameTitle()).isEqualTo(gameName);
+        Log.logInfo("The saved String of added game '" + gameName + "' is equal to the game name: '"
+                + gamePage.getGameTitle() +"' game name in collection");
     }
 
 }

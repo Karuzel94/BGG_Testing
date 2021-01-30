@@ -13,7 +13,7 @@ public class GamePropertiesFragment extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary toolbar-action-full']")
+    @FindBy(xpath = "//div[@class='game-header-primary-actions hidden-game-header-collapsed']/span[3]/ng-include/div/div[2]/span/span[2]/span/span/span/button/i")
     WebElement addToCollectionButton;
 
     @FindBy(xpath = "//div[@class='game-header']/div[2]/div[1]/div[1]/div[2]/h1[1]/a[1]")

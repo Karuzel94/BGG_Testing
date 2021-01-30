@@ -15,6 +15,11 @@ public class CollectionPage extends BasePage {
         this.collectedGamesListFragment = new CollectedGamesListFragment(driver);
     }
 
+    public CollectionPage goToGameFromList(String gameName){
+        collectedGamesListFragment.clickGameFromList(gameName);
+        return this;
+    }
+
 
 
 }
