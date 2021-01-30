@@ -1,12 +1,12 @@
 package com.boardgamegeek.pages.gamePage.fragments;
 
-import com.boardgamegeek.pages.gamePage.GamePage;
+import com.boardgamegeek.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class GamePropertiesFragment extends GamePage {
+public class GamePropertiesFragment extends BasePage {
 
     public GamePropertiesFragment(WebDriver driver) {
         super(driver);

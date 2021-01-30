@@ -11,8 +11,8 @@ public class AllBoardgamesPage extends BasePage {
 
     public AllBoardgamesPage(WebDriver driver) {
         super(driver);
-       // PageFactory.initElements(driver, this);
-        //this.boardGameRankFragment = new BoardGameRankFragment(driver);
+        //PageFactory.initElements(driver, this);
+        this.boardGameRankFragment = new BoardGameRankFragment(driver);
     }
 
     public AllBoardgamesPage chooseGame(int number){

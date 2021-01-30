@@ -5,7 +5,6 @@ import com.boardgamegeek.pages.fragments.LoggedUserMenuFragment;
 import com.boardgamegeek.pages.fragments.MenuFragment;
 import com.boardgamegeek.pages.fragments.UserMenuFragment;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage {
 
@@ -34,17 +33,12 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage getErrorText(){
-        userMenuFragment.getErrorText();
-        return this;
+    public String getErrorText(){
+        return userMenuFragment.getErrorText();
     }
     public HomePage goToAllBoardgames(){
         menuFragment.goToAllBoardgames();
         return this;
-    }
-
-    public String getUsername(LoggedUserMenuFragment loggedUserMenuFragment) {
-        return loggedUserMenuFragment.getLoggedUserLogin();
     }
 
     public HomePage returnHomePage(){

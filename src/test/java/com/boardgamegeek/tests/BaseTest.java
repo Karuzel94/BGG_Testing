@@ -1,14 +1,11 @@
 package com.boardgamegeek.tests;
 
 import com.boardgamegeek.pages.accountPage.AccountPage;
-import com.boardgamegeek.pages.fragments.UserMenuFragment;
-import com.boardgamegeek.pages.homePage.HomePage;
 import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
 import com.boardgamegeek.pages.collectionPage.CollectionPage;
 import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
-import com.boardgamegeek.pages.fragments.LoggedUserMenuFragment;
-import com.boardgamegeek.pages.fragments.MenuFragment;
 import com.boardgamegeek.pages.gamePage.GamePage;
+import com.boardgamegeek.pages.homePage.HomePage;
 import com.boardgamegeek.pages.joinPage.JoinPage;
 import com.boardgamegeek.pages.loggedHomePage.LoggedHomePage;
 import com.boardgamegeek.utilities.LoginProperties;
@@ -35,9 +32,6 @@ public abstract class BaseTest {
     public AllBoardgamesPage allBoardgamesPage;
     public CollectionPage collectionPage;
     public GamePage gamePage;
-    public MenuFragment menuFragment;
-    public LoggedUserMenuFragment loggedUserMenuFragment;
-    public UserMenuFragment userMenuFragment;
 
     @BeforeTest
     public static void setupClass() {

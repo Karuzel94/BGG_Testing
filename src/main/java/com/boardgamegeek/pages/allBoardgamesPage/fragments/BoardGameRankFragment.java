@@ -1,6 +1,6 @@
 package com.boardgamegeek.pages.allBoardgamesPage.fragments;
 
-import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
+import com.boardgamegeek.pages.BasePage;
 import com.boardgamegeek.utilities.Log;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class BoardGameRankFragment extends AllBoardgamesPage {
+public class BoardGameRankFragment extends BasePage {
 
     public BoardGameRankFragment(WebDriver driver) {
         super(driver);

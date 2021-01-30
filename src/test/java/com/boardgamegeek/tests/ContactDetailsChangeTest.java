@@ -1,6 +1,5 @@
 package com.boardgamegeek.tests;
 
-import com.boardgamegeek.pages.homePage.HomePage;
 import com.boardgamegeek.utilities.Log;
 import org.testng.annotations.Test;
 
@@ -13,18 +12,18 @@ public class ContactDetailsChangeTest extends BaseTest {
 
         homePage.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
-        assertThat(loggedUserMenuFragment.getLoggedUserLogin()).isEqualTo(loginProperties.getUsername());
+        ///=assertThat(loggedHomePage.getUserName()).isEqualTo(loginProperties.getUsername());
         Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
         loggedHomePage.goToAccountPage();
-        accountPage.goToDetailsChange();
+        accountPage.goToDetailsForm();
         contactDetailsPage.insertDataToContactDetailsFormAndConfirm(testHelper.getFirstname(), testHelper.getLastname(), testHelper.getAddress(),
                 testHelper.getCity(), testHelper.getNewState(), testHelper.getZipCode(), testHelper.getWebsiteAddress(),
                 testHelper.getPhoneNumber(), testHelper.getXboxTag(), testHelper.getBattlenetAccount(),
                 testHelper.getSteamAccount(), testHelper.getWiiFriendCode(), testHelper.getPsnId(),
                 loginProperties.getPassword());
-        homePage.returnHomePage();
-        loggedUserMenuFragment.goToAccountPage();
-        accountPage.goToDetailsChange();
+        loggedHomePage.returnHomePage();
+        loggedHomePage.goToAccountPage();
+        accountPage.goToDetailsForm();
         assertThat(contactDetailsPage.getFirstName()).isEqualTo(testHelper.getFirstname());
         assertThat(contactDetailsPage.getLastName()).isEqualTo(testHelper.getLastname());
         assertThat(contactDetailsPage.getAddress()).isEqualTo(testHelper.getAddress());

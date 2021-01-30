@@ -3,10 +3,7 @@ package com.boardgamegeek.pages.loggedHomePage;
 import com.boardgamegeek.pages.BasePage;
 import com.boardgamegeek.pages.fragments.LoggedUserMenuFragment;
 import com.boardgamegeek.pages.fragments.MenuFragment;
-import com.boardgamegeek.pages.fragments.UserMenuFragment;
-import com.boardgamegeek.pages.homePage.HomePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoggedHomePage extends BasePage {
 
@@ -15,9 +12,8 @@ public class LoggedHomePage extends BasePage {
 
     public LoggedHomePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
-        this.menuFragment = new MenuFragment(driver);
         this.loggedUserMenuFragment = new LoggedUserMenuFragment(driver);
+        this.menuFragment = new MenuFragment(driver);
     }
 
     public LoggedHomePage goToAllBoardgames(){
@@ -39,6 +35,10 @@ public class LoggedHomePage extends BasePage {
         return this;
     }
 
+    public LoggedHomePage logout() {
+        loggedUserMenuFragment.logout();
+        return this;
+    }
 
 }
 

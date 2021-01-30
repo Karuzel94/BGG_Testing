@@ -1,12 +1,12 @@
 package com.boardgamegeek.pages.contactDetailsPage.fragments;
 
-import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
+import com.boardgamegeek.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ContactInformationFragment extends ContactDetailsPage{
+public class ContactInformationFragment extends BasePage {
 
     public ContactInformationFragment(WebDriver driver) {
         super(driver);
@@ -64,7 +64,7 @@ public class ContactInformationFragment extends ContactDetailsPage{
     @FindBy(xpath = "//input[@name='B1']")
     WebElement sumbitButton;
 
-    public ContactDetailsPage insertDataToContactDetailsFormAndConfirm(String firstame, String lastname, String address, String city,
+    public ContactInformationFragment insertDataToContactDetailsFormAndConfirm(String firstame, String lastname, String address, String city,
                                                                        String newState, String zipCode, String website, String phoneNumber,
                                                                        String xboxTag, String battlenetAccount, String steamAccount,
                                                                        String wiiFriendCode, String psnId, String password) {

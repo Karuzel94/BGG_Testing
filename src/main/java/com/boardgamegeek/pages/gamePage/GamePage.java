@@ -5,9 +5,7 @@ import com.boardgamegeek.pages.fragments.LoggedUserMenuFragment;
 import com.boardgamegeek.pages.fragments.MenuFragment;
 import com.boardgamegeek.pages.fragments.UserMenuFragment;
 import com.boardgamegeek.pages.gamePage.fragments.GamePropertiesFragment;
-import com.boardgamegeek.pages.homePage.HomePage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class GamePage extends BasePage {
 
@@ -18,16 +16,17 @@ public class GamePage extends BasePage {
 
     public GamePage(WebDriver driver) {
         super(driver);
-        //PageFactory.initElements(driver, this);
-        /*this.gamePropertiesFragment = new GamePropertiesFragment(driver);
+        this.gamePropertiesFragment = new GamePropertiesFragment(driver);
         this.menuFragment = new MenuFragment(driver);
-        this.loggedUserMenuFragment = new LoggedUserMenuFragment(driver);*/
+        this.userMenuFragment = new UserMenuFragment(driver);
+        this.loggedUserMenuFragment = new LoggedUserMenuFragment(driver);
     }
 
-    public GamePage addGameToCollection(){
+    public GamePage addGameToCollection() {
         gamePropertiesFragment.addGameToCollection();
         return this;
     }
+
     public GamePage goToCollection() {
         loggedUserMenuFragment.goToCollection();
         return this;
@@ -37,7 +36,7 @@ public class GamePage extends BasePage {
         return gamePropertiesFragment.getGameTitle();
     }
 
-    public GamePage returnHomePage(){
+    public GamePage returnHomePage() {
         menuFragment.returnHomePage();
         return this;
     }

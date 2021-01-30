@@ -13,8 +13,8 @@ public class ContactDetailsPage extends BasePage {
 
     public ContactDetailsPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
-        //this.contactInformationFragment = new ContactInformationFragment(driver);
+        //PageFactory.initElements(driver, this);
+        this.contactInformationFragment = new ContactInformationFragment(driver);
     }
 
     public ContactDetailsPage insertDataToContactDetailsFormAndConfirm(String firstame, String lastname, String address, String city,
