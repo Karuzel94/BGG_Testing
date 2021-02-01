@@ -13,7 +13,7 @@ public class AccountPage extends BasePage {
         this.accountManagerFragment = new AccountManagerFragment(driver);
     }
 
-    public AccountPage goToDetailsForm() {
+    public AccountPage goToContactDetailsChangeForm() {
         accountManagerFragment.goToContactDetailsPage();
         return this;
     }

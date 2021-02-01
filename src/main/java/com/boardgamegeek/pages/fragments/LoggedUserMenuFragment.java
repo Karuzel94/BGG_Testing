@@ -16,13 +16,13 @@ public class LoggedUserMenuFragment extends BasePage {
     @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 
-    @FindBy(xpath = "//div[@class='container-fluid dropdown-menu show']/div/div[1]/a[3]")
+    @FindBy(xpath = "//a[text()='Collection']")
     WebElement collectionButton;
 
     @FindBy(xpath = "//fa-icon[@class='ng-fa-icon fs-sm align-middle']")
     WebElement logOutButton;
 
-    @FindBy(xpath = "//div[@class='container-fluid dropdown-menu show']/div/div[2]/a[1]")
+    @FindBy(xpath = "//a[text()='Account']")
     WebElement accountPropertiesButton;
 
 

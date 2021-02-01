@@ -29,7 +29,8 @@ public class TestHelper {
     private final String steamAccount = randomString(8, true, true);
     private final String wiiFriendCode = randomString(8, true, true);
     private final String psnId = randomString(8, true, true);
-    private final int gameIndex = getRandomNumber(1,100);
+    private final int gameIndex = getRandomNumber(1, 100);
+    private final int countryIndex = getRandomNumber(2, 267);
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -106,5 +107,9 @@ public class TestHelper {
 
     public int getGameIndex() {
         return gameIndex;
+    }
+
+    public int getCountryIndex() {
+        return countryIndex;
     }
 }

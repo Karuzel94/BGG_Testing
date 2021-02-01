@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class ContactInformationFragment extends BasePage {
 
     public ContactInformationFragment(WebDriver driver) {
@@ -34,8 +36,8 @@ public class ContactInformationFragment extends BasePage {
     @FindBy(xpath = "//select[@name='country']")
     WebElement countrySelect;
 
-    @FindBy(xpath = "//option[@value='Poland']")
-    WebElement selectPolandAsCountry;
+    @FindBy(xpath = "//select[@id='country']/option")
+    List<WebElement> countrySelectedFromList;
 
     @FindBy(xpath = "//input[@name='website']")
     WebElement websiteAddressInput;
@@ -64,18 +66,24 @@ public class ContactInformationFragment extends BasePage {
     @FindBy(xpath = "//input[@name='B1']")
     WebElement sumbitButton;
 
-    public ContactInformationFragment insertDataToContactDetailsFormAndConfirm(String firstame, String lastname, String address, String city,
-                                                                       String newState, String zipCode, String website, String phoneNumber,
-                                                                       String xboxTag, String battlenetAccount, String steamAccount,
-                                                                       String wiiFriendCode, String psnId, String password) {
-        insertValue(firstNameInput, firstame);
-        insertValue(lastNameInput, lastname);
+
+    public ContactInformationFragment getCountry(int number) {
+        click(countrySelectedFromList.get(number));
+        return this;
+    }
+
+    public ContactInformationFragment insertDataToContactDetailsForm(String firstName, String lastName, String address, String city,
+                                                                     String newState, String zipCode, int countryId, String website, String phoneNumber,
+                                                                     String xboxTag, String battlenetAccount, String steamAccount,
+                                                                     String wiiFriendCode, String psnId) {
+        insertValue(firstNameInput, firstName);
+        insertValue(lastNameInput, lastName);
         insertValue(addressInput, address);
         insertValue(cityInput, city);
         insertValue(newStateInput, newState);
         insertValue(zipCodeInput, zipCode);
         click(countrySelect);
-        click(selectPolandAsCountry);
+        getCountry(countryId);
         insertValue(websiteAddressInput, website);
         insertValue(phoneNumberInput, phoneNumber);
         insertValue(xboxTagInput, xboxTag);
@@ -83,6 +91,14 @@ public class ContactInformationFragment extends BasePage {
         insertValue(steamAccountInput, steamAccount);
         insertValue(wiiInput, wiiFriendCode);
         insertValue(psnIdInput, psnId);
+        return this;
+    }
+
+    public String getCountryName(int countryId) {
+        return countrySelectedFromList.get(countryId).getAttribute("value");
+    }
+
+    public ContactInformationFragment confirmNewContactData(String password) {
         insertValue(passwordInput, password);
         click(sumbitButton);
         return this;

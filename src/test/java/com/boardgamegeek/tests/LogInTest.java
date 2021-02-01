@@ -11,8 +11,10 @@ public class LogInTest extends BaseTest {
 
     @Test
     public void logInTest() {
-        homePage.clickSignInButton().signIn(loginProperties.getUsername(), loginProperties.getPassword());
-        assertThat(loggedHomePage.getUserName()).isEqualTo(loginProperties.getUsername());
+
+        assertThat(homePage.clickSignInButton()
+                .signIn(loginProperties.getUsername(), loginProperties.getPassword())
+                .getUsername(loggedHomePage)).isEqualTo(loginProperties.getUsername());
         Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
         loggedHomePage.logout();
     }

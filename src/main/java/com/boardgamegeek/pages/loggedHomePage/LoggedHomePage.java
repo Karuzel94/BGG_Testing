@@ -16,7 +16,7 @@ public class LoggedHomePage extends BasePage {
         this.menuFragment = new MenuFragment(driver);
     }
 
-    public LoggedHomePage goToAllBoardgames(){
+    public LoggedHomePage goToAllBoardgames() {
         menuFragment.goToAllBoardgames();
         return this;
     }
@@ -30,7 +30,7 @@ public class LoggedHomePage extends BasePage {
         return this;
     }
 
-    public LoggedHomePage returnHomePage(){
+    public LoggedHomePage returnHomePage() {
         menuFragment.returnHomePage();
         return this;
     }

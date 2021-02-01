@@ -16,14 +16,21 @@ public class GamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//div[@class='game-header-primary-actions hidden-game-header-collapsed']/span[3]/ng-include/div/div[2]/span/span[2]/span/span/span/button/i")
     WebElement addToCollectionButton;
 
-    @FindBy(xpath = "//div[@class='game-header']/div[2]/div[1]/div[1]/div[2]/h1[1]/a[1]")
+    @FindBy(xpath = "//div[@class='game-header-primary-actions hidden-game-header-collapsed']/span[3]/ng-include/div/div[2]/span/span[2]/span/span/div/button")
+    WebElement inCollectionButton;
+
+    @FindBy(xpath = "//h1/a[@ui-sref='geekitem.overview']")
     WebElement gameTitle;
 
-    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    @FindBy(xpath = "//*[@class='btn btn-primary']")
     WebElement saveCollectingButton;
 
     public String getGameTitle() {
         return gameTitle.getText();
+    }
+
+    public String getInfoIsGameAddedToCollection() {
+        return inCollectionButton.getText();
     }
 
     public GamePropertiesFragment addGameToCollection() {

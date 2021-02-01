@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public abstract class BasePage {
 
     protected WebDriver driver;
@@ -28,6 +30,15 @@ public abstract class BasePage {
         visibilityCheck(element);
         checkElementClickable(element);
         element.click();
+    }
+
+    public void clickElementFromList(List<WebElement> list, String searchedText) {
+        for (WebElement element : list) {
+            if (element.getText().contains(searchedText)) {
+                element.click();
+                break;
+            }
+        }
     }
 
     public void insertValue(WebElement element, String value) {

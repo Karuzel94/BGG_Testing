@@ -10,7 +10,6 @@ public class JoinPage extends BasePage {
 
     public JoinPage(WebDriver driver) {
         super(driver);
-        //PageFactory.initElements(driver, this);
         this.registrationFormFragment = new RegistrationFormFragment(driver);
     }
 

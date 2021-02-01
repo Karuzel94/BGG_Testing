@@ -1,7 +1,6 @@
 package com.boardgamegeek.pages.fragments;
 
 import com.boardgamegeek.pages.BasePage;
-import com.boardgamegeek.pages.homePage.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -65,7 +64,6 @@ public class UserMenuFragment extends BasePage {
         visibilityCheck(inputAfterError);
         return invalidDataCommunicate.getText();
     }
-
 
 
 }

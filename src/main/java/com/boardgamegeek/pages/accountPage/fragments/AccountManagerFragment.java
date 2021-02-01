@@ -13,7 +13,7 @@ public class AccountManagerFragment extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//table[@class='forum_table']/tbody/tr[4]/td/div[2]/a")
+    @FindBy(xpath = "//a[text()='Edit Contact Details']")
     WebElement contactDetailsLink;
 
     public AccountManagerFragment goToContactDetailsPage() {
