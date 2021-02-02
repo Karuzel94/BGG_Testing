@@ -6,64 +6,47 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UserMenuFragment extends BasePage {
+public class LoggedUserMenuFragment extends BasePage {
 
-    public UserMenuFragment(WebDriver driver) {
+    public LoggedUserMenuFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//li[@class='c-nav-session c-nav-primary-separated dropdown-primary']/a")
-    WebElement logInButton;
+    @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
+    WebElement userMenu;
 
-    @FindBy(xpath = "//input[@id='inputUsername']")
-    WebElement userNameInput;
+    @FindBy(xpath = "//a[text()='Collection']")
+    WebElement collectionButton;
 
-    @FindBy(xpath = "//input[@id='inputPassword']")
-    WebElement passwordInput;
+    @FindBy(xpath = "//fa-icon[@class='ng-fa-icon fs-sm align-middle']")
+    WebElement logOutButton;
 
-    @FindBy(xpath = "//button[@class='btn btn-primary']")
-    WebElement signInButton;
+    @FindBy(xpath = "//a[text()='Account']")
+    WebElement accountButton;
 
-    @FindBy(xpath = "//li[@class='c-nav-session dropdown-primary']/a")
-    WebElement registerButton;
 
-    @FindBy(xpath = "//span[@class='help-block']")
-    WebElement invalidDataCommunicate;
+    public String getLoggedUserLogin() {
+        visibilityCheck(userMenu);
+        return userMenu.getText();
+    }
 
-    @FindBy(xpath = "//input[@class='form-control ng-dirty ng-touched ng-valid']")
-    WebElement inputAfterError;
-
-    @FindBy(xpath = "//button[@class='btn btn-outline-secondary']")
-    WebElement cancelSignIn;
-
-    public UserMenuFragment clickJoinInButton() {
-        click(registerButton);
+    public LoggedUserMenuFragment goToCollection() {
+        click(userMenu);
+        click(collectionButton);
         return this;
     }
 
-    public UserMenuFragment clickSignInButton() {
-        click(logInButton);
+    public LoggedUserMenuFragment logout() {
+        click(userMenu);
+        click(logOutButton);
         return this;
     }
 
-    public UserMenuFragment signIn(String username, String password) {
-        insertValue(userNameInput, username);
-        insertValue(passwordInput, password);
-        visibilityCheck(invalidDataCommunicate);
-        click(signInButton);
+    public LoggedUserMenuFragment goToAccountPage() {
+        click(userMenu);
+        click(accountButton);
         return this;
     }
-
-    public UserMenuFragment abortLogIn() {
-        click(cancelSignIn);
-        return this;
-    }
-
-    public String getErrorText() {
-        visibilityCheck(inputAfterError);
-        return invalidDataCommunicate.getText();
-    }
-
 
 }
