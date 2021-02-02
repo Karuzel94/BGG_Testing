@@ -33,7 +33,7 @@ public class SignInFragment extends BasePage {
 
     @FindBy(xpath = "//button[@class='btn btn-outline-secondary']")
     WebElement cancelSignIn;
-    
+
 
     public SignInFragment clickSignInButton() {
         click(logInButton);
@@ -58,7 +58,7 @@ public class SignInFragment extends BasePage {
         return invalidDataCommunicate.getText();
     }
 
-    public String getUsername(UserMenuFragment userMenuFragment){
+    public String getUsername(UserMenuFragment userMenuFragment) {
         return userMenuFragment.getUserName();
     }
 

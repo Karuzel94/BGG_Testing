@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
-
 public class ContactDetailsPage extends BasePage {
 
     public ContactDetailsPage(WebDriver driver) {
@@ -65,9 +63,9 @@ public class ContactDetailsPage extends BasePage {
 
 
     public ContactDetailsPage insertDataToContactDetailsForm(String firstName, String lastName, String address, String city,
-                                                                     String newState, String zipCode, int countryId, String website, String phoneNumber,
-                                                                     String xboxTag, String battleNetAccount, String steamAccount,
-                                                                     String wiiFriendCode, String psnId) {
+                                                             String newState, String zipCode, int countryId, String website, String phoneNumber,
+                                                             String xboxTag, String battleNetAccount, String steamAccount,
+                                                             String wiiFriendCode, String psnId) {
         insertValue(firstNameInput, firstName);
         insertValue(lastNameInput, lastName);
         insertValue(addressInput, address);

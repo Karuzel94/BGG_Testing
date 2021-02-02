@@ -13,7 +13,7 @@ public class MenuFragment extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//img[@class='global-header-logo-symbol']")
+    @FindBy(xpath = "//a[@href='/']")
     WebElement logoButton;
 
     @FindBy(xpath = "//div[@class='c-nav-primary d-none d-lg-block']/ul/li[1]/button")

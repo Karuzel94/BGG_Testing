@@ -10,6 +10,7 @@ public class CollectionPage extends BasePage {
 
     public CollectionPage(WebDriver driver) {
         super(driver);
+        this.gamesListFragment = new GamesListFragment(driver);
     }
 
     public CollectionPage goToGameFromList(String name) {

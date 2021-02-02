@@ -13,16 +13,17 @@ public class GamePropertiesFragment extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='game-header-primary-actions hidden-game-header-collapsed']/span[3]/ng-include/div/div[2]/span/span[2]/span/span/span/button/i")
+    @FindBy(xpath = "//span[@class='hidden-xs']//button[@class='btn btn-sm btn-primary toolbar-action-full']")
     WebElement addToCollectionButton;
 
-    @FindBy(xpath = "//div[@class='game-header-primary-actions hidden-game-header-collapsed']/span[3]/ng-include/div/div[2]/span/span[2]/span/span/div/button")
+    @FindBy(xpath = "//span[@class='hidden-xs']//button[@class='btn btn-sm btn-subtle dropdown-toggle']")
     WebElement inCollectionButton;
 
     @FindBy(xpath = "//h1/a[@ui-sref='geekitem.overview']")
     WebElement gameTitle;
 
     public String getGameTitle() {
+        visibilityCheck(gameTitle);
         return gameTitle.getText();
     }
 

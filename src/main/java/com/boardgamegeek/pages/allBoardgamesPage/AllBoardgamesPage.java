@@ -20,13 +20,9 @@ public class AllBoardgamesPage extends BasePage {
     @FindBy(xpath = "//tr[contains(@id,'row_')]")
     List<WebElement> gamesOnList;
 
-//    @FindBy(xpath = "//div[contains(@id,'results_objectname')]/a")
-//    List<WebElement> gamesOnList;
-
     public AllBoardgamesPage goToRandomGame(int number) {
         Log.logInfo("Game index is: " + (number + 1));
-       // click(gamesOnList.get(number));
-        click(gamesOnList.get(number).findElement(By.xpath("//div[contains(@id,'results_objectname')]/a")));
+        click(gamesOnList.get(number).findElement(By.xpath(".//div[contains(@id,'results_objectname')]/a")));
         return this;
     }
 

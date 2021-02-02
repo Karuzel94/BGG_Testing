@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AddPositionToCollectionTest extends BaseTest {
 
     @Test
-    public void addPositionToCollectionTest() throws InterruptedException {
+    public void addPositionToCollectionTest() {
 
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
@@ -18,8 +18,8 @@ public class AddPositionToCollectionTest extends BaseTest {
         allBoardgamesPage.goToRandomGame(testHelper.getGameIndex());
         String gameName = gamePage.getGameTitle();
         Log.logInfo(gameName);
-        gamePage.addGameToCollection()
-                .returnHomePage();
+        gamePage.addGameToCollection();
+        menuFragment.returnHomePage();
         userMenuFragment.goToCollection();
         collectionPage.goToGameFromList(gameName);
         assertThat(gamePage.getGameTitle()).isEqualTo(gameName);

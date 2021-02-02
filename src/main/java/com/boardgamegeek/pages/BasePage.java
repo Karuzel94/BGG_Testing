@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
 public abstract class BasePage {
 
     protected WebDriver driver;
@@ -33,16 +31,7 @@ public abstract class BasePage {
         element.click();
     }
 
-    public void clickElementFromList(List<WebElement> list, String searchedText) {
-        for (WebElement element : list) {
-            if (element.getText().contains(searchedText)) {
-                element.click();
-                break;
-            }
-        }
-    }
-
-    public void selectFromDropdown(WebElement element, int id){
+    public void selectFromDropdown(WebElement element, int id) {
         Select dropdown = new Select(element);
         dropdown.selectByIndex(id);
     }
