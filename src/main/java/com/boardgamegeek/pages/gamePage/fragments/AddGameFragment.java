@@ -17,6 +17,7 @@ public class AddGameFragment extends BasePage {
     WebElement saveCollectingButton;
 
     public AddGameFragment saveInCollection() {
+        visibilityCheck(saveCollectingButton);
         click(saveCollectingButton);
         return this;
     }
