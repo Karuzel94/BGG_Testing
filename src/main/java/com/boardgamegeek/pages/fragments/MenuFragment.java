@@ -16,10 +16,10 @@ public class MenuFragment extends BasePage {
     @FindBy(xpath = "//img[@class='global-header-logo-symbol']")
     WebElement logoButton;
 
-    @FindBy(xpath = "//button[text()=' Browse ']")
+    @FindBy(xpath = "//div[@class='c-nav-primary d-none d-lg-block']/ul/li[1]/button")
     WebElement browseButton;
 
-    @FindBy(xpath = "//a[text()=' All Boardgames ']")
+    @FindBy(xpath = "//a[@href='/browse/boardgame']")
     WebElement allBoardgamesButton;
 
     public MenuFragment goToAllBoardgames() {
@@ -29,7 +29,6 @@ public class MenuFragment extends BasePage {
     }
 
     public void returnHomePage() {
-        visibilityCheck(logoButton);
         click(logoButton);
     }
 }

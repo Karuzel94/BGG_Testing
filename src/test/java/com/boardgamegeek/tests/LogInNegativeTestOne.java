@@ -15,10 +15,10 @@ public class LogInNegativeTestOne extends BaseTest {
     @Test(dataProvider = "getLogInData", dataProviderClass = TestHelper.class)
     public void logInNegativeTestOne(String username, String password) {
         Log.logInfo(username + ", " + password);
-        homePage.clickSignInButton()
+        signInFragment.clickSignInButton()
                 .signIn(username, password);
-        Assert.assertEquals(homePage.getErrorText(), "Invalid username or password");
-        assertThat(homePage.getErrorText()).isEqualTo("Invalid username or password");
-        homePage.abortLogIn();
+        Assert.assertEquals(signInFragment.getErrorText(), "Invalid username or password");
+        assertThat(signInFragment.getErrorText()).isEqualTo("Invalid username or password");
+        signInFragment.abortLogIn();
     }
 }

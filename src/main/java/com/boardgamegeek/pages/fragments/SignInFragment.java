@@ -58,5 +58,8 @@ public class SignInFragment extends BasePage {
         return invalidDataCommunicate.getText();
     }
 
+    public String getUsername(UserMenuFragment userMenuFragment){
+        return userMenuFragment.getUserName();
+    }
 
 }

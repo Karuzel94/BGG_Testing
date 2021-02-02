@@ -8,19 +8,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class AddPositionToCollectionTest extends BaseTest {
 
     @Test
-    public void addPositionToCollectionTest() {
+    public void addPositionToCollectionTest() throws InterruptedException {
 
-        homePage.clickSignInButton();
-        homePage.signIn(loginProperties.getUsername(), loginProperties.getPassword());
-        assertThat(loggedHomePage.getUserName()).isEqualTo(loginProperties.getUsername());
+        signInFragment.clickSignInButton()
+                .signIn(loginProperties.getUsername(), loginProperties.getPassword());
+        assertThat(userMenuFragment.getUserName()).isEqualTo(loginProperties.getUsername());
         Log.logInfo("Username: " + loginProperties.getUsername() + ", Password:  " + loginProperties.getPassword());
-        loggedHomePage.goToAllBoardgames();
-        allBoardgamesPage.chooseGame(testHelper.getGameIndex());
-        Log.logInfo(gamePage.getGameTitle());
+        menuFragment.goToAllBoardgames();
+        allBoardgamesPage.goToRandomGame(testHelper.getGameIndex());
         String gameName = gamePage.getGameTitle();
+        Log.logInfo(gameName);
         gamePage.addGameToCollection()
-                .returnHomePage()
-                .goToCollection();
+                .returnHomePage();
+        userMenuFragment.goToCollection();
         collectionPage.goToGameFromList(gameName);
         assertThat(gamePage.getGameTitle()).isEqualTo(gameName);
         Log.logInfo("The saved String of added game '" + gameName + "' is equal to the : '"

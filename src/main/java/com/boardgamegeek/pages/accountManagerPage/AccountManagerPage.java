@@ -1,20 +1,23 @@
-package com.boardgamegeek.pages.accountPage;
+package com.boardgamegeek.pages.accountManagerPage;
 
 import com.boardgamegeek.pages.BasePage;
-import com.boardgamegeek.pages.accountPage.fragments.AccountManagerFragment;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class AccountPage extends BasePage {
+public class AccountManagerPage extends BasePage {
 
-    private AccountManagerFragment accountManagerFragment;
-
-    public AccountPage(WebDriver driver) {
+    public AccountManagerPage(WebDriver driver) {
         super(driver);
-        this.accountManagerFragment = new AccountManagerFragment(driver);
+        PageFactory.initElements(driver, this);
     }
 
-    public AccountPage goToContactDetailsChangeForm() {
-        accountManagerFragment.goToContactDetailsPage();
+    @FindBy(xpath = "//a[@href='/geekaccount.php?action=editcontact']")
+    WebElement contactDetailsLink;
+
+    public AccountManagerPage goToContactDetailsPage() {
+        click(contactDetailsLink);
         return this;
     }
 

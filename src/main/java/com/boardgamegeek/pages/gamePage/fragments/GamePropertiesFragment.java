@@ -22,9 +22,6 @@ public class GamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//h1/a[@ui-sref='geekitem.overview']")
     WebElement gameTitle;
 
-    @FindBy(xpath = "//*[@class='btn btn-primary']")
-    WebElement saveCollectingButton;
-
     public String getGameTitle() {
         return gameTitle.getText();
     }
@@ -33,9 +30,8 @@ public class GamePropertiesFragment extends BasePage {
         return inCollectionButton.getText();
     }
 
-    public GamePropertiesFragment addGameToCollection() {
+    public GamePropertiesFragment clickAddGameToCollection() {
         click(addToCollectionButton);
-        click(saveCollectingButton);
         return this;
     }
 }

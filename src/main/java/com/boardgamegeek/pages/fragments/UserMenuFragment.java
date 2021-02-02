@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoggedUserMenuFragment extends BasePage {
+public class UserMenuFragment extends BasePage {
 
-    public LoggedUserMenuFragment(WebDriver driver) {
+    public UserMenuFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -16,34 +16,34 @@ public class LoggedUserMenuFragment extends BasePage {
     @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 
-    @FindBy(xpath = "//a[text()='Collection']")
+    @FindBy(xpath = "//a[@href='/collection/user/qwerty1234z']")
     WebElement collectionButton;
 
     @FindBy(xpath = "//fa-icon[@class='ng-fa-icon fs-sm align-middle']")
     WebElement logOutButton;
 
-    @FindBy(xpath = "//a[text()='Account']")
+    @FindBy(xpath = "//a[@href='/geekaccount/edit']")
     WebElement accountButton;
 
 
-    public String getLoggedUserLogin() {
+    public String getUserName() {
         visibilityCheck(userMenu);
         return userMenu.getText();
     }
 
-    public LoggedUserMenuFragment goToCollection() {
+    public UserMenuFragment goToCollection() {
         click(userMenu);
         click(collectionButton);
         return this;
     }
 
-    public LoggedUserMenuFragment logout() {
+    public UserMenuFragment logout() {
         click(userMenu);
         click(logOutButton);
         return this;
     }
 
-    public LoggedUserMenuFragment goToAccountPage() {
+    public UserMenuFragment goToAccountPage() {
         click(userMenu);
         click(accountButton);
         return this;

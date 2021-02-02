@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CollectedGamesListFragment extends BasePage {
+public class GamesListFragment extends BasePage {
 
-    public CollectedGamesListFragment(WebDriver driver) {
+    public GamesListFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -20,7 +20,7 @@ public class CollectedGamesListFragment extends BasePage {
     List<WebElement> gamesInCollectionList;
 
 
-    public CollectedGamesListFragment clickGameFromList(String name) {
+    public GamesListFragment clickGameFromList(String name) {
         clickElementFromList(gamesInCollectionList, name);
         return this;
     }

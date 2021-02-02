@@ -3,6 +3,7 @@ package com.boardgamegeek.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -39,6 +40,11 @@ public abstract class BasePage {
                 break;
             }
         }
+    }
+
+    public void selectFromDropdown(WebElement element, int id){
+        Select dropdown = new Select(element);
+        dropdown.selectByIndex(id);
     }
 
     public void insertValue(WebElement element, String value) {

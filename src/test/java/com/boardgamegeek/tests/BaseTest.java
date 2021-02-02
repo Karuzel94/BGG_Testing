@@ -1,13 +1,15 @@
 package com.boardgamegeek.tests;
 
-import com.boardgamegeek.pages.accountPage.AccountPage;
+import com.boardgamegeek.pages.accountManagerPage.AccountManagerPage;
 import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
 import com.boardgamegeek.pages.collectionPage.CollectionPage;
 import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
+import com.boardgamegeek.pages.fragments.JoinInFragment;
+import com.boardgamegeek.pages.fragments.MenuFragment;
+import com.boardgamegeek.pages.fragments.SignInFragment;
+import com.boardgamegeek.pages.fragments.UserMenuFragment;
 import com.boardgamegeek.pages.gamePage.GamePage;
-import com.boardgamegeek.pages.homePage.HomePage;
 import com.boardgamegeek.pages.joinPage.JoinPage;
-import com.boardgamegeek.pages.loggedHomePage.LoggedHomePage;
 import com.boardgamegeek.utilities.LoginProperties;
 import com.boardgamegeek.utilities.TestHelper;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -22,16 +24,18 @@ public abstract class BaseTest {
 
     public String url = "https://boardgamegeek.com/";
     protected WebDriver driver;
-    public HomePage homePage;
-    public LoggedHomePage loggedHomePage;
     public JoinPage joinPage;
     public TestHelper testHelper;
     public LoginProperties loginProperties;
-    public AccountPage accountPage;
+    public AccountManagerPage accountManagerPage;
     public ContactDetailsPage contactDetailsPage;
     public AllBoardgamesPage allBoardgamesPage;
     public CollectionPage collectionPage;
     public GamePage gamePage;
+    public SignInFragment signInFragment;
+    public JoinInFragment joinInFragment;
+    public MenuFragment menuFragment;
+    public UserMenuFragment userMenuFragment;
 
     @BeforeTest
     public static void setupClass() {
@@ -46,16 +50,18 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.get(url);
-        homePage = new HomePage(driver);
-        loggedHomePage = new LoggedHomePage(driver);
         joinPage = new JoinPage(driver);
         testHelper = new TestHelper();
         loginProperties = new LoginProperties();
-        accountPage = new AccountPage(driver);
+        accountManagerPage = new AccountManagerPage(driver);
         contactDetailsPage = new ContactDetailsPage(driver);
         allBoardgamesPage = new AllBoardgamesPage(driver);
         collectionPage = new CollectionPage(driver);
         gamePage = new GamePage(driver);
+        signInFragment = new SignInFragment(driver);
+        joinInFragment = new JoinInFragment(driver);
+        menuFragment = new MenuFragment(driver);
+        userMenuFragment = new UserMenuFragment(driver);
 
 
     }

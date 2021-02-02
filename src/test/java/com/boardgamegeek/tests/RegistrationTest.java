@@ -9,14 +9,14 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void registrationTest() {
-        homePage.clickJoinInButton();
-        joinPage.registerAccount(testHelper.getUserName(), testHelper.getUserMail(), testHelper.getPassword());
-        Log.logInfo("Registered user is: " + loggedHomePage.getUserName());
+        joinInFragment.clickJoinInButton();
+        joinPage.accountRegistration(testHelper.getUserName(), testHelper.getUserMail(), testHelper.getPassword());
+        Log.logInfo("Registered user is: " + userMenuFragment.getUserName());
         Log.logInfo("NEW ACCOUNT DATA BELOW!!!");
         Log.logInfo("Username: " + testHelper.getUserName());
         Log.logInfo("Mail: " + testHelper.getUserMail());
         Log.logInfo("Password: " + testHelper.getPassword());
-        assertThat(testHelper.getUserName()).isEqualTo(loggedHomePage.getUserName());
+        assertThat(testHelper.getUserName()).isEqualTo(userMenuFragment.getUserName());
     }
 
 }
