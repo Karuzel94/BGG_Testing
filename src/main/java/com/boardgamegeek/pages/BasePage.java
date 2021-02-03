@@ -6,6 +6,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+import java.util.Random;
+
 public abstract class BasePage {
 
     protected WebDriver driver;
@@ -31,9 +34,22 @@ public abstract class BasePage {
         element.click();
     }
 
-    public void selectFromDropdown(WebElement element, int id) {
+    public void selectFromDropdown(WebElement element, String name) {
         Select dropdown = new Select(element);
-        dropdown.selectByIndex(id);
+        dropdown.selectByValue(name);
+    }
+
+    public void selectRandomOptionFromDropdown(List<WebElement> list, WebElement element) {
+        Random rand = new Random();
+        int randomIndexFromDropdownList = rand.nextInt(list.size());
+        String randomString = list.get(randomIndexFromDropdownList).getText();
+        Select dropdown = new Select(element);
+        dropdown.selectByValue(randomString);
+    }
+
+    public String getDropdownSelectedValue(WebElement element) {
+        Select select = new Select(element);
+        return select.getFirstSelectedOption().getAttribute("value");
     }
 
     public void insertValue(WebElement element, String value) {

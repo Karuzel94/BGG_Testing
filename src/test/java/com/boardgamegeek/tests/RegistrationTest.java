@@ -9,7 +9,7 @@ public class RegistrationTest extends BaseTest {
 
     @Test
     public void registrationTest() {
-        joinInFragment.clickJoinInButton();
+        joinPage.clickJoinInButton();
         joinPage.accountRegistration(testHelper.getUserName(), testHelper.getUserMail(), testHelper.getPassword());
         Log.logInfo("Registered user is: " + userMenuFragment.getUserName());
         Log.logInfo("NEW ACCOUNT DATA BELOW!!!");

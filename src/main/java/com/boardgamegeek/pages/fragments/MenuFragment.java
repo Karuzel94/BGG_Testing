@@ -29,6 +29,7 @@ public class MenuFragment extends BasePage {
     }
 
     public void returnHomePage() {
+        visibilityCheck(logoButton);
         click(logoButton);
     }
 }

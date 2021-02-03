@@ -14,10 +14,19 @@ public class CollectionPage extends BasePage {
     }
 
     public CollectionPage goToGameFromList(String name) {
-        gamesListFragment.clickGameFromList(name);
+        gamesListFragment.clickDefinedGameFromList(name);
         return this;
     }
 
+    public CollectionPage chooseRandomGameFromList() {
+        gamesListFragment.chooseRandomGameFromList();
+        return this;
+    }
+
+    public CollectionPage checkIfTheGameHasBeenDeleted(String gameName) {
+        gamesListFragment.checkIfTheGameHasBeenDeleted(gameName);
+        return this;
+    }
 
 }
 

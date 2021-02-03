@@ -4,7 +4,6 @@ import com.boardgamegeek.pages.accountManagerPage.AccountManagerPage;
 import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
 import com.boardgamegeek.pages.collectionPage.CollectionPage;
 import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
-import com.boardgamegeek.pages.fragments.JoinInFragment;
 import com.boardgamegeek.pages.fragments.MenuFragment;
 import com.boardgamegeek.pages.fragments.SignInFragment;
 import com.boardgamegeek.pages.fragments.UserMenuFragment;
@@ -33,7 +32,6 @@ public abstract class BaseTest {
     public CollectionPage collectionPage;
     public GamePage gamePage;
     public SignInFragment signInFragment;
-    public JoinInFragment joinInFragment;
     public MenuFragment menuFragment;
     public UserMenuFragment userMenuFragment;
 
@@ -59,11 +57,8 @@ public abstract class BaseTest {
         collectionPage = new CollectionPage(driver);
         gamePage = new GamePage(driver);
         signInFragment = new SignInFragment(driver);
-        joinInFragment = new JoinInFragment(driver);
         menuFragment = new MenuFragment(driver);
         userMenuFragment = new UserMenuFragment(driver);
-
-
     }
 
     @AfterClass

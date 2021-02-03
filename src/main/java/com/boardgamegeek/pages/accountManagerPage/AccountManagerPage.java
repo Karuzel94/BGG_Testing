@@ -20,8 +20,6 @@ public class AccountManagerPage extends BasePage {
         click(contactDetailsLink);
         return this;
     }
-
-
 }
 
 

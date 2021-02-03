@@ -13,14 +13,17 @@ public class GamePropertiesFragment extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//span[@class='hidden-xs']//button[@class='btn btn-sm btn-primary toolbar-action-full']")
+    @FindBy(xpath = "//div[@class='toolbar-action']//button[@class='btn btn-sm btn-primary toolbar-action-full']")
     WebElement addToCollectionButton;
 
-    @FindBy(xpath = "//span[@class='hidden-xs']//button[@class='btn btn-sm btn-subtle dropdown-toggle']")
+    @FindBy(xpath = "//div[@class='toolbar-action']//button[@id='button-collection']")
     WebElement inCollectionButton;
 
     @FindBy(xpath = "//h1/a[@ui-sref='geekitem.overview']")
     WebElement gameTitle;
+
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-subtle collection-dropdown-edit ng-isolate-scope']")
+    WebElement editGamePropertiesButton;
 
     public String getGameTitle() {
         visibilityCheck(gameTitle);
@@ -33,6 +36,12 @@ public class GamePropertiesFragment extends BasePage {
 
     public GamePropertiesFragment clickAddGameToCollection() {
         click(addToCollectionButton);
+        return this;
+    }
+
+    public GamePropertiesFragment openEditForm() {
+        click(inCollectionButton);
+        click(editGamePropertiesButton);
         return this;
     }
 }

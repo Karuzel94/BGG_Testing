@@ -3,6 +3,10 @@ package com.boardgamegeek.utilities;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 public class TestHelper {
 
     public String randomString(int length, boolean isLetters, boolean isNumbers) {
@@ -16,21 +20,23 @@ public class TestHelper {
     private final String userName = randomString(8, true, false);
     private final String userMail = randomString(6, true, true) + "@gmail.com";
     private final String password = randomString(8, true, true);
-    private final String firstname = randomString(8, true, false);
-    private final String lastname = randomString(8, true, false);
+    private final String firstName = randomString(8, true, false);
+    private final String lastName = randomString(8, true, false);
     private final String address = randomString(8, true, false);
     private final String city = randomString(8, true, false);
-    private final String newState = randomString(8, true, false);
+    private final String stateOrProvince = randomString(8, true, false);
     private final String zipCode = randomString(5, false, true);
-    private final String website = randomString(8, true, true);
+    private final String websiteOrHomepage = randomString(8, true, true);
     private final String phoneNumber = randomString(9, false, true);
-    private final String xboxTag = randomString(8, true, true);
-    private final String battlenetAccount = randomString(8, true, true);
+    private final String xBoxTag = randomString(8, true, true);
+    private final String battleNetAccount = randomString(8, true, true);
     private final String steamAccount = randomString(8, true, true);
     private final String wiiFriendCode = randomString(8, true, true);
     private final String psnId = randomString(8, true, true);
     private final int gameIndex = getRandomNumber(1, 100);
-    private final int countryIndex = getRandomNumber(2, 267);
+    private final List<String> country = Arrays.asList("Finland", "Russia", "Poland", "Afghanistan",
+            "Azerbaijan", "British Virgin Islands", "United States", "Zimbabwe",
+            "Tunisia", "Malaysia");
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -53,12 +59,12 @@ public class TestHelper {
         return password;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getAddress() {
@@ -69,28 +75,28 @@ public class TestHelper {
         return city;
     }
 
-    public String getNewState() {
-        return newState;
+    public String getStateOrProvince() {
+        return stateOrProvince;
     }
 
     public String getZipCode() {
         return zipCode;
     }
 
-    public String getWebsiteAddress() {
-        return website;
+    public String getWebsiteOrHomepage() {
+        return websiteOrHomepage;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getXboxTag() {
-        return xboxTag;
+    public String getXBoxTag() {
+        return xBoxTag;
     }
 
-    public String getBattlenetAccount() {
-        return battlenetAccount;
+    public String getBattleNetAccount() {
+        return battleNetAccount;
     }
 
     public String getSteamAccount() {
@@ -109,7 +115,9 @@ public class TestHelper {
         return gameIndex;
     }
 
-    public int getCountryIndex() {
-        return countryIndex;
+    public String getCountry() {
+        Random rand = new Random();
+        int randomCountryIndexInList = rand.nextInt(country.size());
+        return country.get(randomCountryIndexInList);
     }
 }

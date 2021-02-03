@@ -1,24 +1,24 @@
 package com.boardgamegeek.pages.gamePage;
 
 import com.boardgamegeek.pages.BasePage;
-import com.boardgamegeek.pages.gamePage.fragments.AddGameFragment;
+import com.boardgamegeek.pages.gamePage.fragments.EditFragment;
 import com.boardgamegeek.pages.gamePage.fragments.GamePropertiesFragment;
 import org.openqa.selenium.WebDriver;
 
 public class GamePage extends BasePage {
 
     private GamePropertiesFragment gamePropertiesFragment;
-    private AddGameFragment addGameFragment;
+    private EditFragment editFragment;
 
     public GamePage(WebDriver driver) {
         super(driver);
         this.gamePropertiesFragment = new GamePropertiesFragment(driver);
-        this.addGameFragment = new AddGameFragment(driver);
+        this.editFragment = new EditFragment(driver);
     }
 
     public GamePage addGameToCollection() {
         gamePropertiesFragment.clickAddGameToCollection();
-        addGameFragment.saveInCollection();
+        editFragment.saveInCollection();
         return this;
     }
 
@@ -28,6 +28,12 @@ public class GamePage extends BasePage {
 
     public String getInformationIsGameAdded() {
         return gamePropertiesFragment.getInfoIsGameAddedToCollection();
+    }
+
+    public GamePage deleteGameFromCollection() {
+        gamePropertiesFragment.openEditForm();
+        editFragment.deleteGameFromCollection();
+        return this;
     }
 
 }
