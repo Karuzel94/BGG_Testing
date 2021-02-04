@@ -11,11 +11,9 @@ public class RegistrationTest extends BaseTest {
     public void registrationTest() {
         joinPage.clickJoinInButton();
         joinPage.accountRegistration(testHelper.getUserName(), testHelper.getUserMail(), testHelper.getPassword());
-        Log.logInfo("Registered user is: " + userMenuFragment.getUserName());
-        Log.logInfo("NEW ACCOUNT DATA BELOW!!!");
-        Log.logInfo("Username: " + testHelper.getUserName());
-        Log.logInfo("Mail: " + testHelper.getUserMail());
-        Log.logInfo("Password: " + testHelper.getPassword());
+        Log.logInfo("Registered user is: " + userMenuFragment.getUserName()
+                + "\nNEW ACCOUNT DATA BELOW!!!\n Username: " + testHelper.getUserName()
+                + "   Mail: " + testHelper.getUserMail() + "   Password: " + testHelper.getPassword());
         assertThat(testHelper.getUserName()).isEqualTo(userMenuFragment.getUserName());
     }
 

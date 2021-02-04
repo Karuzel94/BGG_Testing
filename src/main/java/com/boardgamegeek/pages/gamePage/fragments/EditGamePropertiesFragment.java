@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EditFragment extends BasePage {
+public class EditGamePropertiesFragment extends BasePage {
 
-    public EditFragment(WebDriver driver) {
+    public EditGamePropertiesFragment(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -25,13 +25,13 @@ public class EditFragment extends BasePage {
     @FindBy(xpath = "//button[@ng-click='ok()']")
     WebElement deleteConfirmationButton;
 
-    public EditFragment saveInCollection() {
+    public EditGamePropertiesFragment saveInCollection() {
         visibilityCheck(saveCollectionButton);
         click(saveCollectionButton);
         return this;
     }
 
-    public EditFragment deleteGameFromCollection() {
+    public EditGamePropertiesFragment deleteGameFromCollection() {
         click(moreOptionsButton);
         click(deleteFromCollectionButton);
         click(deleteConfirmationButton);

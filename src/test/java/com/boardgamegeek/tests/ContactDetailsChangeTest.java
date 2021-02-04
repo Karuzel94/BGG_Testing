@@ -17,12 +17,13 @@ public class ContactDetailsChangeTest extends BaseTest {
                 + loginProperties.getPassword());
         userMenuFragment.goToAccountPage();
         accountManagerPage.goToContactDetailsPage();
+        testHelper.setCountry(contactDetailsPage.countryName());
         contactDetailsPage.insertAllDataToContactDetailsForm(testHelper.getFirstName(),
                 testHelper.getLastName(), testHelper.getAddress(), testHelper.getCity(),
-                testHelper.getStateOrProvince(), testHelper.getZipCode(), testHelper.getWebsiteOrHomepage(),
-                testHelper.getPhoneNumber(), testHelper.getXBoxTag(), testHelper.getBattleNetAccount(),
-                testHelper.getSteamAccount(), testHelper.getWiiFriendCode(), testHelper.getPsnId());
-        String countryName = contactDetailsPage.getCountryName();
+                testHelper.getStateOrProvince(), testHelper.getZipCode(), testHelper.getCountry(),
+                testHelper.getWebsiteOrHomepage(), testHelper.getPhoneNumber(), testHelper.getXBoxTag(),
+                testHelper.getBattleNetAccount(), testHelper.getSteamAccount(),
+                testHelper.getWiiFriendCode(), testHelper.getPsnId());
         contactDetailsPage.confirmNewContactData(loginProperties.getPassword());
         menuFragment.returnHomePage();
         userMenuFragment.goToAccountPage();
@@ -33,7 +34,7 @@ public class ContactDetailsChangeTest extends BaseTest {
         assertThat(contactDetailsPage.getCity()).isEqualTo(testHelper.getCity());
         assertThat(contactDetailsPage.getStateOrProvince()).isEqualTo(testHelper.getStateOrProvince());
         assertThat(contactDetailsPage.getZipCode()).isEqualTo(testHelper.getZipCode());
-        assertThat(contactDetailsPage.getCountryName()).isEqualTo(countryName);
+        assertThat(contactDetailsPage.getCountryName()).isEqualTo(testHelper.getCountry());
         assertThat(contactDetailsPage.getWebsiteOrHomepage()).isEqualTo(testHelper.getWebsiteOrHomepage());
         assertThat(contactDetailsPage.getPhoneNumber()).isEqualTo(testHelper.getPhoneNumber());
         assertThat(contactDetailsPage.getXBoxTag()).isEqualTo(testHelper.getXBoxTag());
@@ -42,5 +43,4 @@ public class ContactDetailsChangeTest extends BaseTest {
         assertThat(contactDetailsPage.getWiiFriendCode()).isEqualTo(testHelper.getWiiFriendCode());
         assertThat(contactDetailsPage.getPsnId()).isEqualTo(testHelper.getPsnId());
     }
-
 }

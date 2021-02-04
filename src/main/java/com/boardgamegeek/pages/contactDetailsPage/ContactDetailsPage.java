@@ -1,6 +1,7 @@
 package com.boardgamegeek.pages.contactDetailsPage;
 
 import com.boardgamegeek.pages.BasePage;
+import com.boardgamegeek.utilities.TestHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +11,12 @@ import java.util.List;
 
 public class ContactDetailsPage extends BasePage {
 
+    public TestHelper testHelper;
+
     public ContactDetailsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+        testHelper = new TestHelper();
     }
 
     @FindBy(xpath = "//input[@name='firstname']")
@@ -66,8 +70,12 @@ public class ContactDetailsPage extends BasePage {
     @FindBy(xpath = "//input[@name='B1']")
     WebElement submitButton;
 
+    public String countryName() {
+        return countryOptionsList.get(testHelper.getRandomNumber(2, countryOptionsList.size())).getText();
+    }
+
     public ContactDetailsPage insertAllDataToContactDetailsForm(String firstName, String lastName, String address, String city,
-                                                                String newState, String zipCode, String website, String phoneNumber,
+                                                                String newState, String zipCode, String countryName, String website, String phoneNumber,
                                                                 String xboxTag, String battleNetAccount, String steamAccount,
                                                                 String wiiFriendCode, String psnId) {
         insertValue(firstNameInput, firstName);
@@ -76,8 +84,7 @@ public class ContactDetailsPage extends BasePage {
         insertValue(cityInput, city);
         insertValue(stateOrProvinceInput, newState);
         insertValue(zipCodeInput, zipCode);
-        //selectFromDropdown(countryDropdown, countryName);
-        selectRandomOptionFromDropdown(countryOptionsList, countryDropdown);
+        selectFromDropDownByValue(countryDropdown, countryName);
         insertValue(websiteOrHomepageInput, website);
         insertValue(phoneNumberInput, phoneNumber);
         insertValue(xBoxTagInput, xboxTag);

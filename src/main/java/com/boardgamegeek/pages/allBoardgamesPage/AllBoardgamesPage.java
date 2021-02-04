@@ -1,7 +1,7 @@
 package com.boardgamegeek.pages.allBoardgamesPage;
 
 import com.boardgamegeek.pages.BasePage;
-import com.boardgamegeek.utilities.Log;
+import com.boardgamegeek.utilities.TestHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,17 +12,19 @@ import java.util.List;
 
 public class AllBoardgamesPage extends BasePage {
 
+    public TestHelper testHelper;
+
     public AllBoardgamesPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+        testHelper = new TestHelper();
     }
 
     @FindBy(xpath = "//tr[contains(@id,'row_')]")
     List<WebElement> gamesOnList;
 
-    public AllBoardgamesPage goToRandomGame(int number) {
-        Log.logInfo("Game index is: " + (number + 1));
-        click(gamesOnList.get(number)
+    public AllBoardgamesPage goToRandomGame() {
+        click(gamesOnList.get(testHelper.getRandomNumber(1, gamesOnList.size()))
                 .findElement(By.xpath(".//div[contains(@id,'results_objectname')]/a")));
         return this;
     }

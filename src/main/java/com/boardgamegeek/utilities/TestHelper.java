@@ -1,13 +1,15 @@
 package com.boardgamegeek.utilities;
 
+import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class TestHelper {
+
+    public ContactDetailsPage contactDetailsPage;
 
     public String randomString(int length, boolean isLetters, boolean isNumbers) {
         return RandomStringUtils.random(length, isLetters, isNumbers);
@@ -33,10 +35,11 @@ public class TestHelper {
     private final String steamAccount = randomString(8, true, true);
     private final String wiiFriendCode = randomString(8, true, true);
     private final String psnId = randomString(8, true, true);
-    private final int gameIndex = getRandomNumber(1, 100);
     private final List<String> country = Arrays.asList("Finland", "Russia", "Poland", "Afghanistan",
             "Azerbaijan", "British Virgin Islands", "United States", "Zimbabwe",
             "Tunisia", "Malaysia");
+    private String countryName = country.get(getRandomNumber(0, country.size()));
+    private String gameName = "";
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -111,13 +114,19 @@ public class TestHelper {
         return psnId;
     }
 
-    public int getGameIndex() {
-        return gameIndex;
+    public String getCountry() {
+        return countryName;
     }
 
-    public String getCountry() {
-        Random rand = new Random();
-        int randomCountryIndexInList = rand.nextInt(country.size());
-        return country.get(randomCountryIndexInList);
+    public void setCountry(String country) {
+        countryName = country;
+    }
+
+    public void setGameName(String game) {
+        gameName = game;
+    }
+
+    public String getGameName() {
+        return gameName;
     }
 }

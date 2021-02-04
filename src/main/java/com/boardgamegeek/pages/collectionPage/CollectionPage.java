@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CollectionPage extends BasePage {
 
-    private GamesListFragment gamesListFragment;
+    private final GamesListFragment gamesListFragment;
 
     public CollectionPage(WebDriver driver) {
         super(driver);
@@ -23,9 +23,8 @@ public class CollectionPage extends BasePage {
         return this;
     }
 
-    public CollectionPage checkIfTheGameHasBeenDeleted(String gameName) {
-        gamesListFragment.checkIfTheGameHasBeenDeleted(gameName);
-        return this;
+    public String unRemovedGamesNames() {
+        return gamesListFragment.unRemovedGamesNames();
     }
 
 }

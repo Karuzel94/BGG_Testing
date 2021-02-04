@@ -10,10 +10,10 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Listeners(StepListener.class)
-public class LogInNegativeTestOne extends BaseTest {
+public class LogInNegativeTest extends BaseTest {
 
     @Test(dataProvider = "getLogInData", dataProviderClass = TestHelper.class)
-    public void logInNegativeTestOne(String username, String password) {
+    public void logInNegativeTest(String username, String password) {
         Log.logInfo(username + ", " + password);
         signInFragment.clickSignInButton()
                 .signIn(username, password);

@@ -5,10 +5,11 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DeletePositionFromCollectionTest extends BaseTest {
+public class DeleteGameFromCollectionTest extends BaseTest {
 
     @Test
-    public void deletePositionFromCollectionTest() {
+    public void deleteGameFromCollectionTest() {
+
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         assertThat(userMenuFragment.getUserName()).isEqualTo(loginProperties.getUsername());
@@ -16,10 +17,10 @@ public class DeletePositionFromCollectionTest extends BaseTest {
                 + ", Password:  " + loginProperties.getPassword());
         userMenuFragment.goToCollection();
         collectionPage.chooseRandomGameFromList();
-        String gameName = gamePage.getGameTitle();
+        testHelper.setGameName(gamePage.getGameTitle());
         gamePage.deleteGameFromCollection();
         menuFragment.returnHomePage();
         userMenuFragment.goToCollection();
-        collectionPage.checkIfTheGameHasBeenDeleted(gameName);
+        assertThat(collectionPage.unRemovedGamesNames()).doesNotContain(testHelper.getGameName());
     }
 }
