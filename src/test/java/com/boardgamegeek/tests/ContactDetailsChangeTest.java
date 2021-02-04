@@ -23,8 +23,8 @@ public class ContactDetailsChangeTest extends BaseTest {
                 testHelper.getStateOrProvince(), testHelper.getZipCode(), testHelper.getCountry(),
                 testHelper.getWebsiteOrHomepage(), testHelper.getPhoneNumber(), testHelper.getXBoxTag(),
                 testHelper.getBattleNetAccount(), testHelper.getSteamAccount(),
-                testHelper.getWiiFriendCode(), testHelper.getPsnId());
-        contactDetailsPage.confirmNewContactData(loginProperties.getPassword());
+                testHelper.getWiiFriendCode(), testHelper.getPsnId())
+                .confirmNewContactData(loginProperties.getPassword());
         menuFragment.returnHomePage();
         userMenuFragment.goToAccountPage();
         accountManagerPage.goToContactDetailsPage();

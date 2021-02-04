@@ -4,6 +4,8 @@ import com.boardgamegeek.pages.BasePage;
 import com.boardgamegeek.pages.collectionPage.fragments.GamesListFragment;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+
 public class CollectionPage extends BasePage {
 
     private final GamesListFragment gamesListFragment;
@@ -23,8 +25,8 @@ public class CollectionPage extends BasePage {
         return this;
     }
 
-    public String unRemovedGamesNames() {
-        return gamesListFragment.unRemovedGamesNames();
+    public List<String> gamesNamesList() {
+        return gamesListFragment.gamesNamesList();
     }
 
 }

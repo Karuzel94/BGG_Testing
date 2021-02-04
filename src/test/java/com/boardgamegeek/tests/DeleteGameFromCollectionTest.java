@@ -21,6 +21,6 @@ public class DeleteGameFromCollectionTest extends BaseTest {
         gamePage.deleteGameFromCollection();
         menuFragment.returnHomePage();
         userMenuFragment.goToCollection();
-        assertThat(collectionPage.unRemovedGamesNames()).doesNotContain(testHelper.getGameName());
+        assertThat(collectionPage.gamesNamesList()).doesNotContain(testHelper.getGameName());
     }
 }

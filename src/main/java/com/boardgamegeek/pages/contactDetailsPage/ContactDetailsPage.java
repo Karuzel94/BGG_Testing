@@ -1,7 +1,6 @@
 package com.boardgamegeek.pages.contactDetailsPage;
 
 import com.boardgamegeek.pages.BasePage;
-import com.boardgamegeek.utilities.TestHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,12 +10,9 @@ import java.util.List;
 
 public class ContactDetailsPage extends BasePage {
 
-    public TestHelper testHelper;
-
     public ContactDetailsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        testHelper = new TestHelper();
     }
 
     @FindBy(xpath = "//input[@name='firstname']")
@@ -71,12 +67,12 @@ public class ContactDetailsPage extends BasePage {
     WebElement submitButton;
 
     public String countryName() {
-        return countryOptionsList.get(testHelper.getRandomNumber(2, countryOptionsList.size())).getText();
+        return countryOptionsList.get(testHelper.getRandomNumber(1, countryOptionsList.size())).getText();
     }
 
     public ContactDetailsPage insertAllDataToContactDetailsForm(String firstName, String lastName, String address, String city,
                                                                 String newState, String zipCode, String countryName, String website, String phoneNumber,
-                                                                String xboxTag, String battleNetAccount, String steamAccount,
+                                                                String xBoxTag, String battleNetAccount, String steamAccount,
                                                                 String wiiFriendCode, String psnId) {
         insertValue(firstNameInput, firstName);
         insertValue(lastNameInput, lastName);
@@ -87,7 +83,7 @@ public class ContactDetailsPage extends BasePage {
         selectFromDropDownByValue(countryDropdown, countryName);
         insertValue(websiteOrHomepageInput, website);
         insertValue(phoneNumberInput, phoneNumber);
-        insertValue(xBoxTagInput, xboxTag);
+        insertValue(xBoxTagInput, xBoxTag);
         insertValue(battleNetAccountInput, battleNetAccount);
         insertValue(steamAccountInput, steamAccount);
         insertValue(wiiFriendCodeInput, wiiFriendCode);

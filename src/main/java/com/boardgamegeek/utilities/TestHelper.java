@@ -1,6 +1,5 @@
 package com.boardgamegeek.utilities;
 
-import com.boardgamegeek.pages.contactDetailsPage.ContactDetailsPage;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
@@ -8,8 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TestHelper {
-
-    public ContactDetailsPage contactDetailsPage;
 
     public String randomString(int length, boolean isLetters, boolean isNumbers) {
         return RandomStringUtils.random(length, isLetters, isNumbers);
@@ -129,4 +126,5 @@ public class TestHelper {
     public String getGameName() {
         return gameName;
     }
+
 }
