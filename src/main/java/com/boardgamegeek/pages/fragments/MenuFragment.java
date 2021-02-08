@@ -1,6 +1,7 @@
 package com.boardgamegeek.pages.fragments;
 
 import com.boardgamegeek.pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,7 @@ public class MenuFragment extends BasePage {
     public MenuFragment goToAllBoardgames() {
         click(browseButton);
         click(allBoardgamesButton);
+        synchronization2();
         return this;
     }
 

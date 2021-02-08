@@ -3,7 +3,9 @@ package com.boardgamegeek.utilities;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class TestHelper {
@@ -37,6 +39,9 @@ public class TestHelper {
             "Tunisia", "Malaysia");
     private String countryName = country.get(getRandomNumber(0, country.size()));
     private String gameName = "";
+    private List<String> tempList = new ArrayList<>();
+    private List<Double> tempListDouble = new ArrayList<>();
+    private int gotTempListsCounter = 1;
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -125,6 +130,30 @@ public class TestHelper {
 
     public String getGameName() {
         return gameName;
+    }
+
+    public void setTempListOfTitles(List<String> list) {
+        tempList = list;
+    }
+
+    public List<String> getTempListOfTitles() {
+        return tempList;
+    }
+
+    public void setTempListOfRatings(List<Double> list) {
+        tempListDouble = list;
+    }
+
+    public List<Double> getTempListOfRatings() {
+        if (gotTempListsCounter != 1){
+            this.gotTempListsCounter += 1;
+            return tempListDouble;
+        } else {
+            Collections.sort(tempListDouble, Collections.reverseOrder());
+            this.gotTempListsCounter += 1;
+            return tempListDouble;
+        }
+
     }
 
 }

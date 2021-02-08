@@ -34,6 +34,7 @@ public class UserMenuFragment extends BasePage {
     public UserMenuFragment goToCollection() {
         click(userMenu);
         click(collectionButton);
+        synchronization2();
         return this;
     }
 

@@ -29,6 +29,28 @@ public class CollectionPage extends BasePage {
         return gamesListFragment.gamesNamesList();
     }
 
+    public List<String> getTempListOfTitles() {
+        return gamesListFragment.getTempListOfTitles();
+    }
+
+    public CollectionPage sortCollectionByTitles() {
+        gamesListFragment.sortCollectionByTitles();
+        return this;
+    }
+
+    public CollectionPage sortCollectionByRatings() {
+        gamesListFragment.sortCollectionByRatings();
+        return this;
+    }
+
+    public List<String> getSortedListWithGameTitles() {
+        return gamesListFragment.getListOfGamesNames();
+    }
+
+    public List<Double> getTempListOfRatings() { return gamesListFragment.getTempListOfRatings(); }
+
+    public List<Double> getSortedListWithGameRatings() {return gamesListFragment.getOriginalListOfRatings(); }
+
 }
 
 
