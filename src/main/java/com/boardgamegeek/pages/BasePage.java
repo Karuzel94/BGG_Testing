@@ -1,5 +1,6 @@
 package com.boardgamegeek.pages;
 
+import com.boardgamegeek.utilities.Log;
 import com.boardgamegeek.utilities.TestHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public abstract class BasePage {
 
@@ -17,7 +20,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        int waitTimeSeconds = 30;
+        int waitTimeSeconds = 10;
         wait = new WebDriverWait(this.driver, waitTimeSeconds);
         testHelper = new TestHelper();
     }
@@ -53,14 +56,26 @@ public abstract class BasePage {
         dropdown.selectByValue(name);
     }
 
+    public void selectRandomDropdownOption(List<WebElement> list, WebElement element) {
+        selectInit(element);
+        dropdown.selectByIndex(testHelper.getRandomNumber(1,list.size()));
+    }
+
     public String getDropdownSelectedValue(WebElement element) {
         selectInit(element);
         return dropdown.getFirstSelectedOption().getText();
     }
 
-    public void insertValue(WebElement element, String value) {
+    public void insertStringValue(WebElement element, String value) {
         visibilityCheck(element);
         element.clear();
         element.sendKeys(value);
     }
+
+    public void insertIntegerValue(WebElement element, int value){
+        visibilityCheck(element);
+        element.clear();
+        element.sendKeys(String.valueOf(value));
+    }
+
 }

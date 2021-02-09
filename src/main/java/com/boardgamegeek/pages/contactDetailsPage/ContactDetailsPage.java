@@ -74,20 +74,20 @@ public class ContactDetailsPage extends BasePage {
                                                                 String newState, String zipCode, String countryName, String website, String phoneNumber,
                                                                 String xBoxTag, String battleNetAccount, String steamAccount,
                                                                 String wiiFriendCode, String psnId) {
-        insertValue(firstNameInput, firstName);
-        insertValue(lastNameInput, lastName);
-        insertValue(addressInput, address);
-        insertValue(cityInput, city);
-        insertValue(stateOrProvinceInput, newState);
-        insertValue(zipCodeInput, zipCode);
+        insertStringValue(firstNameInput, firstName);
+        insertStringValue(lastNameInput, lastName);
+        insertStringValue(addressInput, address);
+        insertStringValue(cityInput, city);
+        insertStringValue(stateOrProvinceInput, newState);
+        insertStringValue(zipCodeInput, zipCode);
         selectFromDropDownByValue(countryDropdown, countryName);
-        insertValue(websiteOrHomepageInput, website);
-        insertValue(phoneNumberInput, phoneNumber);
-        insertValue(xBoxTagInput, xBoxTag);
-        insertValue(battleNetAccountInput, battleNetAccount);
-        insertValue(steamAccountInput, steamAccount);
-        insertValue(wiiFriendCodeInput, wiiFriendCode);
-        insertValue(psnIdInput, psnId);
+        insertStringValue(websiteOrHomepageInput, website);
+        insertStringValue(phoneNumberInput, phoneNumber);
+        insertStringValue(xBoxTagInput, xBoxTag);
+        insertStringValue(battleNetAccountInput, battleNetAccount);
+        insertStringValue(steamAccountInput, steamAccount);
+        insertStringValue(wiiFriendCodeInput, wiiFriendCode);
+        insertStringValue(psnIdInput, psnId);
         return this;
     }
 
@@ -96,7 +96,7 @@ public class ContactDetailsPage extends BasePage {
     }
 
     public ContactDetailsPage confirmNewContactData(String password) {
-        insertValue(passwordInput, password);
+        insertStringValue(passwordInput, password);
         click(submitButton);
         return this;
     }

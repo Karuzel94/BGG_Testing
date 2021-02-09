@@ -3,10 +3,8 @@ package com.boardgamegeek.utilities;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class TestHelper {
 
@@ -39,9 +37,10 @@ public class TestHelper {
             "Tunisia", "Malaysia");
     private String countryName = country.get(getRandomNumber(0, country.size()));
     private String gameName = "";
+    private List<String> titlesList = new ArrayList<>();
     private List<String> tempList = new ArrayList<>();
-    private List<Double> tempListDouble = new ArrayList<>();
-    private int gotTempListsCounter = 1;
+    private String wishlistOption = "";
+
 
     @DataProvider
     public Object[][] getLogInData() {
@@ -132,28 +131,41 @@ public class TestHelper {
         return gameName;
     }
 
-    public void setTempListOfTitles(List<String> list) {
+    public void setListOfTitles(List<String> list) {
+        titlesList = list;
+        Collections.shuffle(titlesList);
+        Map<String, String> map = titlesList.stream().collect(Collectors.toMap(String::new, String::new));
+        for (Map.Entry<String, String> mapa : map.entrySet()) {
+            if (mapa.getValue().startsWith("The ") || mapa.getValue().startsWith("La ")) {
+                mapa.setValue(mapa.getValue().substring(mapa.getValue().indexOf(" ") + 1));
+            }
+        }
+        Map<String, String> result2 = new LinkedHashMap<>();
+        map.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .forEachOrdered(x -> result2.put(x.getKey(), x.getValue()));
+        titlesList = new ArrayList<>(result2.keySet());
+    }
+
+    public List<String> getListOfTitles() {
+        return titlesList;
+    }
+
+    public void setWishlistOption(String option) {
+        wishlistOption = option.substring(4);
+
+    }
+
+    public String getWishlistOption() {
+        return wishlistOption;
+    }
+
+    public void setGamesListWithSelectedWishListOption(List<String> list) {
         tempList = list;
     }
 
-    public List<String> getTempListOfTitles() {
+    public List<String> getGamesListWithSelectedWishlistOption() {
         return tempList;
-    }
-
-    public void setTempListOfRatings(List<Double> list) {
-        tempListDouble = list;
-    }
-
-    public List<Double> getTempListOfRatings() {
-        if (gotTempListsCounter != 1){
-            this.gotTempListsCounter += 1;
-            return tempListDouble;
-        } else {
-            Collections.sort(tempListDouble, Collections.reverseOrder());
-            this.gotTempListsCounter += 1;
-            return tempListDouble;
-        }
-
     }
 
 }

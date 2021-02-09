@@ -25,6 +25,9 @@ public class GamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-sm btn-subtle collection-dropdown-edit ng-isolate-scope']")
     WebElement editGamePropertiesButton;
 
+    @FindBy(xpath = "//select[@ng-model='item.wishlistpriority']")
+    WebElement selectedWishlistOption;
+
     public String getGameTitle() {
         visibilityCheck(gameTitle);
         return gameTitle.getText();
@@ -32,6 +35,15 @@ public class GamePropertiesFragment extends BasePage {
 
     public String getInfoIsGameAddedToCollection() {
         return inCollectionButton.getText();
+    }
+
+    public String getWishlistSelectedOption() {
+        return getDropdownSelectedValue(selectedWishlistOption);
+    }
+
+    public GamePropertiesFragment clickInCollectionButton() {
+        click(inCollectionButton);
+        return this;
     }
 
     public GamePropertiesFragment clickAddGameToCollection() {

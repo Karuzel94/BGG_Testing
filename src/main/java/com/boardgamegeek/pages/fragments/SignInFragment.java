@@ -41,8 +41,8 @@ public class SignInFragment extends BasePage {
     }
 
     public SignInFragment signIn(String username, String password) {
-        insertValue(userNameInput, username);
-        insertValue(passwordInput, password);
+        insertStringValue(userNameInput, username);
+        insertStringValue(passwordInput, password);
         visibilityCheck(invalidDataCommunicate);
         click(signInButton);
         return this;

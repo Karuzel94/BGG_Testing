@@ -3,6 +3,8 @@ package com.boardgamegeek.tests;
 import com.boardgamegeek.utilities.Log;
 import org.testng.annotations.Test;
 
+import java.util.Comparator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GamesCollectionSortTest extends BaseTest {
@@ -12,16 +14,12 @@ public class GamesCollectionSortTest extends BaseTest {
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        testHelper.setTempListOfTitles(collectionPage.getTempListOfTitles());
         collectionPage.sortCollectionByTitles();
-        Log.logInfo("temp     " + testHelper.getTempListOfTitles());
-        Log.logInfo("original " + collectionPage.getSortedListWithGameTitles());
-        assertThat(testHelper.getTempListOfTitles()).isEqualTo(collectionPage.getSortedListWithGameTitles());
-        testHelper.setTempListOfTitles(collectionPage.getTempListOfTitles());
         collectionPage.sortCollectionByTitles();
-        Log.logInfo("temp     " + testHelper.getTempListOfTitles());
-        Log.logInfo("original " + collectionPage.getSortedListWithGameTitles());
-        assertThat(testHelper.getTempListOfTitles()).isEqualTo(collectionPage.getSortedListWithGameTitles());
+        testHelper.setListOfTitles(collectionPage.getGamesTitles());
+        Log.logInfo(testHelper.getListOfTitles().toString());
+        Log.logInfo(collectionPage.getGamesTitles().toString());
+        assertThat(collectionPage.getGamesTitles()).isEqualTo(testHelper.getListOfTitles());
     }
 
     @Test
@@ -29,16 +27,10 @@ public class GamesCollectionSortTest extends BaseTest {
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        testHelper.setTempListOfRatings(collectionPage.getTempListOfRatings());
         collectionPage.sortCollectionByRatings();
-        Log.logInfo("temp     " + testHelper.getTempListOfRatings());
-        Log.logInfo("original " + collectionPage.getSortedListWithGameRatings());
-        assertThat(testHelper.getTempListOfRatings()).isEqualTo(collectionPage.getSortedListWithGameRatings());
-        testHelper.setTempListOfRatings(collectionPage.getTempListOfRatings());
+        assertThat(collectionPage.getGeekRatings()).isSortedAccordingTo(Comparator.reverseOrder());
         collectionPage.sortCollectionByRatings();
-        Log.logInfo("temp     " + testHelper.getTempListOfRatings());
-        Log.logInfo("original " + collectionPage.getSortedListWithGameRatings());
-        assertThat(testHelper.getTempListOfRatings()).isEqualTo(collectionPage.getSortedListWithGameRatings());
+        assertThat(collectionPage.getGeekRatings()).isSorted();
     }
 
 }

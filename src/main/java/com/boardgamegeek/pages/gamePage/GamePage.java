@@ -22,12 +22,22 @@ public class GamePage extends BasePage {
         return this;
     }
 
+    public GamePage clickInCollectionButton() {
+        synchronization2();
+        gamePropertiesFragment.clickInCollectionButton();
+        return this;
+    }
+
     public String getGameTitle() {
         return gamePropertiesFragment.getGameTitle();
     }
 
     public String getInformationIsGameAdded() {
         return gamePropertiesFragment.getInfoIsGameAddedToCollection();
+    }
+
+    public String getWishlistSelectedOption() {
+        return gamePropertiesFragment.getWishlistSelectedOption();
     }
 
     public GamePage deleteGameFromCollection() {

@@ -25,7 +25,6 @@ public class UserMenuFragment extends BasePage {
     @FindBy(xpath = "//a[@href='/geekaccount/edit']")
     WebElement accountButton;
 
-
     public String getUserName() {
         visibilityCheck(userMenu);
         return userMenu.getText();
