@@ -3,6 +3,8 @@ package com.boardgamegeek.tests;
 import com.boardgamegeek.utilities.Log;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class FilteringCollectionTest extends BaseTest {
@@ -12,9 +14,11 @@ public class FilteringCollectionTest extends BaseTest {
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        collectionPage.geekRatingFiltering(7, 9);
-        Log.logInfo(collectionPage.getGeekRatings().toString());
+        collectionPage.geekRatingFiltering("7.000", "9.000");
+        collectionPage.acceptFilters();
+        Log.logInfo("How many records after filtering? " + collectionPage.getGeekRatings().size());
         for (int i = 0; i < collectionPage.getGeekRatings().size(); i++) {
+            Log.logInfo("Loop lap nr " + (i + 1));
             assertThat(collectionPage.getGeekRatings().get(i)).isBetween("7.000", "9.000");
         }
     }
@@ -29,11 +33,14 @@ public class FilteringCollectionTest extends BaseTest {
         collectionPage.acceptFilters();
         testHelper.setGamesListWithSelectedWishListOption(collectionPage.getGamesTitles());
         Log.logInfo(testHelper.getGamesListWithSelectedWishlistOption().toString());
-        collectionPage.goToGameFromList(testHelper.getGamesListWithSelectedWishlistOption()
-                .get(testHelper.getRandomNumber(1, testHelper.getGamesListWithSelectedWishlistOption().size())));
-        gamePage.clickInCollectionButton();
-        assertThat(gamePage.getWishlistSelectedOption()).isEqualTo(testHelper.getWishlistOption());
-        gamePage.clickInCollectionButton();
-
+        collectionPage.openGamesFromListInNewTabs();
+        ArrayList<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+        for (int i = 1; i < browserTabs.size(); i++) {
+            driver.switchTo().window(browserTabs.get(i));
+            gamePage.clickInCollectionButton();
+            assertThat(gamePage.getWishlistSelectedOption()).isEqualTo(testHelper.getWishlistOption());
+            Log.logInfo(gamePage.getGameTitle() + " : wishlist option set to : " + testHelper.getWishlistOption());
+            driver.switchTo().window(browserTabs.get(0));
+        }
     }
 }

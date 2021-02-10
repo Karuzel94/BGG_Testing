@@ -51,6 +51,13 @@ public class GamesListFragment extends BasePage {
         return this;
     }
 
+    public GamesListFragment openGamesFromListInNewTabs() {
+        for (int i = 0; i < gamesInCollectionList.size(); i++) {
+            openInNewTab(gamesInCollectionList.get(i).findElement(By.xpath(gameLink)));
+        }
+        return this;
+    }
+
     public GamesListFragment chooseRandomGameFromList() {
         click(gamesInCollectionList.get(testHelper.getRandomNumber(1, gamesInCollectionList.size()))
                 .findElement(By.xpath(gameLink)));

@@ -1,8 +1,8 @@
 package com.boardgamegeek.pages;
 
-import com.boardgamegeek.utilities.Log;
 import com.boardgamegeek.utilities.TestHelper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,6 +47,12 @@ public abstract class BasePage {
         element.click();
     }
 
+    public void openInNewTab(WebElement element) {
+        visibilityCheck(element);
+        checkElementClickable(element);
+        element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
+    }
+
     private void selectInit(WebElement element){
         this.dropdown = new Select(element);
     }
@@ -71,11 +77,4 @@ public abstract class BasePage {
         element.clear();
         element.sendKeys(value);
     }
-
-    public void insertIntegerValue(WebElement element, int value){
-        visibilityCheck(element);
-        element.clear();
-        element.sendKeys(String.valueOf(value));
-    }
-
 }

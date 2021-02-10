@@ -46,7 +46,7 @@ public class CollectionPage extends BasePage {
         return gamesListFragment.getGeekRatings();
     }
 
-    public CollectionPage geekRatingFiltering(int min, int max) {
+    public CollectionPage geekRatingFiltering(String min, String max) {
         gamesListFragment.openFilters();
         filtersFragment.geekRatingFiltering(min, max);
         return this;
@@ -66,4 +66,10 @@ public class CollectionPage extends BasePage {
         filtersFragment.acceptFilters();
         return this;
     }
+
+    public CollectionPage openGamesFromListInNewTabs() {
+        gamesListFragment.openGamesFromListInNewTabs();
+        return this;
+    }
+
 }

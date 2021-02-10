@@ -33,11 +33,9 @@ public class FiltersFragment extends BasePage {
     @FindBy(xpath = "//select[@id='wishlistpriority']//option[contains(text(),' - ')]")
     List<WebElement> wishlistPrioritySelectOptions;
 
-    public FiltersFragment geekRatingFiltering(int min, int max) {
-        insertIntegerValue(minGeekRating, min);
-        insertIntegerValue(maxGeekRating, max);
-        click(applyButton);
-        synchronization(loadingInformation);
+    public FiltersFragment geekRatingFiltering(String min, String max) {
+        insertStringValue(minGeekRating, min);
+        insertStringValue(maxGeekRating, max);
         return this;
     }
 
