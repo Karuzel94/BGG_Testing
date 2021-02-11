@@ -25,26 +25,26 @@ public class FiltersFragment extends BasePage {
     WebElement maxGeekRating;
 
     @FindBy(xpath = "//select[@id='wishlistpriority']")
-    WebElement wishlistPrioritySelect;
+    WebElement wishListPrioritySelect;
 
     @FindBy(xpath = "//div[@id='collection_status']")
     WebElement loadingInformation;
 
     @FindBy(xpath = "//select[@id='wishlistpriority']//option[contains(text(),' - ')]")
-    List<WebElement> wishlistPrioritySelectOptions;
+    List<WebElement> wishListPrioritySelectOptions;
 
-    public FiltersFragment geekRatingFiltering(String min, String max) {
-        insertStringValue(minGeekRating, min);
-        insertStringValue(maxGeekRating, max);
+    public FiltersFragment geekRatingFiltering(Double min, Double max) {
+        insertDoubleValue(minGeekRating, min);
+        insertDoubleValue(maxGeekRating, max);
         return this;
     }
 
-    public String getWishlistSelectedOption() {
-        return getDropdownSelectedValue(wishlistPrioritySelect);
+    public String getWishListSelectedOption() {
+        return getDropdownSelectedValue(wishListPrioritySelect);
     }
 
-    public FiltersFragment chooseRandomWishlistPriorityOption() {
-        selectRandomDropdownOption(wishlistPrioritySelectOptions, wishlistPrioritySelect);
+    public FiltersFragment chooseRandomWishListPriorityOption() {
+        selectRandomDropdownOption(wishListPrioritySelectOptions, wishListPrioritySelect);
         return this;
     }
 

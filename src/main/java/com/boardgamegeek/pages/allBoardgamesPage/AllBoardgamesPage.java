@@ -24,7 +24,6 @@ public class AllBoardgamesPage extends BasePage {
                 .findElement(By.xpath(".//div[contains(@id,'results_objectname')]/a")));
         return this;
     }
-
 }
 
 

@@ -14,32 +14,35 @@ public class FilteringCollectionTest extends BaseTest {
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        collectionPage.geekRatingFiltering("7.000", "9.000");
-        collectionPage.acceptFilters();
+        collectionPage.geekRatingFiltering(7.0, 9.0)
+                .acceptFilters();
         Log.logInfo("How many records after filtering? " + collectionPage.getGeekRatings().size());
         for (int i = 0; i < collectionPage.getGeekRatings().size(); i++) {
-            Log.logInfo("Loop lap nr " + (i + 1));
-            assertThat(collectionPage.getGeekRatings().get(i)).isBetween("7.000", "9.000");
+            assertThat(collectionPage.getGeekRatings().get(i)).isBetween(7.0, 9.0);
+            Log.logInfo("Loop lap nr " + (i + 1) + ", number " + collectionPage.getGeekRatings().get(i) +
+                    " is between 7.0 and 9.0");
         }
     }
 
     @Test
-    public void filteringCollectionByWishlistStatus() {
+    public void filteringCollectionByWishListStatus() {
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        collectionPage.wishlistPriorityFiltering();
-        testHelper.setWishlistOption(collectionPage.getWishlistSelectedOption());
+        collectionPage.wishListPriorityFiltering();
+        testHelper.setWishListOption(collectionPage.getWishListSelectedOption());
         collectionPage.acceptFilters();
         testHelper.setGamesListWithSelectedWishListOption(collectionPage.getGamesTitles());
-        Log.logInfo(testHelper.getGamesListWithSelectedWishlistOption().toString());
+        Log.logInfo(testHelper.getGamesListWithSelectedWishListOption().toString());
         collectionPage.openGamesFromListInNewTabs();
         ArrayList<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
         for (int i = 1; i < browserTabs.size(); i++) {
             driver.switchTo().window(browserTabs.get(i));
+            assertThat(testHelper.getGamesListWithSelectedWishListOption().get(i - 1)).isEqualTo(gamePage.getGameTitle());
+            Log.logInfo("The tab of game called: " + gamePage.getGameTitle());
             gamePage.clickInCollectionButton();
-            assertThat(gamePage.getWishlistSelectedOption()).isEqualTo(testHelper.getWishlistOption());
-            Log.logInfo(gamePage.getGameTitle() + " : wishlist option set to : " + testHelper.getWishlistOption());
+            assertThat(gamePage.getWishListSelectedOption()).isEqualTo(testHelper.getWishListOption());
+            Log.logInfo(gamePage.getGameTitle() + " : wishlist option set to : " + testHelper.getWishListOption());
             driver.switchTo().window(browserTabs.get(0));
         }
     }

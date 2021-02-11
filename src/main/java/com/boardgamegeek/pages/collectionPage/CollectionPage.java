@@ -42,24 +42,24 @@ public class CollectionPage extends BasePage {
         return gamesListFragment.getGamesNames();
     }
 
-    public List<String> getGeekRatings() {
+    public List<Double> getGeekRatings() {
         return gamesListFragment.getGeekRatings();
     }
 
-    public CollectionPage geekRatingFiltering(String min, String max) {
+    public CollectionPage geekRatingFiltering(Double min, Double max) {
         gamesListFragment.openFilters();
         filtersFragment.geekRatingFiltering(min, max);
         return this;
     }
 
-    public CollectionPage wishlistPriorityFiltering() {
+    public CollectionPage wishListPriorityFiltering() {
         gamesListFragment.openFilters();
-        filtersFragment.chooseRandomWishlistPriorityOption();
+        filtersFragment.chooseRandomWishListPriorityOption();
         return this;
     }
 
-    public String getWishlistSelectedOption() {
-        return filtersFragment.getWishlistSelectedOption();
+    public String getWishListSelectedOption() {
+        return filtersFragment.getWishListSelectedOption();
     }
 
     public CollectionPage acceptFilters() {

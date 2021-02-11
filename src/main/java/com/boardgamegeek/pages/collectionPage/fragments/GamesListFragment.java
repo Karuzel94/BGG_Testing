@@ -52,8 +52,8 @@ public class GamesListFragment extends BasePage {
     }
 
     public GamesListFragment openGamesFromListInNewTabs() {
-        for (int i = 0; i < gamesInCollectionList.size(); i++) {
-            openInNewTab(gamesInCollectionList.get(i).findElement(By.xpath(gameLink)));
+        for (WebElement element : gamesInCollectionList) {
+            openInNewTab(element.findElement(By.xpath(gameLink)));
         }
         return this;
     }
@@ -83,9 +83,9 @@ public class GamesListFragment extends BasePage {
         return this;
     }
 
-    public List<String> getGeekRatings() {
+    public List<Double> getGeekRatings() {
         return gamesInCollectionList.stream().map(e -> e.findElement(By.xpath(gameRating))
-                .getText()).collect(Collectors.toList());
+                .getText()).map(Double::parseDouble).collect(Collectors.toList());
     }
 
     public List<String> getGamesNames() {

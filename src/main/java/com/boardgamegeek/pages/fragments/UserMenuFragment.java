@@ -16,7 +16,7 @@ public class UserMenuFragment extends BasePage {
     @FindBy(xpath = "//span[@class='mygeek-dropdown-username text-truncate']")
     WebElement userMenu;
 
-    @FindBy(xpath = "//a[@href='/collection/user/qwerty1234z']")
+    @FindBy(xpath = "//a[@href='/collection/user/qwerty1234zz']")
     WebElement collectionButton;
 
     @FindBy(xpath = "//fa-icon[@class='ng-fa-icon fs-sm align-middle']")

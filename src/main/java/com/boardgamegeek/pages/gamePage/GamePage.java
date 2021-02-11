@@ -36,7 +36,7 @@ public class GamePage extends BasePage {
         return gamePropertiesFragment.getInfoIsGameAddedToCollection();
     }
 
-    public String getWishlistSelectedOption() {
+    public String getWishListSelectedOption() {
         return gamePropertiesFragment.getWishlistSelectedOption();
     }
 

@@ -50,10 +50,10 @@ public abstract class BasePage {
     public void openInNewTab(WebElement element) {
         visibilityCheck(element);
         checkElementClickable(element);
-        element.sendKeys(Keys.chord(Keys.CONTROL,Keys.RETURN));
+        element.sendKeys(Keys.chord(Keys.CONTROL, Keys.RETURN));
     }
 
-    private void selectInit(WebElement element){
+    private void selectInit(WebElement element) {
         this.dropdown = new Select(element);
     }
 
@@ -64,7 +64,7 @@ public abstract class BasePage {
 
     public void selectRandomDropdownOption(List<WebElement> list, WebElement element) {
         selectInit(element);
-        dropdown.selectByIndex(testHelper.getRandomNumber(1,list.size()));
+        dropdown.selectByIndex(testHelper.getRandomNumber(1, list.size()));
     }
 
     public String getDropdownSelectedValue(WebElement element) {
@@ -77,4 +77,11 @@ public abstract class BasePage {
         element.clear();
         element.sendKeys(value);
     }
+
+    public void insertDoubleValue(WebElement element, Double value) {
+        visibilityCheck(element);
+        element.clear();
+        element.sendKeys(String.valueOf(value));
+    }
+
 }

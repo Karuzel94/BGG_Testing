@@ -39,7 +39,7 @@ public class TestHelper {
     private String gameName = "";
     private List<String> titlesList = new ArrayList<>();
     private List<String> tempList = new ArrayList<>();
-    private String wishlistOption = "";
+    private String wishListOption = "";
 
 
     @DataProvider
@@ -151,20 +151,21 @@ public class TestHelper {
         return titlesList;
     }
 
-    public void setWishlistOption(String option) {
-        wishlistOption = option.substring(4);
+    public void setWishListOption(String option) {
+        wishListOption = option.substring(4);
 
     }
 
-    public String getWishlistOption() {
-        return wishlistOption;
+    public String getWishListOption() {
+        return wishListOption;
     }
 
     public void setGamesListWithSelectedWishListOption(List<String> list) {
+        list.sort(Comparator.reverseOrder());
         tempList = list;
     }
 
-    public List<String> getGamesListWithSelectedWishlistOption() {
+    public List<String> getGamesListWithSelectedWishListOption() {
         return tempList;
     }
 
