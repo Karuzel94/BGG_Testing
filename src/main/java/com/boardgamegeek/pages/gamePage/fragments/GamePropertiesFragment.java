@@ -28,6 +28,9 @@ public class GamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//select[@ng-model='item.wishlistpriority']")
     WebElement selectedWishlistOption;
 
+    @FindBy(xpath = "//span[@ng-bind-html='geekitemctrl.geekitem.data.item.polls.languagedependence|to_trusted']")
+    WebElement languageDependenceInformation;
+
     public String getGameTitle() {
         visibilityCheck(gameTitle);
         return gameTitle.getText();
@@ -55,5 +58,9 @@ public class GamePropertiesFragment extends BasePage {
         click(inCollectionButton);
         click(editGamePropertiesButton);
         return this;
+    }
+
+    public String getLanguageDependenceInformation() {
+        return languageDependenceInformation.getText();
     }
 }

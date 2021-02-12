@@ -46,6 +46,10 @@ public class GamePage extends BasePage {
         return this;
     }
 
+    public String getLanguageDependenceInformation() {
+        return gamePropertiesFragment.getLanguageDependenceInformation();
+    }
+
 }
 
 
