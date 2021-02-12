@@ -34,7 +34,6 @@ public class SignInFragment extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-outline-secondary']")
     WebElement cancelSignIn;
 
-
     public SignInFragment clickSignInButton() {
         click(logInButton);
         return this;
