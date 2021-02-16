@@ -35,8 +35,13 @@ public class XmlApiFetchingTest extends BaseTest {
         Log.logInfo(String.valueOf(maxValue));
         String dependenceFromXml = xmlFile.
                 get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" + maxValue + "'}.@value");
-        Log.logInfo(dependenceFromXml);
-        assertThat(dependenceFromXml).isEqualTo(languageDependence);
+        if (maxValue != 0) {
+            Log.logInfo(dependenceFromXml);
+            assertThat(dependenceFromXml).isEqualTo(languageDependence);
+        } else {
+            Log.logInfo("There are no language dependence suggestions for game " + gamePage.getGameTitle() + "." +
+                    "The test ends now.");
+        }
     }
 
     @Test
@@ -58,11 +63,16 @@ public class XmlApiFetchingTest extends BaseTest {
                 get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
         int maxValue = Collections.max(numVotesString.stream().map(Integer::parseInt).collect(Collectors.toList()));
         Log.logInfo(String.valueOf(maxValue));
-        given().
-                when().
-                get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).
-                then().
-                body("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" + maxValue + "'}.@value",
-                        equalTo(languageDependence));
+        if (maxValue != 0) {
+            given().
+                    when().
+                    get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).
+                    then().
+                    body("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" +
+                                    maxValue + "'}.@value", equalTo(languageDependence));
+        } else {
+            Log.logInfo("There are no language dependence suggestions for game " + gamePage.getGameTitle() + "." +
+                    "The test ends now.");
+        }
     }
 }
