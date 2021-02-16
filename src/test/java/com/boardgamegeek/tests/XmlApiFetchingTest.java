@@ -32,10 +32,10 @@ public class XmlApiFetchingTest extends BaseTest {
         List<String> numVotesString = xmlFile.
                 get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
         int maxValue = Collections.max(numVotesString.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        Log.logInfo(String.valueOf(maxValue));
-        String dependenceFromXml = xmlFile.
-                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" + maxValue + "'}.@value");
         if (maxValue != 0) {
+            Log.logInfo(String.valueOf(maxValue));
+            String dependenceFromXml = xmlFile.
+                    get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" + maxValue + "'}.@value");
             Log.logInfo(dependenceFromXml);
             assertThat(dependenceFromXml).isEqualTo(languageDependence);
         } else {
@@ -62,8 +62,8 @@ public class XmlApiFetchingTest extends BaseTest {
         List<String> numVotesString = xmlFile.
                 get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
         int maxValue = Collections.max(numVotesString.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        Log.logInfo(String.valueOf(maxValue));
         if (maxValue != 0) {
+            Log.logInfo(String.valueOf(maxValue));
             given().
                     when().
                     get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).
