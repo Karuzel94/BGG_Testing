@@ -22,9 +22,6 @@ public class GamesListFragment extends BasePage {
     @FindBy(xpath = "//th[@class='collection_bggrating']/a")
     WebElement geekRatingSortButton;
 
-    @FindBy(xpath = "//div[@class='pace pace-active']")
-    WebElement loadingProgressBar;
-
     @FindBy(xpath = "//div[@id='collection_status']")
     WebElement loadingInformation;
 
@@ -38,6 +35,7 @@ public class GamesListFragment extends BasePage {
 
     private final String gameLink = ".//div[contains(@id,'results_objectname')]/a";
     private final String gameRating = ".//td[@class='collection_bggrating']";
+    private final String deleteGameButton = ".//a[contains(@onclick,'CE_DeleteItem')]";
 
     public GamesListFragment clickDefinedGameFromList(String name) {
         synchronization(loadingInformation);
@@ -63,6 +61,19 @@ public class GamesListFragment extends BasePage {
                 .findElement(By.xpath(gameLink)));
         synchronization2();
         return this;
+    }
+
+    public GamesListFragment deleteRandomGameFromList() {
+        int randomGameNumber = testHelper.getRandomNumber(1, gamesInCollectionList.size());
+        testHelper.setTempString(gamesInCollectionList.get(randomGameNumber).findElement(By.xpath(gameLink)).getText());
+        click(gamesInCollectionList.get(randomGameNumber).findElement(By.xpath(deleteGameButton)));
+        driver.switchTo().alert().accept();
+        testHelper.setTempList(getGamesNames());
+        return this;
+    }
+
+    public String getDeletedGameTitle() {
+        return testHelper.getTempString();
     }
 
     public GamesListFragment sortCollectionByTitles() {

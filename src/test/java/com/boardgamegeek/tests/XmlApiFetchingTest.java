@@ -1,11 +1,7 @@
 package com.boardgamegeek.tests;
 
 import com.boardgamegeek.utilities.Log;
-import io.restassured.path.xml.XmlPath;
 import org.testng.annotations.Test;
-
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,17 +18,12 @@ public class XmlApiFetchingTest extends BaseTest {
                 + ", Password:  " + loginProperties.getPassword());
         menuFragment.goToAllBoardgames();
         allBoardgamesPage.goToRandomGame();
-        testHelper.setTempString(gamePage.getLanguageDependenceInformation());
-        Log.logInfo(testHelper.getTempString() + "________" + gamePage.getGameTitle());
-        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gamePage.getGameId()).xmlPath();
-        testHelper.setTempList(xmlFile.get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes"));
-        testHelper.setTempNumber(Collections.max(testHelper.getTempList().stream().map(Integer::parseInt).collect(Collectors.toList())));
+        Log.logInfo(gamePage.getLanguageDependenceInformation() + "________" + gamePage.getGameTitle());
+        xmlApi.getLanguageDependenceFromXml(gamePage.getGameId());
         if (gamePage.getLanguageDependenceInformation() != "(no votes)") {
-            Log.logInfo(String.valueOf(testHelper.getTempNumber()));
-            testHelper.setOriginalString(xmlFile.
-                    get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" +
-                            testHelper.getTempNumber() + "'}.@value"));
-            assertThat(testHelper.getOriginalString()).isEqualTo(testHelper.getTempString());
+            Log.logInfo("xml: " + xmlApi.getLanguageDependenceFromXmlFile());
+            Log.logInfo("Game page: " + gamePage.getLanguageDependenceInformation());
+            assertThat(xmlApi.getLanguageDependenceFromXmlFile()).isEqualTo(gamePage.getLanguageDependenceInformation());
         } else {
             Log.logInfo("There are no language dependence suggestions for game " + gamePage.getGameTitle() + "." +
                     "The test ends now.");
@@ -48,19 +39,15 @@ public class XmlApiFetchingTest extends BaseTest {
                 + ", Password:  " + loginProperties.getPassword());
         menuFragment.goToAllBoardgames();
         allBoardgamesPage.goToRandomGame();
-        testHelper.setTempString(gamePage.getLanguageDependenceInformation());
         Log.logInfo(testHelper.getTempString() + "________" + gamePage.getGameTitle());
-        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gamePage.getGameId()).xmlPath();
-        testHelper.setTempList(xmlFile.
-                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes"));
-        testHelper.setTempNumber(Collections.max(testHelper.getTempList().stream().map(Integer::parseInt).collect(Collectors.toList())));
+        xmlApi.getMaxValue(gamePage.getGameId());
         if (gamePage.getLanguageDependenceInformation() != "(no votes)") {
             given().
                     when().
                     post("https://www.boardgamegeek.com/xmlapi/boardgame/" + gamePage.getGameId()).
                     then().
                     body("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" +
-                            testHelper.getTempNumber() + "'}.@value", equalTo(testHelper.getTempString()));
+                            xmlApi.maxValue() + "'}.@value", equalTo(gamePage.getLanguageDependenceInformation()));
         } else {
             Log.logInfo("There are no language dependence suggestions for game " + gamePage.getGameTitle() + "." +
                     "The test ends now.");

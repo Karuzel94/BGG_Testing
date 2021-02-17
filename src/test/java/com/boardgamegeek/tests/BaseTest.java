@@ -1,5 +1,6 @@
 package com.boardgamegeek.tests;
 
+import com.boardgamegeek.api.XmlApi;
 import com.boardgamegeek.pages.accountManagerPage.AccountManagerPage;
 import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
 import com.boardgamegeek.pages.collectionPage.CollectionPage;
@@ -34,6 +35,7 @@ public abstract class BaseTest {
     public SignInFragment signInFragment;
     public MenuFragment menuFragment;
     public UserMenuFragment userMenuFragment;
+    public XmlApi xmlApi;
 
     @BeforeTest
     public static void setupClass() {
@@ -59,6 +61,7 @@ public abstract class BaseTest {
         signInFragment = new SignInFragment(driver);
         menuFragment = new MenuFragment(driver);
         userMenuFragment = new UserMenuFragment(driver);
+        xmlApi = new XmlApi(driver);
     }
 
     @AfterClass

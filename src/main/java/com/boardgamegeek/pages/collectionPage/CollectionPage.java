@@ -28,6 +28,15 @@ public class CollectionPage extends BasePage {
         return this;
     }
 
+    public CollectionPage deleteRandomGameFromList() {
+        gamesListFragment.deleteRandomGameFromList();
+        return this;
+    }
+
+    public String getDeletedGameTitle() {
+        return gamesListFragment.getDeletedGameTitle();
+    }
+
     public CollectionPage sortCollectionByTitles() {
         gamesListFragment.sortCollectionByTitles();
         return this;
