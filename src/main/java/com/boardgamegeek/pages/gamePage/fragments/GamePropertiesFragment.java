@@ -31,9 +31,16 @@ public class GamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//span[@ng-bind-html='geekitemctrl.geekitem.data.item.polls.languagedependence|to_trusted']")
     WebElement languageDependenceInformation;
 
+    @FindBy(xpath = "//div[@class='game-itemid ng-binding']")
+    WebElement gameId;
+
     public String getGameTitle() {
         visibilityCheck(gameTitle);
         return gameTitle.getText();
+    }
+
+    public String getGameId() {
+        return gameId.getText().replaceAll("\\D+", "");
     }
 
     public String getInfoIsGameAddedToCollection() {

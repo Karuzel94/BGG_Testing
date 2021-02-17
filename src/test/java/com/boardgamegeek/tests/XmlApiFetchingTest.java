@@ -5,7 +5,6 @@ import io.restassured.path.xml.XmlPath;
 import org.testng.annotations.Test;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
@@ -23,21 +22,17 @@ public class XmlApiFetchingTest extends BaseTest {
                 + ", Password:  " + loginProperties.getPassword());
         menuFragment.goToAllBoardgames();
         allBoardgamesPage.goToRandomGame();
-        Log.logInfo(driver.getCurrentUrl());
-        String gameId = driver.getCurrentUrl().replaceAll("\\D+", "");
-        Log.logInfo(gameId);
-        String languageDependence = gamePage.getLanguageDependenceInformation();
-        Log.logInfo(languageDependence + "________" + gamePage.getGameTitle());
-        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).xmlPath();
-        List<String> numVotesString = xmlFile.
-                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
-        int maxValue = Collections.max(numVotesString.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        if (maxValue != 0) {
-            Log.logInfo(String.valueOf(maxValue));
-            String dependenceFromXml = xmlFile.
-                    get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" + maxValue + "'}.@value");
-            Log.logInfo(dependenceFromXml);
-            assertThat(dependenceFromXml).isEqualTo(languageDependence);
+        testHelper.setTempString(gamePage.getLanguageDependenceInformation());
+        Log.logInfo(testHelper.getTempString() + "________" + gamePage.getGameTitle());
+        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gamePage.getGameId()).xmlPath();
+        testHelper.setTempList(xmlFile.get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes"));
+        testHelper.setTempNumber(Collections.max(testHelper.getTempList().stream().map(Integer::parseInt).collect(Collectors.toList())));
+        if (gamePage.getLanguageDependenceInformation() != "(no votes)") {
+            Log.logInfo(String.valueOf(testHelper.getTempNumber()));
+            testHelper.setOriginalString(xmlFile.
+                    get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" +
+                            testHelper.getTempNumber() + "'}.@value"));
+            assertThat(testHelper.getOriginalString()).isEqualTo(testHelper.getTempString());
         } else {
             Log.logInfo("There are no language dependence suggestions for game " + gamePage.getGameTitle() + "." +
                     "The test ends now.");
@@ -53,23 +48,19 @@ public class XmlApiFetchingTest extends BaseTest {
                 + ", Password:  " + loginProperties.getPassword());
         menuFragment.goToAllBoardgames();
         allBoardgamesPage.goToRandomGame();
-        Log.logInfo(driver.getCurrentUrl());
-        String gameId = driver.getCurrentUrl().replaceAll("\\D+", "");
-        Log.logInfo(gameId);
-        String languageDependence = gamePage.getLanguageDependenceInformation();
-        Log.logInfo(languageDependence + "________" + gamePage.getGameTitle());
-        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).xmlPath();
-        List<String> numVotesString = xmlFile.
-                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
-        int maxValue = Collections.max(numVotesString.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        if (maxValue != 0) {
-            Log.logInfo(String.valueOf(maxValue));
+        testHelper.setTempString(gamePage.getLanguageDependenceInformation());
+        Log.logInfo(testHelper.getTempString() + "________" + gamePage.getGameTitle());
+        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gamePage.getGameId()).xmlPath();
+        testHelper.setTempList(xmlFile.
+                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes"));
+        testHelper.setTempNumber(Collections.max(testHelper.getTempList().stream().map(Integer::parseInt).collect(Collectors.toList())));
+        if (gamePage.getLanguageDependenceInformation() != "(no votes)") {
             given().
                     when().
-                    get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).
+                    post("https://www.boardgamegeek.com/xmlapi/boardgame/" + gamePage.getGameId()).
                     then().
                     body("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" +
-                                    maxValue + "'}.@value", equalTo(languageDependence));
+                            testHelper.getTempNumber() + "'}.@value", equalTo(testHelper.getTempString()));
         } else {
             Log.logInfo("There are no language dependence suggestions for game " + gamePage.getGameTitle() + "." +
                     "The test ends now.");

@@ -50,6 +50,10 @@ public class GamePage extends BasePage {
         return gamePropertiesFragment.getLanguageDependenceInformation();
     }
 
+    public String getGameId() {
+        return gamePropertiesFragment.getGameId();
+    }
+
 }
 
 
