@@ -9,7 +9,6 @@ public class DeleteGameFromCollectionTest extends BaseTest {
 
     @Test
     public void deleteGameFromCollectionTest() {
-
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         assertThat(userMenuFragment.getUserName()).isEqualTo(loginProperties.getUsername());
@@ -25,7 +24,7 @@ public class DeleteGameFromCollectionTest extends BaseTest {
     }
 
     @Test
-    public void deleteGameFromCollectionTestTwo() {
+    public void deleteGameFromCollectionTestByDeleteThisItemButton() {
         signInFragment.clickSignInButton()
                 .signIn(loginProperties.getUsername(), loginProperties.getPassword());
         assertThat(userMenuFragment.getUserName()).isEqualTo(loginProperties.getUsername());
@@ -33,9 +32,7 @@ public class DeleteGameFromCollectionTest extends BaseTest {
                 + ", Password:  " + loginProperties.getPassword());
         userMenuFragment.goToCollection();
         collectionPage.deleteRandomGameFromList();
-        Log.logInfo(collectionPage.getDeletedGameTitle());
         Log.logInfo(collectionPage.getGamesTitles().toString());
-        assertThat(collectionPage.getGamesTitles()).doesNotContain(collectionPage.getDeletedGameTitle());
-
+        assertThat(collectionPage.getGamesTitles()).contains("");
     }
 }

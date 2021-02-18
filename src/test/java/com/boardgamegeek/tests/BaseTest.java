@@ -1,6 +1,5 @@
 package com.boardgamegeek.tests;
 
-import com.boardgamegeek.api.XmlApi;
 import com.boardgamegeek.pages.accountManagerPage.AccountManagerPage;
 import com.boardgamegeek.pages.allBoardgamesPage.AllBoardgamesPage;
 import com.boardgamegeek.pages.collectionPage.CollectionPage;
@@ -12,6 +11,7 @@ import com.boardgamegeek.pages.gamePage.GamePage;
 import com.boardgamegeek.pages.joinPage.JoinPage;
 import com.boardgamegeek.utilities.LoginProperties;
 import com.boardgamegeek.utilities.TestHelper;
+import com.boardgamegeek.xmlRepresentations.GameXmlFile;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -35,7 +35,7 @@ public abstract class BaseTest {
     public SignInFragment signInFragment;
     public MenuFragment menuFragment;
     public UserMenuFragment userMenuFragment;
-    public XmlApi xmlApi;
+    public GameXmlFile gameXmlFile;
 
     @BeforeTest
     public static void setupClass() {
@@ -61,7 +61,7 @@ public abstract class BaseTest {
         signInFragment = new SignInFragment(driver);
         menuFragment = new MenuFragment(driver);
         userMenuFragment = new UserMenuFragment(driver);
-        xmlApi = new XmlApi(driver);
+        gameXmlFile = new GameXmlFile();
     }
 
     @AfterClass

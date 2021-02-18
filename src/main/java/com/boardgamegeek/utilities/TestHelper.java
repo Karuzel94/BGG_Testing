@@ -40,9 +40,6 @@ public class TestHelper {
     private List<String> titlesList = new ArrayList<>();
     private List<String> tempList = new ArrayList<>();
     private String wishListOption = "";
-    private String tempString = "";
-    private String originalString = "";
-    private int tempNumber;
 
 
     @DataProvider
@@ -156,7 +153,6 @@ public class TestHelper {
 
     public void setWishListOption(String option) {
         wishListOption = option.substring(4);
-
     }
 
     public String getWishListOption() {
@@ -170,37 +166,5 @@ public class TestHelper {
 
     public List<String> getGamesListWithSelectedWishListOption() {
         return tempList;
-    }
-
-    public String getTempString() {
-        return tempString;
-    }
-
-    public void setTempString(String tempString) {
-        this.tempString = tempString;
-    }
-
-    public String getOriginalString() {
-        return originalString;
-    }
-
-    public void setOriginalString(String originalString) {
-        this.originalString = originalString;
-    }
-
-    public int getTempNumber() {
-        return tempNumber;
-    }
-
-    public void setTempNumber(int tempNumber) {
-        this.tempNumber = tempNumber;
-    }
-
-    public List<String> getTempList() {
-        return tempList;
-    }
-
-    public void setTempList(List<String> tempList) {
-        this.tempList = tempList;
     }
 }

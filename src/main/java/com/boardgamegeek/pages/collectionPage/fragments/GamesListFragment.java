@@ -64,16 +64,9 @@ public class GamesListFragment extends BasePage {
     }
 
     public GamesListFragment deleteRandomGameFromList() {
-        int randomGameNumber = testHelper.getRandomNumber(1, gamesInCollectionList.size());
-        testHelper.setTempString(gamesInCollectionList.get(randomGameNumber).findElement(By.xpath(gameLink)).getText());
-        click(gamesInCollectionList.get(randomGameNumber).findElement(By.xpath(deleteGameButton)));
+        click(gamesInCollectionList.get(testHelper.getRandomNumber(1, gamesInCollectionList.size())).findElement(By.xpath(deleteGameButton)));
         driver.switchTo().alert().accept();
-        testHelper.setTempList(getGamesNames());
         return this;
-    }
-
-    public String getDeletedGameTitle() {
-        return testHelper.getTempString();
     }
 
     public GamesListFragment sortCollectionByTitles() {
