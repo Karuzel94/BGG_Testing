@@ -28,8 +28,12 @@ public class CollectionPage extends BasePage {
         return this;
     }
 
-    public CollectionPage deleteRandomGameFromList() {
-        gamesListFragment.deleteRandomGameFromList();
+    public String deleteRandomGameFromList() {
+        return gamesListFragment.deleteRandomGameFromList();
+    }
+
+    public CollectionPage getFirstGameFromList() {
+        gamesListFragment.getFirstGameFromList();
         return this;
     }
 
@@ -41,6 +45,10 @@ public class CollectionPage extends BasePage {
     public CollectionPage sortCollectionByRatings() {
         gamesListFragment.sortCollectionByRatings();
         return this;
+    }
+
+    public int getRatingFromCollection() {
+        return gamesListFragment.getRatingFromCollection();
     }
 
     public List<String> getGamesTitles() {

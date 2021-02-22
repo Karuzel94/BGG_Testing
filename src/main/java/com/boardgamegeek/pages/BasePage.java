@@ -84,4 +84,8 @@ public abstract class BasePage {
         element.sendKeys(String.valueOf(value));
     }
 
+    public void alertAccept() {
+        driver.switchTo().alert().accept();
+    }
+
 }

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class GamePropertiesFragment extends BasePage {
 
     public GamePropertiesFragment(WebDriver driver) {
@@ -33,6 +35,21 @@ public class GamePropertiesFragment extends BasePage {
 
     @FindBy(xpath = "//div[@class='game-itemid ng-binding']")
     WebElement gameId;
+
+    @FindBy(xpath = "//span[@ng-show='overstar > 0 || collratingctrl.collection.ratingitem.rating > 0 ']")
+    WebElement settedMyRating;
+
+    @FindBy(xpath = "//span[@ng-show='collratingctrl.collection.ratingitem.rating']")
+    WebElement editMyRating;
+
+    @FindBy(xpath = "//span[@ng-repeat-start='r in range track by $index']")
+    List<WebElement> ratingStarsIcons;
+
+    @FindBy(xpath = "//i[@ng-mouseenter='enter($index + 1)']")
+    List<WebElement> ratingStarsButtons;
+
+    @FindBy(xpath = "//button[@class='cg-notify-close']")
+    WebElement itemUpdatedInformationCloseButton;
 
     public String getGameTitle() {
         visibilityCheck(gameTitle);
@@ -69,5 +86,39 @@ public class GamePropertiesFragment extends BasePage {
 
     public String getLanguageDependenceInformation() {
         return languageDependenceInformation.getText();
+    }
+
+    public boolean checkIfRatingHasBeenGiven() {
+        if (settedMyRating.isDisplayed()) {
+            click(editMyRating);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public GamePropertiesFragment addMyRatingForGame(int rating) {
+        if (itemUpdatedInformationCloseButton.isDisplayed()) {
+            click(itemUpdatedInformationCloseButton);
+        }
+        click(ratingStarsButtons.get(rating));
+        return this;
+    }
+
+    public int getSettedRating() {
+        return Integer.parseInt(settedMyRating.getText().replaceAll("\\D+", ""));
+    }
+
+    public int countStarsNumber() {
+        int counter = 0;
+        for (int i = 1; i <= ratingStarsIcons.size(); i++) {
+            if (ratingStarsIcons.get(counter).getText().equals("(*)")) {
+                counter = i;
+                continue;
+            } else {
+                break;
+            }
+        }
+        return counter;
     }
 }

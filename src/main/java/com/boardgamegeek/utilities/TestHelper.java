@@ -40,6 +40,7 @@ public class TestHelper {
     private List<String> titlesList = new ArrayList<>();
     private List<String> tempList = new ArrayList<>();
     private String wishListOption = "";
+    private int tempNumber = 0;
 
 
     @DataProvider
@@ -166,5 +167,13 @@ public class TestHelper {
 
     public List<String> getGamesListWithSelectedWishListOption() {
         return tempList;
+    }
+
+    public int getTempNumber() {
+        return tempNumber;
+    }
+
+    public void setTempNumber(int tempNumber) {
+        this.tempNumber = tempNumber;
     }
 }

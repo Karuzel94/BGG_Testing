@@ -25,6 +25,12 @@ public class EditGamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//button[@ng-click='ok()']")
     WebElement deleteConfirmationButton;
 
+    @FindBy(xpath = "//button[@class='btn btn-link btn-sm rating-stars-clear ng-scope']")
+    WebElement clearRatingButton;
+
+    @FindBy(xpath = "//div[@ng-show='!$messageTemplate']")
+    WebElement itemUpdatedInformation;
+
     public EditGamePropertiesFragment saveInCollection() {
         visibilityCheck(saveCollectionButton);
         click(saveCollectionButton);
@@ -35,6 +41,13 @@ public class EditGamePropertiesFragment extends BasePage {
         click(moreOptionsButton);
         click(deleteFromCollectionButton);
         click(deleteConfirmationButton);
+        return this;
+    }
+
+    public EditGamePropertiesFragment deleteMyRating() {
+        click(clearRatingButton);
+        click(saveCollectionButton);
+        visibilityCheck(itemUpdatedInformation);
         return this;
     }
 

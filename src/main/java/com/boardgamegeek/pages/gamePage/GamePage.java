@@ -54,6 +54,26 @@ public class GamePage extends BasePage {
         return gamePropertiesFragment.getGameId();
     }
 
+    public GamePage giveMyRating(int rating) {
+        if(gamePropertiesFragment.checkIfRatingHasBeenGiven()){
+            editGamePropertiesFragment.deleteMyRating();
+            gamePropertiesFragment.addMyRatingForGame(rating);
+            editGamePropertiesFragment.saveInCollection();
+        } else {
+            gamePropertiesFragment.addMyRatingForGame(rating);
+            editGamePropertiesFragment.saveInCollection();
+        }
+        return this;
+    }
+
+    public int getSettedRating() {
+        return gamePropertiesFragment.getSettedRating();
+    }
+
+    public int countStarsNumber() {
+        return gamePropertiesFragment.countStarsNumber();
+    }
+
 }
 
 

@@ -12,29 +12,24 @@ import static io.restassured.RestAssured.given;
 public class GameXmlFile {
 
     private List<String> stringList = new ArrayList<>();
-    private List<Integer> intList = new ArrayList<>();
-
-    public GameXmlFile() {
-    }
 
     public XmlPath xmlFile(String gameId) {
-        XmlPath xmlFile = given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).xmlPath();
-        return xmlFile;
-    }
-
-    public String getLanguageDependenceFromXml(String gameId) {
-        return xmlFile(gameId).get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='" +
-                getMaxValue(gameId) + "'}.@value");
+        return given().get("https://www.boardgamegeek.com/xmlapi/boardgame/" + gameId).xmlPath();
     }
 
     public int getMaxValue(String gameId) {
         stringList = xmlFile(gameId).
                 get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
-        intList = stringList.stream().map(Integer::parseInt).collect(Collectors.toList());
-        return Collections.max(intList);
+        return Collections.max(stringList.stream().map(Integer::parseInt).collect(Collectors.toList()));
     }
 
-    public int getTotalVotesNumber(String gameId) {
-        return Integer.parseInt(xmlFile(gameId).get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.@totalvotes"));
+    public String getLanguageDependenceFromXml(String gameId) {
+        stringList = xmlFile(gameId).
+                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
+        int number = Collections.max(stringList.stream().map(Integer::parseInt).collect(Collectors.toList()));
+        return (number==0) ? "(no votes)" : xmlFile(gameId)
+                .get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='"
+                + number + "'}.@value");
     }
+
 }

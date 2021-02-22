@@ -1,6 +1,7 @@
 package com.boardgamegeek.pages.collectionPage.fragments;
 
 import com.boardgamegeek.pages.BasePage;
+import com.boardgamegeek.utilities.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +36,7 @@ public class GamesListFragment extends BasePage {
 
     private final String gameLink = ".//div[contains(@id,'results_objectname')]/a";
     private final String gameRating = ".//td[@class='collection_bggrating']";
+    private final String myRating = ".//div[@class='ratingtext']";
     private final String deleteGameButton = ".//a[contains(@onclick,'CE_DeleteItem')]";
 
     public GamesListFragment clickDefinedGameFromList(String name) {
@@ -56,17 +58,33 @@ public class GamesListFragment extends BasePage {
         return this;
     }
 
+    private WebElement getChildElement(int elementId, String childName) {
+        return gamesInCollectionList.get(elementId).findElement(By.xpath(childName));
+    }
+
     public GamesListFragment chooseRandomGameFromList() {
-        click(gamesInCollectionList.get(testHelper.getRandomNumber(1, gamesInCollectionList.size()))
-                .findElement(By.xpath(gameLink)));
+        click(getChildElement(testHelper.getRandomNumber(1, gamesInCollectionList.size()), gameLink));
         synchronization2();
         return this;
     }
 
-    public GamesListFragment deleteRandomGameFromList() {
-        click(gamesInCollectionList.get(testHelper.getRandomNumber(1, gamesInCollectionList.size())).findElement(By.xpath(deleteGameButton)));
-        driver.switchTo().alert().accept();
+    public GamesListFragment getFirstGameFromList() {
+        click(getChildElement(0,gameLink));
+        synchronization2();
         return this;
+    }
+
+    public int getRatingFromCollection() {
+        return Integer.valueOf(getChildElement(0,myRating).getText());
+    }
+
+    public String deleteRandomGameFromList() {
+        int tempNumber = testHelper.getRandomNumber(1, gamesInCollectionList.size());
+        String gameName = getChildElement(tempNumber, gameLink).getText();
+        Log.logInfo(gameName);
+        click(getChildElement(tempNumber,deleteGameButton));
+        alertAccept();
+        return gameName;
     }
 
     public GamesListFragment sortCollectionByTitles() {
