@@ -34,8 +34,8 @@ public class FiltersFragment extends BasePage {
     List<WebElement> wishListPrioritySelectOptions;
 
     public FiltersFragment geekRatingFiltering(Double min, Double max) {
-        insertDoubleValue(minGeekRating, min);
-        insertDoubleValue(maxGeekRating, max);
+        insertValue(minGeekRating, String.valueOf(min));
+        insertValue(maxGeekRating, String.valueOf(max));
         return this;
     }
 

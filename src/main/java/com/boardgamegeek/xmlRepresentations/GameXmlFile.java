@@ -24,12 +24,9 @@ public class GameXmlFile {
     }
 
     public String getLanguageDependenceFromXml(String gameId) {
-        stringList = xmlFile(gameId).
-                get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.@numvotes");
-        int number = Collections.max(stringList.stream().map(Integer::parseInt).collect(Collectors.toList()));
-        return (number==0) ? "(no votes)" : xmlFile(gameId)
+        return (getMaxValue(gameId) == 0) ? "(no votes)" : xmlFile(gameId)
                 .get("boardgames.boardgame.poll.find{it.@name=='language_dependence'}.results.result.find{it.@numvotes=='"
-                + number + "'}.@value");
+                        + getMaxValue(gameId) + "'}.@value");
     }
 
 }

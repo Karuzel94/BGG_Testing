@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MyRatingChangingTest extends BaseTest{
+public class MyRatingChangingTest extends BaseTest {
 
     @Test
     public void myRatingChangingTest() {
@@ -15,18 +15,15 @@ public class MyRatingChangingTest extends BaseTest{
         Log.logInfo("Username: " + loginProperties.getUsername()
                 + ", Password:  " + loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        collectionPage.getFirstGameFromList();
-        testHelper.setTempNumber(testHelper.getRandomNumber(1,10));
+        collectionPage.goToFirstGameFromList();
+        testHelper.setTempNumber(testHelper.getRandomNumber(1, 10));
         Log.logInfo(String.valueOf(testHelper.getTempNumber()));
         gamePage.giveMyRating(testHelper.getTempNumber());
         menuFragment.returnHomePage();
         userMenuFragment.goToCollection();
         assertThat(collectionPage.getRatingFromCollection()).isEqualTo(testHelper.getTempNumber());
-        collectionPage.getFirstGameFromList();
-        assertThat(gamePage.getSettedRating()).isEqualTo(testHelper.getTempNumber());
+        collectionPage.goToFirstGameFromList();
+        assertThat(gamePage.getMyRating()).isEqualTo(testHelper.getTempNumber());
         assertThat(gamePage.countStarsNumber()).isEqualTo(testHelper.getTempNumber());
-
     }
-
-
 }

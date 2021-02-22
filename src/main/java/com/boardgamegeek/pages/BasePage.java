@@ -72,16 +72,10 @@ public abstract class BasePage {
         return dropdown.getFirstSelectedOption().getText();
     }
 
-    public void insertStringValue(WebElement element, String value) {
+    public void insertValue(WebElement element, String value) {
         visibilityCheck(element);
         element.clear();
         element.sendKeys(value);
-    }
-
-    public void insertDoubleValue(WebElement element, Double value) {
-        visibilityCheck(element);
-        element.clear();
-        element.sendKeys(String.valueOf(value));
     }
 
     public void alertAccept() {

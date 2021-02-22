@@ -32,8 +32,8 @@ public class CollectionPage extends BasePage {
         return gamesListFragment.deleteRandomGameFromList();
     }
 
-    public CollectionPage getFirstGameFromList() {
-        gamesListFragment.getFirstGameFromList();
+    public CollectionPage goToFirstGameFromList() {
+        gamesListFragment.goToFirstGameFromList();
         return this;
     }
 

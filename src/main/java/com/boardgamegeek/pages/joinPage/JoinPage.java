@@ -37,9 +37,9 @@ public class JoinPage extends BasePage {
     }
 
     public void accountRegistration(String username, String mail, String password) {
-        insertStringValue(usernameInput, username);
-        insertStringValue(mailInput, mail);
-        insertStringValue(passwordInput, password);
+        insertValue(usernameInput, username);
+        insertValue(mailInput, mail);
+        insertValue(passwordInput, password);
         click(createAnAccountButton);
         click(skipAdditionalInformation);
     }

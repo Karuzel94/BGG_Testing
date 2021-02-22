@@ -36,20 +36,17 @@ public class GamePropertiesFragment extends BasePage {
     @FindBy(xpath = "//div[@class='game-itemid ng-binding']")
     WebElement gameId;
 
-    @FindBy(xpath = "//span[@ng-show='overstar > 0 || collratingctrl.collection.ratingitem.rating > 0 ']")
-    WebElement settedMyRating;
+    @FindBy(xpath = "//span[@class='rating-stars-secondary']//span[@class='ng-binding']")
+    WebElement givenMyRating;
 
     @FindBy(xpath = "//span[@ng-show='collratingctrl.collection.ratingitem.rating']")
     WebElement editMyRating;
 
-    @FindBy(xpath = "//span[@ng-repeat-start='r in range track by $index']")
+    @FindBy(xpath = "//i[@class='glyphicon ng-scope fi-star is-active']")
     List<WebElement> ratingStarsIcons;
 
     @FindBy(xpath = "//i[@ng-mouseenter='enter($index + 1)']")
     List<WebElement> ratingStarsButtons;
-
-    @FindBy(xpath = "//button[@class='cg-notify-close']")
-    WebElement itemUpdatedInformationCloseButton;
 
     public String getGameTitle() {
         visibilityCheck(gameTitle);
@@ -89,35 +86,24 @@ public class GamePropertiesFragment extends BasePage {
     }
 
     public boolean checkIfRatingHasBeenGiven() {
-        if (settedMyRating.isDisplayed()) {
-            click(editMyRating);
-            return true;
-        } else {
-            return false;
-        }
+        return editMyRating.isDisplayed();
+    }
+
+    public GamePropertiesFragment clickEditMyRating() {
+        click(editMyRating);
+        return this;
     }
 
     public GamePropertiesFragment addMyRatingForGame(int rating) {
-        if (itemUpdatedInformationCloseButton.isDisplayed()) {
-            click(itemUpdatedInformationCloseButton);
-        }
         click(ratingStarsButtons.get(rating - 1));
         return this;
     }
 
-    public int getSettedRating() {
-        return Integer.parseInt(settedMyRating.getText().replaceAll("\\D+", ""));
+    public int getMyRating() {
+        return Integer.parseInt(givenMyRating.getText().replaceAll("\\D+", ""));
     }
 
     public int countStarsNumber() {
-        int counter;
-        for (counter = 1; counter <= ratingStarsIcons.size(); counter++) {
-            if (ratingStarsIcons.get(counter - 1).getText().equals("(*)")) {
-                continue;
-            } else {
-                break;
-            }
-        }
-        return counter - 1;
+        return ratingStarsIcons.size();
     }
 }

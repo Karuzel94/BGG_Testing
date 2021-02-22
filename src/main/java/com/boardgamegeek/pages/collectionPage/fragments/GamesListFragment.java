@@ -68,21 +68,21 @@ public class GamesListFragment extends BasePage {
         return this;
     }
 
-    public GamesListFragment getFirstGameFromList() {
-        click(getChildElement(0,gameLink));
+    public GamesListFragment goToFirstGameFromList() {
+        click(getChildElement(0, gameLink));
         synchronization2();
         return this;
     }
 
     public int getRatingFromCollection() {
-        return Integer.valueOf(getChildElement(0,myRating).getText());
+        return Integer.valueOf(getChildElement(0, myRating).getText());
     }
 
     public String deleteRandomGameFromList() {
         int tempNumber = testHelper.getRandomNumber(1, gamesInCollectionList.size());
         String gameName = getChildElement(tempNumber, gameLink).getText();
         Log.logInfo(gameName);
-        click(getChildElement(tempNumber,deleteGameButton));
+        click(getChildElement(tempNumber, deleteGameButton));
         alertAccept();
         return gameName;
     }

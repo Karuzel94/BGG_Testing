@@ -55,19 +55,17 @@ public class GamePage extends BasePage {
     }
 
     public GamePage giveMyRating(int rating) {
-        if(gamePropertiesFragment.checkIfRatingHasBeenGiven()){
+        if (gamePropertiesFragment.checkIfRatingHasBeenGiven()) {
+            gamePropertiesFragment.clickEditMyRating();
             editGamePropertiesFragment.deleteMyRating();
-            gamePropertiesFragment.addMyRatingForGame(rating);
-            editGamePropertiesFragment.saveInCollection();
-        } else {
-            gamePropertiesFragment.addMyRatingForGame(rating);
-            editGamePropertiesFragment.saveInCollection();
         }
+        gamePropertiesFragment.addMyRatingForGame(rating);
+        editGamePropertiesFragment.saveInCollection();
         return this;
     }
 
-    public int getSettedRating() {
-        return gamePropertiesFragment.getSettedRating();
+    public int getMyRating() {
+        return gamePropertiesFragment.getMyRating();
     }
 
     public int countStarsNumber() {

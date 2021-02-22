@@ -31,7 +31,7 @@ public class DeleteGameFromCollectionTest extends BaseTest {
         Log.logInfo("Username: " + loginProperties.getUsername()
                 + ", Password:  " + loginProperties.getPassword());
         userMenuFragment.goToCollection();
-        assertThat(collectionPage.getGamesTitles()).contains(collectionPage.deleteRandomGameFromList());
-        Log.logInfo(collectionPage.getGamesTitles().toString());
+        testHelper.setGameName(collectionPage.deleteRandomGameFromList());
+        assertThat(collectionPage.getGamesTitles()).doesNotContain(testHelper.getGameName());
     }
 }
