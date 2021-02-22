@@ -101,7 +101,7 @@ public class GamePropertiesFragment extends BasePage {
         if (itemUpdatedInformationCloseButton.isDisplayed()) {
             click(itemUpdatedInformationCloseButton);
         }
-        click(ratingStarsButtons.get(rating));
+        click(ratingStarsButtons.get(rating - 1));
         return this;
     }
 
@@ -110,15 +110,14 @@ public class GamePropertiesFragment extends BasePage {
     }
 
     public int countStarsNumber() {
-        int counter = 0;
-        for (int i = 1; i <= ratingStarsIcons.size(); i++) {
-            if (ratingStarsIcons.get(counter).getText().equals("(*)")) {
-                counter = i;
+        int counter;
+        for (counter = 1; counter <= ratingStarsIcons.size(); counter++) {
+            if (ratingStarsIcons.get(counter - 1).getText().equals("(*)")) {
                 continue;
             } else {
                 break;
             }
         }
-        return counter;
+        return counter - 1;
     }
 }

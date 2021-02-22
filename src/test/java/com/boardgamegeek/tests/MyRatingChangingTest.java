@@ -16,15 +16,15 @@ public class MyRatingChangingTest extends BaseTest{
                 + ", Password:  " + loginProperties.getPassword());
         userMenuFragment.goToCollection();
         collectionPage.getFirstGameFromList();
-        testHelper.setTempNumber(testHelper.getRandomNumber(0,9));
-        Log.logInfo(String.valueOf(testHelper.getTempNumber() + 1));
+        testHelper.setTempNumber(testHelper.getRandomNumber(1,10));
+        Log.logInfo(String.valueOf(testHelper.getTempNumber()));
         gamePage.giveMyRating(testHelper.getTempNumber());
         menuFragment.returnHomePage();
         userMenuFragment.goToCollection();
-        assertThat(collectionPage.getRatingFromCollection()).isEqualTo(testHelper.getTempNumber() + 1);
+        assertThat(collectionPage.getRatingFromCollection()).isEqualTo(testHelper.getTempNumber());
         collectionPage.getFirstGameFromList();
-        assertThat(gamePage.getSettedRating()).isEqualTo(testHelper.getTempNumber() + 1);
-        assertThat(gamePage.countStarsNumber()).isEqualTo(testHelper.getTempNumber() + 1);
+        assertThat(gamePage.getSettedRating()).isEqualTo(testHelper.getTempNumber());
+        assertThat(gamePage.countStarsNumber()).isEqualTo(testHelper.getTempNumber());
 
     }
 
