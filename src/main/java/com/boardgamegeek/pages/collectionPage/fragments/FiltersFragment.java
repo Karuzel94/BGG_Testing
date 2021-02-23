@@ -15,7 +15,7 @@ public class FiltersFragment extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='collectionfilter_body']/input[2][@value='Apply Filters']")
+    @FindBy(xpath = "//input[@value='Apply Filters']")
     WebElement applyButton;
 
     @FindBy(xpath = "//input[@aria-labelledby='heading_geekrating minrating']")
